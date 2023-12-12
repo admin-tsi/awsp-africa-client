@@ -10,10 +10,6 @@ const sairaFont = localFont({
       path: '../fonts/Saira-VariableFont_wdth,wght.ttf',
       weight: 'variable',
     },
-    {
-      path: '../fonts/Saira-Italic-VariableFont_wdth,wght.ttf',
-      weight: 'variable',
-    },
   ],
 });
 
