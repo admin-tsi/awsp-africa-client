@@ -1,4 +1,5 @@
 import CustomButton from '@/components/CustomButton';
+import Endpaimentform from '@/components/Endpaimentform';
 import Footer from '@/components/Footer';
 import Joinform from '@/components/Joinform';
 import Loginform from '@/components/Loginform';
@@ -10,7 +11,7 @@ export default function Index() {
     <div className="flex flex-col h-screen">
       <Navbar />
       <div className="flex-1 flex justify-center items-center bg-neutral">
-        <Paiementform/>
+        <Endpaimentform/>
       </div>
       <Footer />
     </div>
