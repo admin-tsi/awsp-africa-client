@@ -131,7 +131,7 @@ const Navbar = (props: Props) => {
               initial="initial"
               animate="open"
               exit="initial"
-              className="flex-1 h-full"
+              className="flex-1 h-full z-40"
             >
               <div className="overflow-hidden h-full">
                 <motion.div

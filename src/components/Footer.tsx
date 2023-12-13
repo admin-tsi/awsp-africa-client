@@ -1,9 +1,6 @@
 import React from 'react';
 import logo from '../../public/Group 2.svg';
-import insta from '../../public/insta.svg';
-import mail from '../../public/mail.svg';
 import x from '../../public/x.svg';
-import linkedin from '../../public/linkedin.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -11,7 +8,7 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <section className="h-fit bg-neutral">
+    <section className="h-fit bg-[#202020]">
       <div className="container mx-auto p-5 flex-col h-fit flex justify-between">
         <div className="h-fit w-full flex flex-col space-y-2 lg:flex-row justify-between">
           <div className="flex flex-col space-y-3">
