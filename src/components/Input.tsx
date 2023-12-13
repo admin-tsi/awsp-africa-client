@@ -1,16 +1,33 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-type Props = {};
+type InputProps = {
+  type?: string;
+  name?: string;
+  id?: string;
+  className?: string;
+  placeholder?: string;
+  children?: ReactNode;
+};
 
-const Input = (props: Props) => {
+const Input = (props: InputProps) => {
+  const {
+    type = 'text',
+    name = 'email',
+    id = 'email',
+    placeholder = 'john@doe.com',
+    children
+  } = props;
+
   return (
     <input
-      type="text"
-      name="email"
-      id="email"
-      className="bg-black text-white h-full w-full flex justify-center items-center rounded-lg px-2 outline-none"
-      placeholder="john@doe.com"
-    />
+      type={type}
+      name={name}
+      id={id}
+      className = "bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
+      placeholder={placeholder}
+    >
+      {children}
+    </input>
   );
 };
 

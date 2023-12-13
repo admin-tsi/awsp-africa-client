@@ -9,11 +9,16 @@ const Joinform = (props: Props) => {
       <span className="h-1/3 flex justify-center items-center text-white text-4xl font-bold">
         Join us
       </span>
-      <div className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center space-x-5 relative">
+      <div className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center space-x-5 relative border-[2px] border-zinc-900 shadow-black shadow-lg">
         <span className="text-white w-[25%] flex justify-center items-center">
           Email *
         </span>
-        <Input />
+        <Input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="Enter your password"
+        />
       </div>
 
       <div className="flex w-full items-center my-5">
@@ -25,7 +30,7 @@ const Joinform = (props: Props) => {
         />
         <label
           htmlFor="link-checkbox"
-          className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+          className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 my-3"
         >
           I acknowledge and agree to the{' '}
           <a href="#" className="text-white dark:text-white hover:underline">
