@@ -8,7 +8,7 @@ const Input = (props: Props) => {
       type="text"
       name="email"
       id="email"
-      className="bg-black text-white h-full w-full flex justify-center items-center rounded-lg px-2"
+      className="bg-black text-white h-full w-full flex justify-center items-center rounded-lg px-2 outline-none"
       placeholder="john@doe.com"
     />
   );
