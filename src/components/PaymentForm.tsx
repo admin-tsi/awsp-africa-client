@@ -12,7 +12,7 @@ type Props = {
   onNext: () => void;
 };
 
-const Paiementform = ({ onNext }: Props) => {
+const PaymentForm = ({ onNext }: Props) => {
   let easing = [0.6, -0.05, 0.01, 0.99];
   const [activeButton, setActiveButton] = useState<number>(1);
   const handleButtonClick = (buttonIndex: number) => {
@@ -29,7 +29,7 @@ const Paiementform = ({ onNext }: Props) => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1, ease: easing, duration: 0.5 }}
         exit={{ opacity: 0 }}
-        className="h-fit w-[570px] rounded-lg bg-[#1A1A1A] border border-black shadow-xl m-5 lg:mx-0"
+        className="h-fit w-[570px] rounded-lg bg-neutral border border-black shadow-xl m-5 lg:mx-0"
       >
         <div className="h-[100px] bg-[#222222] rounded-lg flex justify-center items-center">
           <span className="text-3xl font-semibold text-white">Join us</span>
@@ -69,7 +69,7 @@ const Paiementform = ({ onNext }: Props) => {
             >
               <div className="flex h-[98%] flex-col justify-center items-start p-5 space-y-2 rounded-lg bg-white dark:bg-black w-[99%]">
                 <Image src={cart} alt="Bank cart logo" width={25} height={25} />
-                <span className="text-white font-semibold">card</span>
+                <span className="text-white font-semibold">Card</span>
               </div>
             </button>
           </motion.div>
@@ -186,4 +186,4 @@ const Paiementform = ({ onNext }: Props) => {
   );
 };
 
-export default Paiementform;
+export default PaymentForm;

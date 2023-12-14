@@ -3,7 +3,7 @@ import Confetti from 'react-confetti';
 import end from '../../public/validate.svg';
 import failled from '../../public/Failled.svg';
 import Image from 'next/image';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 type Props = {
   isSuccess: boolean;
@@ -16,7 +16,6 @@ const Endpaimentform = ({ isSuccess }: Props) => {
   useEffect(() => {
     const confettiTimeout = setTimeout(() => {
       setConfetti(true);
-      
     }, 1000);
 
     return () => clearTimeout(confettiTimeout);
@@ -28,7 +27,7 @@ const Endpaimentform = ({ isSuccess }: Props) => {
       animate={{ opacity: 1 }}
       transition={{ delay: 0.1, ease: easing, duration: 0.5 }}
       exit={{ opacity: 0 }}
-      className="h-fit w-[558px] rounded-lg bg-[#1A1A1A] border border-black shadow-xl m-5 lg:mx-0"
+      className="h-fit w-[558px] rounded-lg bg-neutral border border-black shadow-xl m-5 lg:mx-0"
     >
       <div className="h-[100px] bg-[#222222] rounded-lg flex justify-center items-center">
         <span className="text-3xl font-semibold text-white">

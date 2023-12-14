@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
-import Joinform from '@/components/Joinform';
-import Paiementform from '@/components/Paiementform';
-import Endpaimentform from '@/components/Endpaimentform';
+import JoinForm from '@/components/JoinForm';
+import PaymentForm from '@/components/PaymentForm';
+import EndPaymentForm from '@/components/Endpaimentform';
 import Footer from '@/components/Footer';
 
 export default function Index() {
@@ -22,9 +22,9 @@ export default function Index() {
     <div className="flex flex-col h-screen">
       <Navbar />
       <div className="flex-1 flex justify-center items-center bg-neutral">
-        {currentStep === 1 && <Joinform onNext={handleNext} />}
-        {currentStep === 2 && <Paiementform onNext={handlePaymentSuccess} />}
-        {currentStep === 3 && <Endpaimentform isSuccess={isSuccess} />}
+        {currentStep === 1 && <JoinForm onNext={handleNext} />}
+        {currentStep === 2 && <PaymentForm onNext={handlePaymentSuccess} />}
+        {currentStep === 3 && <EndPaymentForm isSuccess={isSuccess} />}
       </div>
       <Footer />
     </div>

@@ -1,13 +1,5 @@
-import React, { ReactNode } from 'react';
-
-type InputProps = {
-  type?: string;
-  name?: string;
-  id?: string;
-  className?: string;
-  placeholder?: string;
-  children?: ReactNode;
-};
+import React from 'react';
+import { InputProps } from '@/utils/interfaces';
 
 const Input = (props: InputProps) => {
   const {
@@ -15,7 +7,7 @@ const Input = (props: InputProps) => {
     name = 'email',
     id = 'email',
     placeholder = 'john@doe.com',
-    children
+    className = '',
   } = props;
 
   return (
@@ -23,11 +15,10 @@ const Input = (props: InputProps) => {
       type={type}
       name={name}
       id={id}
-      className = "bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
+      className={`bg-neutral2 text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md focus:bg-neutral2 ${className}`}
       placeholder={placeholder}
-    >
-      {children}
-    </input>
+      required={true}
+    />
   );
 };
 

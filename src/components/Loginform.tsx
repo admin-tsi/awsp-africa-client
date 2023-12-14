@@ -3,9 +3,9 @@ import Input from './Input';
 
 type Props = {};
 
-const Loginform = (props: Props) => {
+const LoginForm = () => {
   return (
-    <section className="h-96 w-[558px] rounded-lg bg-[#1A1A1A] border border-black shadow-xl m-5 lg:mx-0">
+    <section className="h-96 w-[558px] rounded-lg bg-neutral border border-black shadow-xl m-5 lg:mx-0">
       <div className="h-1/4 bg-[#222222] rounded-lg flex justify-center items-center">
         <span className="text-3xl font-semibold text-white">Login</span>
       </div>
@@ -42,4 +42,4 @@ const Loginform = (props: Props) => {
   );
 };
 
-export default Loginform;
+export default LoginForm;

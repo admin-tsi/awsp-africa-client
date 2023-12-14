@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import logo from '../../public/Group 2.svg';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 type Props = {};
 
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const [open, setOpen] = useState(false);
   const toggleMenu = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -63,21 +63,27 @@ const Navbar = (props: Props) => {
     },
   };
 
-  const navLinks = [
+  /*  const navLinks = [
     { title: 'Courses', href: '/' },
     { title: 'About', href: '/' },
     { title: 'Contact', href: '/' },
-  ];
+  ];*/
 
   return (
-    <nav className="w-full h-16">
-      <div className="container mx-auto h-full w-full flex justify-between items-center px-5">
+    <nav className="w-full z-20 top-0 left-0">
+      <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
         <Image src={logo} alt="AWSP Logo" className="h-full w-16" />
-        <div className="hidden lg:flex space-x-12 h-full justify-center items-center">
+        <div className="hidden lg:flex space-x-12 h-full justify-center items-center text-white">
           <div className="flex space-x-6">
-            <Link href="#" className='hover:font-semibold'>Courses</Link>
-            <Link href="#" className='hover:font-semibold'>About</Link>
-            <Link href="#" className='hover:font-semibold'>Contact</Link>
+            <Link href="#" className="hover:font-semibold">
+              Courses
+            </Link>
+            <Link href="#" className="hover:font-semibold">
+              About
+            </Link>
+            <Link href="#" className="hover:font-semibold">
+              Contact
+            </Link>
           </div>
           <button className="bg-neutral w-[154px] rounded-[40px] h-[50px] text-white font-semibold">
             Sign in
@@ -89,7 +95,7 @@ const Navbar = (props: Props) => {
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
-            stroke="currentColor"
+            stroke="white"
             className="w-6 h-full"
           >
             <path
@@ -139,9 +145,24 @@ const Navbar = (props: Props) => {
                   className="h-full flex flex-col justify-center items-center space-y-3"
                 >
                   <div className="flex flex-col space-y-3">
-                    <Link href="/" className="text-2xl uppercase text-black hover:font-semibold">Courses</Link>
-                    <Link href="/" className="text-2xl uppercase text-black hover:font-semibold">About</Link>
-                    <Link href="/" className="text-2xl uppercase text-black hover:font-semibold">Contact</Link>
+                    <Link
+                      href="/"
+                      className="text-2xl uppercase text-black hover:font-semibold"
+                    >
+                      Courses
+                    </Link>
+                    <Link
+                      href="/"
+                      className="text-2xl uppercase text-black hover:font-semibold"
+                    >
+                      About
+                    </Link>
+                    <Link
+                      href="/"
+                      className="text-2xl uppercase text-black hover:font-semibold"
+                    >
+                      Contact
+                    </Link>
                   </div>
                   <button className="bg-neutral w-[154px] rounded-[40px] h-[50px] text-white font-semibold shadow-md">
                     Sign in

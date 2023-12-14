@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import User_register_step1 from '@/components/User_register_step1';
 import User_register_step2 from '@/components/User_register_step2';
 import User_register_step3 from '@/components/User_register_step3';
-import User_register_step4 from '@/components/User_register_step4';
 import { useMultistepForm } from '@/config/useMultistepForm';
 import { FormEvent, useState } from 'react';
 
@@ -19,7 +18,7 @@ export default function Index() {
     locality: string;
     state: string;
     sport: string;
-    gender:string;
+    gender: string;
     degree: string;
     profession: string;
     communication: string;
@@ -30,7 +29,7 @@ export default function Index() {
     firstName: '',
     lastName: '',
     phone_Number: null,
-    gender:'',
+    gender: '',
     locality: '',
     birth: '',
     city: '',
@@ -44,15 +43,15 @@ export default function Index() {
 
   const [data, setData] = useState(INITIAL_DATA);
   function updateFields(fields: Partial<FormData>) {
-    setData(prev => {
-      return { ...prev, ...fields }
-    })
+    setData((prev) => {
+      return { ...prev, ...fields };
+    });
   }
   const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
     useMultistepForm([
-      <User_register_step1 {...data} updateFields={updateFields}/>,
-      <User_register_step2 {...data} updateFields={updateFields}/>,
-      <User_register_step3 {...data} updateFields={updateFields}/>,
+      <User_register_step1 {...data} updateFields={updateFields} />,
+      <User_register_step2 {...data} updateFields={updateFields} />,
+      <User_register_step3 {...data} updateFields={updateFields} />,
     ]);
 
   function onSubmit(e: FormEvent) {
@@ -66,7 +65,7 @@ export default function Index() {
     <div className="flex flex-col h-screen">
       <Navbar />
       <div className="flex-1 flex justify-center items-center bg-neutral">
-        <div className="h-fit w-[570px] rounded-lg bg-[#1A1A1A] border border-black shadow-xl m-5 lg:mx-0">
+        <div className="h-fit w-[570px] rounded-lg bg-neutral border border-black shadow-xl m-5 lg:mx-0">
           <form onSubmit={onSubmit}>
             <div className="h-[80px] bg-[#222222] rounded-lg flex justify-start items-center p-5">
               <span className="text-xl font-semibold text-white">
