@@ -9,29 +9,6 @@ type Props = {
 
 const JoinForm = ({ onNext }: Props) => {
   let easing = [0.6, -0.05, 0.01, 0.99];
-  const fadeInUp = {
-    initial: {
-      y: 60,
-      opacity: 0,
-      transition: { duration: 0.6, ease: easing },
-    },
-    animate: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: easing,
-      },
-    },
-  };
-
-  const stagger = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
   const handleNextClick = () => {
     onNext();
   };
@@ -52,7 +29,7 @@ const JoinForm = ({ onNext }: Props) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, ease: easing, duration: 0.5 }}
-          className="w-full bg-neutral2 rounded-lg flex items-center p-3"
+          className="w-full bg-black rounded-lg flex items-center p-3"
         >
           <span className="text-white flex justify-center items-center whitespace-nowrap p-3">
             Email *

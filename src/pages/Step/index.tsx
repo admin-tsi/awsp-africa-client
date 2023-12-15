@@ -2,9 +2,9 @@
 /* eslint-disable */
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
-import User_register_step1 from '@/components/User_register_step1';
-import User_register_step2 from '@/components/User_register_step2';
-import User_register_step3 from '@/components/User_register_step3';
+import User_register_step1 from '@/components/UserRegisterStep1';
+import User_register_step2 from '@/components/UserRegisterStep2';
+import User_register_step3 from '@/components/UserRegisterStep3';
 import { useMultistepForm } from '@/config/useMultistepForm';
 import { FormEvent, useState } from 'react';
 
@@ -25,7 +25,7 @@ export default function Index() {
     passion: string;
   };
 
-  const INITIAL_DATA: FormData = {
+  const InitialData: FormData = {
     firstName: '',
     lastName: '',
     phone_Number: null,
@@ -41,7 +41,7 @@ export default function Index() {
     passion: '',
   };
 
-  const [data, setData] = useState(INITIAL_DATA);
+  const [data, setData] = useState(InitialData);
   function updateFields(fields: Partial<FormData>) {
     setData((prev) => {
       return { ...prev, ...fields };

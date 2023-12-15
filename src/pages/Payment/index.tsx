@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import JoinForm from '@/components/JoinForm';
 import PaymentForm from '@/components/PaymentForm';
-import EndPaymentForm from '@/components/Endpaimentform';
+import EndPaymentForm from '@/components/EndPaymentForm';
 import Footer from '@/components/Footer';
 
 export default function Index() {

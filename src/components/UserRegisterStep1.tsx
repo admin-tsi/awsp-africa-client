@@ -16,7 +16,7 @@ type UseraccountFormProps = Userdata & {
   updateFields: (fields: Partial<Userdata>) => void;
 };
 
-function User_register_step1({
+function UserRegisterStep1({
   firstName,
   lastName,
   city,
@@ -35,7 +35,7 @@ function User_register_step1({
           transition={{ delay: 0.2, ease: easing, duration: 0.5 }}
           className="w-1/2 h-[80px] bg-black rounded-lg flex justify-end items-center space-x-5 relative"
         >
-          <span className="text-white absolute left-[13px] top-[-11px] w-[50%] font-semibold flex justify-start items-center px-3">
+          <span className="text-white absolute left-[13px] top-[-11px] w-full md:w-[50%] font-semibold flex justify-start items-center px-3">
             First name *
           </span>
           <input
@@ -54,7 +54,7 @@ function User_register_step1({
           transition={{ delay: 0.3, ease: easing, duration: 0.5 }}
           className="w-1/2 h-[80px] bg-black rounded-lg flex justify-end items-center space-x-5 relative"
         >
-          <span className="text-white absolute left-[13px] top-[-11px] w-[50%] font-semibold flex justify-start items-center px-3">
+          <span className="text-white absolute left-[13px] top-[-11px] w-full md:w-[50%] font-semibold flex justify-start items-center px-3">
             Last name *
           </span>
           <input
@@ -74,7 +74,7 @@ function User_register_step1({
         transition={{ delay: 0.4, ease: easing, duration: 0.5 }}
         className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center px-5 relative"
       >
-        <span className="text-white absolute left-[13px] top-[-11px] w-[30%] font-semibold flex justify-start items-center px-3">
+        <span className="text-white absolute left-[13px] top-[-11px] w-full md:w-[50%] font-semibold flex justify-start items-center px-3">
           Mobile number *
         </span>
         <span className="text-white w-fit  flex justify-start items-center px-3">
@@ -158,4 +158,4 @@ function User_register_step1({
   );
 }
 
-export default User_register_step1;
+export default UserRegisterStep1;

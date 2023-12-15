@@ -13,7 +13,7 @@ type UseraccountFormProps = Userdatas2 & {
   updateFields: (fields: Partial<Userdatas2>) => void;
 };
 
-const User_register_step2 = ({
+const UserRegisterStep1 = ({
   birth,
   gender,
   profession,
@@ -30,7 +30,7 @@ const User_register_step2 = ({
         transition={{ delay: 0.1, ease: easing, duration: 0.5 }}
         className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center px-5 relative"
       >
-        <span className="text-white absolute left-[13px] top-[-11px] w-[30%] font-semibold flex justify-start items-center px-3">
+        <span className="text-white absolute left-[13px] top-[-11px] w-full md:w-[30%] font-semibold flex justify-start items-center px-3">
           Date of Birth *
         </span>
         <input
@@ -49,20 +49,7 @@ const User_register_step2 = ({
         transition={{ delay: 0.2, ease: easing, duration: 0.5 }}
         className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center px-5 relative"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="white"
-          className="w-6 h-6 absolute right-7"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-          />
-        </svg>
+        
 
         <span className="text-white absolute left-[13px] top-[-11px] w-[30%] font-semibold flex justify-start items-center px-3">
           Gender *
@@ -104,20 +91,7 @@ const User_register_step2 = ({
         transition={{ delay: 0.4, ease: easing, duration: 0.5 }}
         className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center px-5 relative"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="white"
-          className="w-6 h-6 absolute right-7"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-          />
-        </svg>
+        
 
         <span className="text-white absolute left-[13px] top-[-11px] w-[30%] font-semibold flex justify-start items-center px-3">
           Degree *
@@ -139,4 +113,4 @@ const User_register_step2 = ({
   );
 };
 
-export default User_register_step2;
+export default UserRegisterStep1;

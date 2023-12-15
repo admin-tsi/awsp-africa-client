@@ -4,9 +4,8 @@ import x from '../../public/x.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 
-type Props = {};
 
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <section className="h-fit bg-[#202020]">
       <div className="container mx-auto p-5 flex-col h-fit flex justify-between">

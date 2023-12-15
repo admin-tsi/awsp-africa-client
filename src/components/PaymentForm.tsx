@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Input from './Input';
-import momo from '../../public/momo.svg';
-import cart from '../../public/card.svg';
-import kkiapye from '../../public/kkiapay.svg';
-import visa from '../../public/cartvisa.svg';
-import flag from '../../public/flag.svg';
+import Momo from '../../public/momo.svg';
+import Cart from '../../public/card.svg';
+import Kkiapye from '../../public/kkiapay.svg';
+import Visa from '../../public/cartvisa.svg';
+import Flag from '../../public/flag.svg';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -31,7 +31,7 @@ const PaymentForm = ({ onNext }: Props) => {
         exit={{ opacity: 0 }}
         className="h-fit w-[570px] rounded-lg bg-neutral border border-black shadow-xl m-5 lg:mx-0"
       >
-        <div className="h-[100px] bg-[#222222] rounded-lg flex justify-center items-center">
+        <div className="h-[100px] bg-neutral3 rounded-lg flex justify-center items-center">
           <span className="text-3xl font-semibold text-white">Join us</span>
         </div>
         <div className="p-8 flex flex-col space-y-8 ">
@@ -39,7 +39,7 @@ const PaymentForm = ({ onNext }: Props) => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, ease: easing, duration: 0.5 }}
-            className="w-full h-[80px] flex space-x-2"
+            className="w-full h-[50px] md:h-[80px] flex space-x-2"
           >
             <button
               className={`w-1/2 h-full ${
@@ -51,10 +51,11 @@ const PaymentForm = ({ onNext }: Props) => {
             >
               <div className="flex h-[98%] flex-col justify-center items-start p-5 space-y-2 rounded-lg bg-white dark:bg-black w-[99%]">
                 <Image
-                  src={momo}
+                  src={Momo}
                   alt="MTN Mobile Money logo"
                   width={16}
                   height={25}
+                  className='max-md:hidden'
                 />
                 <span className="text-white font-semibold">Mobile Money</span>
               </div>
@@ -68,7 +69,7 @@ const PaymentForm = ({ onNext }: Props) => {
               onClick={() => handleButtonClick(2)}
             >
               <div className="flex h-[98%] flex-col justify-center items-start p-5 space-y-2 rounded-lg bg-white dark:bg-black w-[99%]">
-                <Image src={cart} alt="Bank cart logo" width={25} height={25} />
+                <Image src={Cart} alt="Bank cart logo" width={25} height={25} className='max-md:hidden'/>
                 <span className="text-white font-semibold">Card</span>
               </div>
             </button>
@@ -82,7 +83,7 @@ const PaymentForm = ({ onNext }: Props) => {
                 transition={{ delay: 0.3, ease: easing, duration: 0.5 }}
                 className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center space-x-5 relative"
               >
-                <span className="text-white absolute left-[13px] top-[-11px] w-[30%] font-semibold flex justify-start items-center px-3">
+                <span className="text-white absolute left-[13px] top-[-11px] w-full md:w-[30%] font-semibold flex justify-start items-center px-3">
                   Fullname *
                 </span>
                 <Input
@@ -98,12 +99,12 @@ const PaymentForm = ({ onNext }: Props) => {
                 transition={{ delay: 0.4, ease: easing, duration: 0.5 }}
                 className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center px-5 relative"
               >
-                <span className="text-white absolute left-[13px] top-[-11px] w-[30%] font-semibold flex justify-start items-center px-3">
+                <span className="text-white absolute left-[13px] top-[-11px] w-full md:w-[30%] font-semibold flex justify-start items-center px-3">
                   Mobile number *
                 </span>
                 <span className="text-white w-fit  flex justify-start items-center px-3">
                   <Image
-                    src={flag}
+                    src={Flag}
                     alt="Visa cart logo"
                     height={15}
                     width={25}
@@ -127,11 +128,11 @@ const PaymentForm = ({ onNext }: Props) => {
                 transition={{ delay: 0.3, ease: easing, duration: 0.5 }}
                 className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center space-x-5 relative"
               >
-                <span className="text-white absolute left-[13px] top-[-11px] w-[30%] font-semibold flex justify-start items-center px-3">
+                <span className="text-white absolute left-[13px] top-[-11px] w-full md:w-[30%] font-semibold flex justify-start items-center px-3">
                   Card number *
                 </span>
                 <Image
-                  src={visa}
+                  src={Visa}
                   alt="Visa cart logo"
                   height={15}
                   width={110}
@@ -172,7 +173,7 @@ const PaymentForm = ({ onNext }: Props) => {
                 Pay 125 340 XOF
               </button>
               <Image
-                src={kkiapye}
+                src={Kkiapye}
                 alt="Kkiapay logo"
                 height={15}
                 width={110}

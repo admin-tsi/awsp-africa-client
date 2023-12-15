@@ -11,7 +11,7 @@ type UseraccountFormProps = Userdata3 & {
   updateFields: (fields: Partial<Userdata3>) => void;
 };
 
-function User_register_step3({
+function UserRegisterStep3({
   sport,
   communication,
   passion,
@@ -27,22 +27,7 @@ function User_register_step3({
         transition={{ delay: 0.2, ease: easing, duration: 0.5 }}
         className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center px-5 relative"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="white"
-          className="w-6 h-6 absolute right-7"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-          />
-        </svg>
-
-        <span className="text-white absolute left-[13px] top-[-11px] w-[30%] font-semibold flex justify-start items-center px-3">
+        <span className="text-white absolute left-[13px] top-[-11px] w-full md:w-[30%] font-semibold flex justify-start items-center px-3">
           Your Sport *
         </span>
         <select
@@ -63,22 +48,7 @@ function User_register_step3({
         transition={{ delay: 0.2, ease: easing, duration: 0.5 }}
         className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center px-5 relative"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="white"
-          className="w-6 h-6 absolute right-7"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-          />
-        </svg>
-
-        <span className="text-white absolute left-[13px] top-[-11px] w-[60%] font-semibold flex justify-start items-center px-3">
+        <span className="text-white absolute left-[13px] top-[-11px] w-full md:w-[60%] font-semibold flex justify-start items-center px-3">
           How did you hear about AWSP ? *
         </span>
         <select
@@ -106,4 +76,4 @@ function User_register_step3({
   );
 }
 
-export default User_register_step3;
+export default UserRegisterStep3;
