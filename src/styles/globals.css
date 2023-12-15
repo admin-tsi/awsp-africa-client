@@ -7,4 +7,13 @@ body {
   -webkit-overflow-scrolling: touch;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
+  background: #1A1A1A;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff !important;
 }
