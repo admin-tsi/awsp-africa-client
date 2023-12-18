@@ -91,11 +91,11 @@ export default function Index() {
               What will you learn?
             </h2>
             <div className='text-sm mt-2'>
-              <p>1.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              {/* <p>1.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               <p>2.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               <p>3.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               <p>4.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              <p>5.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>5.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
             </div>
 
             <h2 className='mt-4 text-lg font-semibold'>Reviews</h2>
@@ -136,17 +136,17 @@ export default function Index() {
                 <h1 className="font-medium">Infrastructure</h1>
               </div>
             </div>
-            <p className="text-xs ml-5">
+            <div className="text-xs ml-5">
               Need an internet connection or a good computer device to work
               with? No problem. You can check AWSP relay points here at any
               time.
              
               We provide you with everything you need for a smooth learning
               experience.
-             
-             
-              <p className='text-red-500'>No extra charges !</p>
-            </p>
+              
+              <br/>
+              <span className='text-red-500'>No extra charges !</span>
+            </div>
           </div>
         </div>
       </div>
