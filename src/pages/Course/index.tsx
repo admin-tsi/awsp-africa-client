@@ -8,6 +8,7 @@ import Translate from '../../../public/translate.svg';
 import Ellipse from '../../../public/ellipse.svg';
 import Stat from '../../../public/stats.svg';
 import ModuleDetails from '@/components/ModuleDetails';
+import Certificate from '../../../public/certificate.svg';
 
 export default function Index() {
   const moduleDetailsProps = {
@@ -139,12 +140,23 @@ export default function Index() {
               Need an internet connection or a good computer device to work
               with? No problem. You can check AWSP relay points here at any
               time.
-              <br />
+             
               We provide you with everything you need for a smooth learning
               experience.
+             
+             
+              <p className='text-red-500'>No extra charges !</p>
             </p>
           </div>
         </div>
+      </div>
+      <div className='container mx-auto relative flex justify-center items-center'>
+        <div className='h-fit w-full bg-[#D9D9D9] p-5 -z-10 flex flex-col space-y-3 rounded-md'>
+          <p className='text-2xl font-medium'>Get a professional certificate</p>
+          <p className='text-xs'>Add this qualification to your CV
+              Share it on social networks</p>
+        </div>
+        <Image src={Certificate} alt='Certificate' className='z-10 absolute right-0 w-[200px] h-[200px]'></Image>
       </div>
       <ModuleDetails {...moduleDetailsProps} />
       <Footer />
