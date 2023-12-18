@@ -3,15 +3,15 @@ import Input from './Input';
 import ProcessButton from './ProcessButton';
 import { AnimatePresence, motion } from 'framer-motion';
 
-type Props = {
-  onNext: () => void;
+type PaymentStep1 = {
+  Email: string;
 };
 
-const JoinForm = ({ onNext }: Props) => {
+type PaymentFormProps = PaymentStep1 & {
+  updateFields: (fields: Partial<PaymentStep1>) => void;
+};
+const JoinForm = ({ Email, updateFields }: PaymentFormProps) => {
   let easing = [0.6, -0.05, 0.01, 0.99];
-  const handleNextClick = () => {
-    onNext();
-  };
 
   return (
     <AnimatePresence>
@@ -20,11 +20,8 @@ const JoinForm = ({ onNext }: Props) => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1, ease: easing, duration: 0.5 }}
         exit={{ opacity: 0 }}
-        className="h-fit w-fit space-y-5 flex flex-col items-center shadow-custom rounded-lg p-6 max-lg:m-5"
+        className="p-5"
       >
-        <span className="flex justify-center items-center text-white text-2xl font-bold">
-          Join us
-        </span>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -34,11 +31,15 @@ const JoinForm = ({ onNext }: Props) => {
           <span className="text-white flex justify-center items-center whitespace-nowrap p-3">
             Email *
           </span>
-          <Input
-            type="text"
+          <input
+            type="email"
             name="email"
             id="email"
             placeholder="Enter your password"
+            value={Email}
+            className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
+            onChange={(e) => updateFields({ Email: e.target.value })}
+            required
           />
         </motion.div>
 
@@ -47,7 +48,7 @@ const JoinForm = ({ onNext }: Props) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, ease: easing, duration: 0.5 }}
         >
-          <div className="flex w-full items-center justify-between">
+          <div className="flex w-full items-center justify-start">
             <input
               id="default-checkbox"
               type="checkbox"
@@ -69,9 +70,6 @@ const JoinForm = ({ onNext }: Props) => {
             </label>
           </div>
         </motion.div>
-        <div className="w-full flex justify-end">
-          <ProcessButton onClick={handleNextClick} label="Next" />
-        </div>
       </motion.div>
     </AnimatePresence>
   );

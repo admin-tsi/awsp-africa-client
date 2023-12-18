@@ -27,13 +27,7 @@ const EndPaymentForm = ({ isSuccess }: Props) => {
       animate={{ opacity: 1 }}
       transition={{ delay: 0.1, ease: easing, duration: 0.5 }}
       exit={{ opacity: 0 }}
-      className="h-fit w-full md:w-2/3 lg:w-fit rounded-lg bg-neutral border border-black shadow-xl m-5 lg:mx-0"
     >
-      <div className="h-[100px] bg-neutral3 rounded-lg flex justify-center items-center">
-        <span className="text-2xl lg:text-3xl font-semibold text-white">
-          {isSuccess ? 'Thanks !!!' : 'Oops !!!'}
-        </span>
-      </div>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import Input from './Input';
 
 type Userdatas2 = {
   birth: string;
