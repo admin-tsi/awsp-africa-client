@@ -26,6 +26,34 @@ function UserRegisterStep1({
   updateFields,
 }: UseraccountFormProps) {
   let easing = [0.6, -0.05, 0.01, 0.99];
+
+  const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateFields({ firstName: e.target.value });
+  };
+
+  const handleLastNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateFields({ lastName: e.target.value });
+  };
+
+  const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    updateFields({
+      phone_Number: value !== '' ? parseInt(value, 10) : null,
+    });
+  };
+
+  const handleCityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateFields({ city: e.target.value });
+  };
+
+  const handleStateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateFields({ state: e.target.value });
+  };
+
+  const handleLocalityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateFields({ locality: e.target.value });
+  };
+
   return (
     <div className="w-full flex flex-col space-y-6 p-5 mt-5">
       <div className="flex space-x-2">
@@ -44,8 +72,9 @@ function UserRegisterStep1({
             id="firstName"
             value={firstName}
             className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
-            onChange={(e) => updateFields({ firstName: e.target.value })}
+            onChange={handleFirstNameChange}
             placeholder="John Doe"
+            required
           />
         </motion.div>
         <motion.div
@@ -64,7 +93,8 @@ function UserRegisterStep1({
             placeholder="John Doe"
             value={lastName}
             className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
-            onChange={(e) => updateFields({ lastName: e.target.value })}
+            onChange={handleLastNameChange}
+            required
           />
         </motion.div>
       </div>
@@ -87,12 +117,8 @@ function UserRegisterStep1({
           placeholder="96000000"
           value={phone_Number !== null ? phone_Number.toString() : ''}
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
-          onChange={(e) => {
-            const value = e.target.value;
-            updateFields({
-              phone_Number: value !== '' ? parseInt(value, 10) : null,
-            });
-          }}
+          onChange={handlePhoneNumberChange}
+          required 
         />
       </motion.div>
       <div className="flex space-x-2">
@@ -112,7 +138,8 @@ function UserRegisterStep1({
             placeholder="John Doe"
             value={city}
             className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
-            onChange={(e) => updateFields({ city: e.target.value })}
+            onChange={handleCityChange}
+            required
           />
         </motion.div>
         <motion.div
@@ -131,7 +158,8 @@ function UserRegisterStep1({
             placeholder="John Doe"
             value={state}
             className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
-            onChange={(e) => updateFields({ state: e.target.value })}
+            onChange={handleStateChange}
+            required
           />
         </motion.div>
       </div>
@@ -151,7 +179,8 @@ function UserRegisterStep1({
           placeholder="John Doe"
           value={locality}
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
-          onChange={(e) => updateFields({ locality: e.target.value })}
+          onChange={handleLocalityChange}
+          required
         />
       </motion.div>
     </div>

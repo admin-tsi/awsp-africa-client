@@ -71,7 +71,7 @@ const Navbar = () => {
 
   return (
     <nav className="w-full z-20 top-0 left-0">
-      <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4">
+      <div className="container flex items-center justify-between mx-auto p-4">
         <Image src={logo} alt="AWSP Logo" className="h-full w-16" />
         <div className="hidden lg:flex space-x-12 h-full justify-center items-center text-white">
           <div className="flex space-x-6">

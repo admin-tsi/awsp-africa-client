@@ -1,15 +1,15 @@
 import React from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
-type Userdatas2 = {
+type Userdata = {
   birth: string;
   gender: string;
   profession: string;
   degree: string;
 };
 
-type UseraccountFormProps = Userdatas2 & {
-  updateFields: (fields: Partial<Userdatas2>) => void;
+type UseraccountFormProps = Userdata & {
+  updateFields: (fields: Partial<Userdata>) => void;
 };
 
 const UserRegisterStep1 = ({
@@ -20,6 +20,10 @@ const UserRegisterStep1 = ({
   updateFields,
 }: UseraccountFormProps) => {
   let easing = [0.6, -0.05, 0.01, 0.99];
+
+  const handleInputChange = (field: keyof Userdata, value: string) => {
+    updateFields({ [field]: value });
+  };
 
   return (
     <div className="w-full flex flex-col space-y-6 p-5 mt-5">
@@ -38,8 +42,8 @@ const UserRegisterStep1 = ({
           id="birth_date"
           value={birth}
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
-          onChange={(e) => updateFields({ birth: e.target.value })}
-          
+          onChange={(e) => handleInputChange('birth', e.target.value)}
+          required
         />
       </motion.div>
       <motion.div
@@ -48,8 +52,6 @@ const UserRegisterStep1 = ({
         transition={{ delay: 0.2, ease: easing, duration: 0.5 }}
         className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center px-5 relative"
       >
-        
-
         <span className="text-white absolute left-[13px] top-[-11px] w-[30%] font-semibold flex justify-start items-center px-3">
           Gender *
         </span>
@@ -57,9 +59,9 @@ const UserRegisterStep1 = ({
           id="gender"
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md cursor-pointer"
           value={gender}
-          onChange={(e) => updateFields({ gender: e.target.value })}
+          onChange={(e) => handleInputChange('gender', e.target.value)}
         >
-          <option value="Male" selected>Male</option>
+          <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Non-Binary">Non-Binary</option>
           <option value="Other">Other</option>
@@ -80,7 +82,7 @@ const UserRegisterStep1 = ({
           id="profession"
           placeholder="Coach"
           value={profession}
-          onChange={(e) => updateFields({ profession: e.target.value })}
+          onChange={(e) => handleInputChange('profession', e.target.value)}
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
         />
       </motion.div>
@@ -90,8 +92,6 @@ const UserRegisterStep1 = ({
         transition={{ delay: 0.4, ease: easing, duration: 0.5 }}
         className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center px-5 relative"
       >
-        
-
         <span className="text-white absolute left-[13px] top-[-11px] w-[30%] font-semibold flex justify-start items-center px-3">
           Degree *
         </span>
@@ -99,7 +99,7 @@ const UserRegisterStep1 = ({
           id="degree"
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md cursor-pointer"
           value={degree}
-          onChange={(e) => updateFields({ degree: e.target.value })}
+          onChange={(e) => handleInputChange('degree', e.target.value)}
         >
           <option value="Associate's Degree">Associate&apos;s Degree</option>
           <option value="Bachelor's Degree">Bachelor&apos;s Degree</option>

@@ -20,7 +20,7 @@ const JoinForm = ({ Email, updateFields }: PaymentFormProps) => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1, ease: easing, duration: 0.5 }}
         exit={{ opacity: 0 }}
-        className="p-5"
+        className="p-5 "
       >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
