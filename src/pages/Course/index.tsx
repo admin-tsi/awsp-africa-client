@@ -7,8 +7,50 @@ import Pin from '../../../public/pin.svg';
 import Translate from '../../../public/translate.svg';
 import Ellipse from '../../../public/ellipse.svg';
 import Stat from '../../../public/stats.svg';
+import ModuleDetails from '@/components/ModuleDetails';
 
 export default function Index() {
+  const moduleDetailsProps = {
+    title: "Modules",
+    content: [
+      {
+        id: 1,
+        title: "Partie 1:",
+        secondtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales felis bibendum tortor fringilla, sit amet scelerisque est porta.",
+      },
+      {
+        id: 2,
+        title: "Partie 2:",
+        secondtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales felis bibendum tortor fringilla, sit amet scelerisque est porta.",
+      },
+      {
+        id: 3,
+        title: "Partie 3:",
+        secondtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales felis bibendum tortor fringilla, sit amet scelerisque est porta.",
+      },
+      {
+        id: 4,
+        title: "Partie 4:",
+        secondtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales felis bibendum tortor fringilla, sit amet scelerisque est porta.",
+      },
+      {
+        id: 5,
+        title: "Partie 5:",
+        secondtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales felis bibendum tortor fringilla, sit amet scelerisque est porta.",
+      },
+    ],
+  };
+
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
@@ -104,6 +146,7 @@ export default function Index() {
           </div>
         </div>
       </div>
+      <ModuleDetails {...moduleDetailsProps} />
       <Footer />
     </div>
   );
