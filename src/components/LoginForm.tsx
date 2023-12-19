@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 const LoginForm = () => {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [recoveryEmailSent, setRecoveryEmailSent] = useState(false);
 
   const [loginData, setLoginData] = useState({
     email: '',
@@ -24,10 +25,12 @@ const LoginForm = () => {
 
   const handleSendMailClick = () => {
     console.log('Send mail clicked!', forgotPasswordData);
+    setRecoveryEmailSent(true);
   };
 
   const handleBackToLoginClick = () => {
     setShowForgotPassword(false);
+    setRecoveryEmailSent(false);
   };
 
   const easing = [0.6, -0.05, 0.01, 0.99];
@@ -130,6 +133,7 @@ const LoginForm = () => {
                     forgotEmail: e.target.value,
                   }))
                 }
+                disabled={recoveryEmailSent}
                 required
               />
             </motion.div>
@@ -142,12 +146,18 @@ const LoginForm = () => {
               </button>
             </div>
             <div className="w-full flex justify-end">
-              <button
-                className="bg-white p-2 rounded-md font-semibold"
-                onClick={handleSendMailClick}
-              >
-                Send Mail
-              </button>
+              {recoveryEmailSent ? (
+                <p className="text-green-500">
+                  Recovery email sent! Check your inbox.
+                </p>
+              ) : (
+                <button
+                  className="bg-white p-2 rounded-md font-semibold"
+                  onClick={handleSendMailClick}
+                >
+                  Send Mail
+                </button>
+              )}
             </div>
           </>
         )}
