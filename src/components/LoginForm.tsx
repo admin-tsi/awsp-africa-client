@@ -147,7 +147,7 @@ const LoginForm = () => {
             </div>
             <div className="w-full flex justify-end">
               {recoveryEmailSent ? (
-                <p className="text-green-500">
+                <p className="text-primary">
                   Recovery email sent! Check your inbox.
                 </p>
               ) : (
