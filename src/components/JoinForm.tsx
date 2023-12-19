@@ -4,13 +4,13 @@ import ProcessButton from './ProcessButton';
 import { AnimatePresence, motion } from 'framer-motion';
 
 type PaymentStep1 = {
-  Email: string;
+  email: string;
 };
 
 type PaymentFormProps = PaymentStep1 & {
   updateFields: (fields: Partial<PaymentStep1>) => void;
 };
-const JoinForm = ({ Email, updateFields }: PaymentFormProps) => {
+const JoinForm = ({ email, updateFields }: PaymentFormProps) => {
   let easing = [0.6, -0.05, 0.01, 0.99];
 
   return (
@@ -36,9 +36,9 @@ const JoinForm = ({ Email, updateFields }: PaymentFormProps) => {
             name="email"
             id="email"
             placeholder="Enter your password"
-            value={Email}
+            value={email}
             className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
-            onChange={(e) => updateFields({ Email: e.target.value })}
+            onChange={(e) => updateFields({ email: e.target.value })}
             required
           />
         </motion.div>

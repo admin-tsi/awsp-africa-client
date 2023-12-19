@@ -9,10 +9,10 @@ import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 
 type PaymentStep2 = {
-  FullName: string;
-  Phone_Number: string;
-  Cart_Number: string;
-  Cvv: string;
+  fullName: string;
+  phone_Number: string;
+  cart_Number: string;
+  cvv: string;
 };
 
 type PaymentFormProps = PaymentStep2 & {
@@ -20,10 +20,10 @@ type PaymentFormProps = PaymentStep2 & {
 };
 
 const PaymentForm = ({
-  FullName,
-  Phone_Number,
-  Cart_Number,
-  Cvv,
+  fullName,
+  phone_Number,
+  cart_Number,
+  cvv,
   updateFields,
 }: PaymentFormProps) => {
   let easing = [0.6, -0.05, 0.01, 0.99];
@@ -103,9 +103,9 @@ const PaymentForm = ({
                   name="fullName"
                   id="fullName"
                   placeholder="John Doe"
-                  value={FullName}
+                  value={fullName}
                   className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
-                  onChange={(e) => updateFields({ FullName: e.target.value })}
+                  onChange={(e) => updateFields({ fullName: e.target.value })}
                   required
                 />
               </motion.div>
@@ -131,10 +131,10 @@ const PaymentForm = ({
                   name="phone_number"
                   id="phone_number"
                   placeholder="96000000"
-                  value={Phone_Number}
+                  value={phone_Number}
                   className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
                   onChange={(e) =>
-                    updateFields({ Phone_Number: e.target.value })
+                    updateFields({ phone_Number: e.target.value })
                   }
                 />
               </motion.div>
@@ -166,7 +166,7 @@ const PaymentForm = ({
                   placeholder="1234 5678 9012 3456"
                   className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
                   onChange={(e) =>
-                    updateFields({ Cart_Number: e.target.value })
+                    updateFields({ cart_Number: e.target.value })
                   }
                   required
                 />
@@ -186,7 +186,7 @@ const PaymentForm = ({
                   id="cvv"
                   placeholder="123"
                   className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
-                  onChange={(e) => updateFields({ Cvv: e.target.value })}
+                  onChange={(e) => updateFields({ cvv: e.target.value })}
                   required
                 />
               </motion.div>
