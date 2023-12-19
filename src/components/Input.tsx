@@ -15,7 +15,7 @@ const Input = (props: InputProps) => {
       type={type}
       name={name}
       id={id}
-      className={`bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md focus:bg-neutral2 ${className}`}
+      className={`bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md ${className}`}
       placeholder={placeholder}
       required={true}
     />
