@@ -6,7 +6,7 @@ export default function Index() {
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
-      <div className="container mx-auto bg-neutral p-5">
+      <div className="container mx-auto bg-neutral p-3">
         <div className="w-full flex justify-center items-center my-8">
           <span className="text-5xl text-white">Leadboard 🏆</span>
         </div>
@@ -98,6 +98,36 @@ export default function Index() {
               <tr className="bg-[#262626] my-3">
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   7
+                </td>
+                <td className="px-6 py-4">Luc Doe</td>
+                <td className="px-6 py-4">🇧🇯 Benin</td>
+                <td className="px-6 py-4">29</td>
+                <td className="px-6 py-4">229,908</td>
+                <td className="px-6 py-4">34</td>
+              </tr>
+              <tr className="bg-[#262626] my-3">
+                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  8
+                </td>
+                <td className="px-6 py-4">Luc Doe</td>
+                <td className="px-6 py-4">🇧🇯 Benin</td>
+                <td className="px-6 py-4">29</td>
+                <td className="px-6 py-4">229,908</td>
+                <td className="px-6 py-4">34</td>
+              </tr>
+              <tr className="bg-[#262626] my-3">
+                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  9
+                </td>
+                <td className="px-6 py-4">Luc Doe</td>
+                <td className="px-6 py-4">🇧🇯 Benin</td>
+                <td className="px-6 py-4">29</td>
+                <td className="px-6 py-4">229,908</td>
+                <td className="px-6 py-4">34</td>
+              </tr>
+              <tr className="bg-[#262626] my-3">
+                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  10
                 </td>
                 <td className="px-6 py-4">Luc Doe</td>
                 <td className="px-6 py-4">🇧🇯 Benin</td>
