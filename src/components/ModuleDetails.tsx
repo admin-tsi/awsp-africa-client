@@ -14,7 +14,7 @@ interface ModuleDetailsProps {
 
 const ModuleDetails: React.FC<ModuleDetailsProps> = ({ title, content }) => {
   return (
-    <div className="container mx-auto w-full text-white p-5 my-4">
+    <div className="container mx-auto w-full text-white p-5">
       <h1 className="text-2xl leading-[28px] w-fit h-fit font-medium ml-7 ">
         {title}
       </h1>

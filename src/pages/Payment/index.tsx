@@ -12,20 +12,20 @@ import Kkiapye from '../../../public/kkiapay.svg';
 
 export default function Index() {
   type FormData = {
-    Email: string;
-    FullName: string;
-    Phone_Number: string;
-    Cart_Number: string;
-    Cvv: string;
+    email: string;
+    fullName: string;
+    phone_Number: string;
+    cart_Number: string;
+    cvv: string;
     isSuccess: boolean;
   };
 
   const initialData: FormData = {
-    Email: '',
-    FullName: '',
-    Phone_Number: '',
-    Cart_Number: '',
-    Cvv: '',
+    email: '',
+    fullName: '',
+    phone_Number: '',
+    cart_Number: '',
+    cvv: '',
     isSuccess: false,
   };
 
