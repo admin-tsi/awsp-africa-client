@@ -17,3 +17,73 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
   -webkit-text-fill-color: #fff !important;
 }
+
+.second-btn {
+  background: #F2DD66;
+}
+
+.second-btn:hover {
+  background: #F2DD66;
+  animation: scale-in-center 1s cubic-bezier(0.32, 0, 0.67, 1) both;
+}
+
+@keyframes scale-in-center {
+  0% {
+    transform: scaleX(1) scaleY(1);
+  }
+  50% {
+    transform: scaleX(15) scaleY(15);
+  }
+  100% {
+    transform: scaleX(18) scaleY(18);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 0;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+  max-height: 50%; height: 50%;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* Scrollbar */
+
+.spinner {
+  width: 150%;
+  height: 150%;
+  background-image: conic-gradient(
+          transparent,
+          transparent 30%,
+          #F2DD66,
+          #E50E2D,
+          transparent
+  );
+  animation: spinner 2s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+
+.gradient-text {
+  background: linear-gradient(90deg, #E50E2D 0%, #F2DD66 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
