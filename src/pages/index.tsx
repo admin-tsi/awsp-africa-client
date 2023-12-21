@@ -1,6 +1,4 @@
 import Navbar from '@/components/Navbar';
-import Select from '@/components/Select';
-import { useState } from 'react';
 
 import React, { useRef, useState } from 'react';
 import Image from 'next/image';
