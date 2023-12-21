@@ -1,5 +1,7 @@
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
+import Select from '@/components/Select';
+import { useState } from 'react';
 
 export default function Index() {
   return (

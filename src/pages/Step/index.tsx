@@ -17,12 +17,12 @@ export default function Index() {
     city: string;
     locality: string;
     state: string;
-    sport: string;
+    sport: string[];
     gender: string;
     degree: string;
     profession: string;
     communication: string;
-    passion: string;
+    passion: string[];
   };
 
   const InitialData: FormData = {
@@ -34,11 +34,11 @@ export default function Index() {
     birth: '',
     city: '',
     state: '',
-    sport: '',
+    sport: [],
     degree: '',
     profession: '',
     communication: '',
-    passion: '',
+    passion: [],
   };
 
   const [data, setData] = useState(InitialData);
