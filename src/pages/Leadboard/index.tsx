@@ -35,7 +35,7 @@ export default function Index() {
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-[#262626] my-3">
+              <tr className=" border-b-2 border-neutral my-3 odd:bg-neutral even:bg-neutral3">
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   🥇
                 </td>
@@ -45,7 +45,7 @@ export default function Index() {
                 <td className="px-6 py-4">229,908</td>
                 <td className="px-6 py-4">34</td>
               </tr>
-              <tr className="bg-[#262626] my-3">
+              <tr className=" border-b-2 border-neutral my-3 odd:bg-neutral even:bg-neutral3">
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   🥈
                 </td>
@@ -55,7 +55,7 @@ export default function Index() {
                 <td className="px-6 py-4">229,908</td>
                 <td className="px-6 py-4">34</td>
               </tr>
-              <tr className="bg-[#262626] my-3">
+              <tr className=" border-b-2 border-neutral my-3 odd:bg-neutral even:bg-neutral3">
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   🥉
                 </td>
@@ -65,7 +65,7 @@ export default function Index() {
                 <td className="px-6 py-4">229,908</td>
                 <td className="px-6 py-4">34</td>
               </tr>
-              <tr className="bg-[#262626] my-3">
+              <tr className="bg-[#262626] border-b-2 border-neutral my-3">
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   4
                 </td>
@@ -75,7 +75,7 @@ export default function Index() {
                 <td className="px-6 py-4">229,908</td>
                 <td className="px-6 py-4">34</td>
               </tr>
-              <tr className="bg-[#262626] my-3">
+              <tr className="bg-[#262626] border-b-2 border-neutral my-3">
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   5
                 </td>
@@ -85,7 +85,7 @@ export default function Index() {
                 <td className="px-6 py-4">229,908</td>
                 <td className="px-6 py-4">34</td>
               </tr>
-              <tr className="bg-[#262626] my-3">
+              <tr className="bg-[#262626] border-b-2 border-neutral my-3">
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   6
                 </td>
@@ -95,7 +95,7 @@ export default function Index() {
                 <td className="px-6 py-4">229,908</td>
                 <td className="px-6 py-4">34</td>
               </tr>
-              <tr className="bg-[#262626] my-3">
+              <tr className="bg-[#262626] border-b-2 border-neutral my-3">
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   7
                 </td>
@@ -105,7 +105,7 @@ export default function Index() {
                 <td className="px-6 py-4">229,908</td>
                 <td className="px-6 py-4">34</td>
               </tr>
-              <tr className="bg-[#262626] my-3">
+              <tr className="bg-[#262626] border-b-2 border-neutral my-3">
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   8
                 </td>
@@ -115,7 +115,7 @@ export default function Index() {
                 <td className="px-6 py-4">229,908</td>
                 <td className="px-6 py-4">34</td>
               </tr>
-              <tr className="bg-[#262626] my-3">
+              <tr className="bg-[#262626] border-b-2 border-neutral my-3">
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   9
                 </td>
@@ -125,7 +125,7 @@ export default function Index() {
                 <td className="px-6 py-4">229,908</td>
                 <td className="px-6 py-4">34</td>
               </tr>
-              <tr className="bg-[#262626] my-3">
+              <tr className="bg-[#262626] border-b-2 border-neutral my-3">
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   10
                 </td>

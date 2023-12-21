@@ -4,13 +4,14 @@ type SelectOption = {
   label: string;
   value: any;
 };
+
 type SelectProps = {
   options: SelectOption[];
-  value?: SelectOption;
-  onChange: (value: SelectOption | undefined) => void;
+  value?: SelectOption[];
+  onChange: (value: SelectOption[]) => void;
 };
 
-const Select = ({ value, options, onChange }: SelectProps) => {
+const Select = ({ value = [], options, onChange }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
@@ -18,11 +19,24 @@ const Select = ({ value, options, onChange }: SelectProps) => {
   };
 
   const clearOptions = () => {
-    onChange(undefined);
+    onChange([]);
   };
 
   const selectOption = (option: SelectOption) => {
-    onChange(option);
+    if (value.length < 3) {
+      const selectedOptions = [...value];
+      const optionIndex = selectedOptions.findIndex(
+        (opt) => opt.value === option.value
+      );
+
+      if (optionIndex !== -1) {
+        selectedOptions.splice(optionIndex, 1);
+      } else {
+        selectedOptions.push(option);
+      }
+
+      onChange(selectedOptions);
+    }
   };
 
   return (
@@ -31,41 +45,59 @@ const Select = ({ value, options, onChange }: SelectProps) => {
         tabIndex={0}
         onClick={handleToggle}
         onBlur={() => setIsOpen(false)}
-        className="relative w-full min-h-[1.5em] flex items-center gap-[.5em] p-[.5em] rounded-lg outline-none border border-neutral2 cursor-pointer"
+        className="relative w-full min-h-[1.5em] flex items-center gap-[.5em] p-[.5em] rounded-lg outline-none border border-neutral2 bg-black cursor-pointer"
       >
-        <span id="select-value" className="grow text-white">
-          {value?.label}
-        </span>
+        <div className="flex flex-wrap gap-[.5em] grow max-h-[150px] overflow-y-auto">
+          {value.map((selectedOption) => (
+            <span
+              key={selectedOption.value}
+              className="border border-gray-50 text-black text-sm bg-white p-1 rounded-full flex items-center"
+            >
+              {selectedOption.label}
+              <button
+                type="button"
+                className="ml-1 text-white flex justify-center items-center"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  selectOption(selectedOption);
+                }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="black"
+                  className="w-4 h-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </span>
+          ))}
+        </div>
         <button
+          className="text-white"
           id="clear-btn"
           onClick={(e) => {
             e.stopPropagation();
             clearOptions();
           }}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
+          Clear
         </button>
-        <div id="divider" className="bg-red-500 self-stretch w-[1px]"></div>
+        <div id="divider" className="bg-neutral3 self-stretch w-[1px]"></div>
         <div id="caret">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
-            stroke="currentColor"
+            stroke="white"
             className="w-6 h-6"
           >
             <path
@@ -80,21 +112,22 @@ const Select = ({ value, options, onChange }: SelectProps) => {
             isOpen ? 'visible' : 'hidden'
           }`}
         >
-          {options
-            .filter((optionItem) => optionItem.value !== value?.value)
-            .map((option) => (
-              <li
-                key={option.label}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  selectOption(option);
-                  setIsOpen(false);
-                }}
-                className="p-2 bg-neutral3 rounded-lg my-2 text-white cursor-pointer hover:bg-primary hover:text-black"
-              >
-                {option.label}
-              </li>
-            ))}
+          {options.map(
+            (option) =>
+              !value.some((opt) => opt.value === option.value) && (
+                <li
+                  key={option.label}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    selectOption(option);
+                    setIsOpen(false);
+                  }}
+                  className="p-2 bg-neutral3 rounded-lg my-2 text-white cursor-pointer hover:bg-white hover:text-black"
+                >
+                  {option.label}
+                </li>
+              )
+          )}
         </ul>
       </div>
     </>

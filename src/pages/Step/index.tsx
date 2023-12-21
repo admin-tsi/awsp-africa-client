@@ -17,7 +17,7 @@ export default function Index() {
     city: string;
     locality: string;
     state: string;
-    sport: string;
+    sport: string[];
     gender: string;
     degree: string;
     profession: string;
@@ -34,7 +34,7 @@ export default function Index() {
     birth: '',
     city: '',
     state: '',
-    sport: '',
+    sport: [],
     degree: '',
     profession: '',
     communication: '',
