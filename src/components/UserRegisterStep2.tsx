@@ -22,6 +22,17 @@ const UserRegisterStep1 = ({
   let easing = [0.6, -0.05, 0.01, 0.99];
 
   const handleInputChange = (field: keyof Userdata, value: string) => {
+    if (field === 'birth') {
+      const birthDate = new Date(value);
+      const currentDate = new Date();
+      const age = currentDate.getFullYear() - birthDate.getFullYear();
+
+      if (age < 18) {
+        alert('You must be 18 years or older to register.');
+        return;
+      }
+    }
+
     updateFields({ [field]: value });
   };
 
