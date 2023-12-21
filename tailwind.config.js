@@ -23,7 +23,7 @@ module.exports = {
         sans: ['var(--saira-font)'],
       },
       boxShadow: {
-        custom: '0 14px 40px #000',
+        custom: '0 5px 20px #000',
       },
     },
   },

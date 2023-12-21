@@ -3,10 +3,9 @@ import logo from '../../public/Group 2.svg';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { classNames } from '@/utils/classNames';
 
-type Props = {};
-
-const Navbar = () => {
+export const Navbar = ({ className = '' }) => {
   const [open, setOpen] = useState(false);
   const toggleMenu = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -70,8 +69,8 @@ const Navbar = () => {
   ];*/
 
   return (
-    <nav className="w-full z-20 top-0 left-0">
-      <div className="container flex items-center justify-between mx-auto p-4">
+    <nav className={classNames(className, 'w-full z-20 top-0 left-0')}>
+      <div className="flex items-center justify-between  p-8">
         <Image src={logo} alt="AWSP Logo" className="h-full w-16" />
         <div className="hidden lg:flex space-x-12 h-full justify-center items-center text-white">
           <div className="flex space-x-6">
@@ -85,7 +84,7 @@ const Navbar = () => {
               Contact
             </Link>
           </div>
-          <button className="bg-neutral w-[154px] rounded-[40px] h-[50px] text-white font-semibold">
+          <button className="bg-neutral2 w-[154px] rounded-[40px] h-[50px] text-white font-semibold">
             Sign in
           </button>
         </div>
