@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 type Userdata3 = {
   sport: string;
   communication: string;
-  passion: string;
+  passion: string[];
 };
 
 type UseraccountFormProps = Userdata3 & {
@@ -23,6 +23,12 @@ function UserRegisterStep3({
     updateFields({ [field]: value });
   };
 
+  const options = [
+    { label: "Athletics", value: "Athletics" },
+    { label: "Basketball", value: "Basketball" },
+    { label: "Soccer", value: "Soccer" },
+    { label: "Baseball", value: "Baseball" },
+  ]
   return (
     <div className="w-full flex flex-col space-y-6 p-5 mt-5">
       <motion.div

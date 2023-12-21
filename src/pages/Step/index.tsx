@@ -22,7 +22,7 @@ export default function Index() {
     degree: string;
     profession: string;
     communication: string;
-    passion: string;
+    passion: string[];
   };
 
   const InitialData: FormData = {
@@ -38,7 +38,7 @@ export default function Index() {
     degree: '',
     profession: '',
     communication: '',
-    passion: '',
+    passion: [],
   };
 
   const [data, setData] = useState(InitialData);
