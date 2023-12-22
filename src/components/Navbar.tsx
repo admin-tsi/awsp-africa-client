@@ -62,19 +62,13 @@ export const Navbar = ({ className = '' }) => {
     },
   };
 
-  /*  const navLinks = [
-    { title: 'Courses', href: '/' },
-    { title: 'About', href: '/' },
-    { title: 'Contact', href: '/' },
-  ];*/
-
   return (
     <nav className={classNames(className, 'w-full z-20 top-0 left-0')}>
-      <div className="flex items-center justify-between  p-8">
+      <div className="flex container mx-auto items-center justify-between  p-8">
         <Image src={logo} alt="AWSP Logo" className="h-full w-16" />
         <div className="hidden lg:flex space-x-12 h-full justify-center items-center text-white">
           <div className="flex space-x-6">
-            <Link href="#" className="hover:font-semibold">
+            <Link href="/Course" className="hover:font-semibold">
               Courses
             </Link>
             <Link href="#" className="hover:font-semibold">
@@ -83,10 +77,22 @@ export const Navbar = ({ className = '' }) => {
             <Link href="#" className="hover:font-semibold">
               Contact
             </Link>
+            <Link href="FocalPoint" className="hover:font-semibold">
+              Focal point
+            </Link>
+            <Link href="Leadboard" className="hover:font-semibold">
+              Leadboard
+            </Link>
+            <Link href="/Login" className="hover:font-semibold">
+              Sign in
+            </Link>
           </div>
-          <button className="bg-neutral2 w-[154px] rounded-[40px] h-[50px] text-white font-semibold">
-            Sign in
-          </button>
+          <Link
+            href="/Payment"
+            className="bg-neutral2 w-[154px] rounded-[40px] h-[50px] text-white font-semibold flex justify-center items-center hover:font-bold"
+          >
+            Get started
+          </Link>
         </div>
         <button onClick={toggleMenu} className="h-full lg:hidden">
           <svg

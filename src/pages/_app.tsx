@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import localFont from 'next/font/local';
+import { UserProvider } from '../context/user-context'
 
 const sairaFont = localFont({
   variable: '--saira-font',
@@ -15,8 +16,10 @@ const sairaFont = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${sairaFont.variable} font-sans`}>
-      <Component {...pageProps} />
-    </main>
+    <UserProvider>
+      <main className={`${sairaFont.variable} font-sans`}>
+        <Component {...pageProps} />
+      </main>
+    </UserProvider>
   );
 }

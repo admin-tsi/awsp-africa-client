@@ -8,6 +8,7 @@ import JobItem from '@/components/home/JobItem';
 import Testimonial from '@/components/home/Testimonial';
 import { ArrowRight, Pause, Play } from '@/utils/svgs';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 
 export default function Index() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -39,7 +40,7 @@ export default function Index() {
         >
           <source src="home/a.mp4" type="video/mp4" />
         </video>
-        <div className="text-white w-full lg:w-3/4 z-0">
+        <div className="text-white container pl-40 w-full lg:w-1/2 flex flex-col justify-start z-0">
           <h1 className="text-3xl font-bold mb-4 md:text-6xl">
             Become a Strength & Conditioning Professional
           </h1>
@@ -47,11 +48,11 @@ export default function Index() {
             A Strength & Conditioning Professional designs training programs to
             enhance athletes performance.
           </p>
-          <div className="bg-white text-black text-left py-8 px-10 rounded-full font-medium transition duration-300 flex justify-between items-center w-full md:w-1/3 relative overflow-hidden">
+          <Link href="/Payment" className="bg-white text-black text-left py-8 px-10 rounded-full font-medium transition duration-300 flex justify-between items-center w-full md:w-1/3 relative overflow-hidden">
             <p className="z-10">Enroll now</p>
             <div className="p-4 rounded-full second-btn absolute right-4 h-12 w-12 "></div>
             <ArrowRight />
-          </div>
+          </Link>
         </div>
       </section>
       <section className="px-12">
