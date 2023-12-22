@@ -7,11 +7,20 @@ import { classNames } from '@/utils/classNames';
 import { UserContext } from '../context/user-context';
 
 export const Navbar = ({ className = '' }) => {
-  const { user } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
   const [open, setOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleMenu = () => {
     setOpen((prevOpen) => !prevOpen);
+  };
+
+  const toggleDropdown = () => {
+    setDropdownOpen((prevDropdownOpen) => !prevDropdownOpen);
+  };
+
+  const handleLogout = () => {
+    logout();
   };
 
   const menuVars = {
@@ -87,16 +96,73 @@ export const Navbar = ({ className = '' }) => {
               Contact
             </Link>
             {user && (
-              <Link href="FocalPoint" className="hover:font-semibold">
-                Focal point
-              </Link>
+              <>
+                <Link href="FocalPoint" className="hover:font-semibold">
+                  Focal point
+                </Link>
+                <div className="relative">
+                  <button
+                    id="dropdownAvatarNameButton"
+                    data-dropdown-toggle="dropdownAvatarName"
+                    className="flex items-center pe-1 font-medium text-white rounded-full "
+                    type="button"
+                    onClick={toggleDropdown}
+                  >
+                    <span className="sr-only">Open user menu</span>
+                    {user.email}
+                    <svg
+                      className={`w-2.5 h-2.5 ms-3 transition-transform transform ${
+                        dropdownOpen ? 'rotate-180' : ''
+                      }`}
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 10 6"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="m1 1 4 4 4-4"
+                      />
+                    </svg>
+                  </button>
+
+                  {dropdownOpen && (
+                    <div
+                      id="dropdownAvatarName"
+                      className="z-10 bg-neutral3 absolute right-2 w-full"
+                    >
+                      <div className="py-2">
+                        <Link
+                          href="/AccountInfo"
+                          className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        >
+                          Account Info
+                        </Link>
+                        <button
+                          onClick={handleLogout}
+                          className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        >
+                          Sign out
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </>
             )}
-            <Link href="Leadboard" className="hover:font-semibold">
-              Leadboard
-            </Link>
-            <Link href="/Login" className="hover:font-semibold">
-              {user ? 'Sign out' : 'Sign in'}
-            </Link>
+            {!user && (
+              <>
+                <Link href="Leadboard" className="hover:font-semibold">
+                  Leadboard
+                </Link>
+                <Link href="/Login" className="hover:font-semibold">
+                  Sign in
+                </Link>
+              </>
+            )}
           </div>
 
           {!user && (

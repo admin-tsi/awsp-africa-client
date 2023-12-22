@@ -29,43 +29,19 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const router = useRouter();
   const [user, setUser] = useState<any>();
   const [token, setToken] = useState<string | null>(null);
-  const [user_id, setUser_id] = useState<string | null>(null);
 
   const initUser = async (jwtToken: string | null) => {
     try {
       let newToken = localStorage.getItem('token');
+      
       if (jwtToken) {
         newToken = jwtToken;
         localStorage.setItem('token', newToken);
       }
 
-      // Vérifier si un token est présent avant de faire une redirection
       if (!newToken) {
         router.push('/');
         return;
-      }
-
-      if (newToken) {
-        try {
-          const url = `${API_URL}${USER_PATH.replace('{userId}', user_id || '')}`;
-          const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + newToken,
-            },
-          });
-
-          if (!response.ok) {
-            throw new Error(`Erreur de requête (${response.status})`);
-          }
-
-          const data = await response.json();
-          setUser(data);
-          console.log('2nd data', data);
-        } catch (error) {
-          console.error('Erreur lors de la requête:', error);
-        }
       }
 
       setToken(newToken);
@@ -102,14 +78,13 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       }
 
       const data = await response.json();
-      setUser_id(data.user._id);
       setUser(data.user);
+      setToken(data.token)
       const jwtToken = data.token;
       console.log('1st data', data.user._id);
 
       router.push("/Course")
 
-      // Vérifier si les données de l'utilisateur sont déjà présentes
       if (!user || user._id !== data.user._id) {
         localStorage.setItem('token', jwtToken);
         await initUser(jwtToken);
@@ -124,6 +99,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     setToken(null);
     setUser(null);
     localStorage.removeItem('token');
+    router.push("/")
   };
 
   return (
