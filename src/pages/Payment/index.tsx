@@ -9,6 +9,7 @@ import { usePaymentForm } from '@/config/usePaymentForm';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Kkiapye from '../../../public/kkiapay.svg';
+import { openKkiapayWidget } from 'kkiapay';
 
 export default function Index() {
   type FormData = {
@@ -47,8 +48,7 @@ export default function Index() {
     next,
   } = usePaymentForm([
     <JoinForm {...data} updateFields={updateFields} />,
-    <PaymentForm {...data} updateFields={updateFields} />,
-    <EndPaymentForm isSuccess={data.isSuccess} />,
+    <PaymentForm {...data} updateFields={updateFields} />
   ]);
 
   function onSubmit(e: FormEvent) {
@@ -60,10 +60,17 @@ export default function Index() {
 
     setData((prev) => ({ ...prev, isSuccess: true }));
 
-    console.log('Final Data:', data);
-    setTimeout(() => {
-      next();
-    }, 1000);
+    const url = `successRedirectUrl=${process.env.NEXT_PUBLIC_SUCCESS_URL}&failureRedirectUrl=${process.env.NEXT_PUBLIC_FAIL_URL}`
+
+    openKkiapayWidget({
+      amount: 1,
+      api_key: process.env.NEXT_PUBLIC_KKIPAY_KEY,
+      email: data.email,
+      callback: `http://127.0.0.1:5010/api/v1/payments/KkiaPay/callBack?${url}`,
+      theme:"#000000"
+    })
+    
+    
   }
 
   return (
@@ -78,52 +85,15 @@ export default function Index() {
               </span>
             </div>
             {step}
-            {!isEnd && (
-              <div className="w-full flex justify-end items-center p-5">
-                <div className="flex space-x-2">
-                  {!isFirstStep && !isLastStep ? (
-                    <button
-                      onClick={back}
-                      type="button"
-                      className="w-[80px] h-[37px] bg-white rounded-md font-[300] hover:font-semibold"
-                    >
-                      Back
-                    </button>
-                  ) : null}
-                  {isLastStep ? (
-                    <div className="w-full h-fit flex justify-end items-center">
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.4, ease: easing, duration: 0.5 }}
-                        className="w-[250px] h-[60px] relative"
-                      >
-                        <button
-                          type="submit"
-                          className="w-full h-full bg-white rounded-lg font-semibold"
-                        >
-                          Pay 125 340 XOF
-                        </button>
-                        <Image
-                          src={Kkiapye}
-                          alt="Kkiapay logo"
-                          height={15}
-                          width={110}
-                          className="absolute right-0 bottom-0"
-                        />
-                      </motion.div>
-                    </div>
-                  ) : (
-                    <button
-                      className="w-[80px] h-[37px] bg-white rounded-md font-[300] hover:font-semibold"
-                      type="submit"
-                    >
-                      Next
-                    </button>
-                  )}
-                </div>
-              </div>
-            )}
+            <div className='w-full flex justify-end item-center p-5'>
+              <button
+                className="w-[80px] h-[37px] bg-white rounded-md font-[300] hover:font-semibold"
+                type="submit"
+              >
+                Next
+              </button>
+
+            </div>
           </form>
         </div>
       </div>
