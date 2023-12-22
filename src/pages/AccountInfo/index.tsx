@@ -1,11 +1,23 @@
 // Index.js
 
-import React from 'react';
+import React, { useContext } from 'react';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import Input from '@/components/Input';
+import { UserContext } from '../../context/user-context';
 
 const Index = () => {
+  const { user} = useContext(UserContext);
+  console.log(user);
+
+  // const handleInputChange = (e) => {
+  //   const { id, value } = e.target;
+  //   setUser(prev => ({
+  //     ...prev,
+  //     [id]: value
+  //   }));
+  // };
+  
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
@@ -23,6 +35,7 @@ const Index = () => {
                   type="email"
                   placeholder="john@doe.com"
                   required
+                  value={user? user.email : ''}
                 />{' '}
               </div>
               <div className="mb-1">
@@ -57,6 +70,7 @@ const Index = () => {
                 placeholder="123-45-678"
                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                 required
+                value={user? user.phone : ''}
               />
               <Input
                 label="First name :"
@@ -64,6 +78,7 @@ const Index = () => {
                 type="text"
                 placeholder="John"
                 required
+                value={user? user.firstname : ''}
               />
               <Input
                 label="Last name :"
@@ -71,6 +86,7 @@ const Index = () => {
                 type="text"
                 placeholder="Doe"
                 required
+                value={user? user.lastname : ''}
               />
               <Input
                 label="City :"
@@ -78,6 +94,7 @@ const Index = () => {
                 type="text"
                 placeholder="Cotonou"
                 required
+                value={user? user.city : ''}
               />
               <Input
                 label="State :"
@@ -85,6 +102,7 @@ const Index = () => {
                 type="text"
                 placeholder="Littoral"
                 required
+                value={user? user.state : ''}
               />
               <Input
                 label="Locality :"

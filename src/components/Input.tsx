@@ -7,9 +7,11 @@ interface InputProps {
   placeholder: string;
   pattern?: string;
   required?: boolean;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: FC<InputProps> = ({ label, id, type, placeholder, pattern, required }) => {
+const Input: FC<InputProps> = ({ label, id, type, placeholder, pattern, required, value, onChange }) => {
   return (
     <div>
       <label
@@ -25,6 +27,8 @@ const Input: FC<InputProps> = ({ label, id, type, placeholder, pattern, required
         placeholder={placeholder}
         pattern={pattern}
         required={required}
+        value={value || ''}
+        onChange={onChange} 
       />
     </div>
   );
