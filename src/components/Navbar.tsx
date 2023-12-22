@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import logo from '../../public/Group 2.svg';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { classNames } from '@/utils/classNames';
+import { UserContext } from '../context/user-context';
 
 export const Navbar = ({ className = '' }) => {
+  const { user } = useContext(UserContext);
   const [open, setOpen] = useState(false);
+
   const toggleMenu = () => {
     setOpen((prevOpen) => !prevOpen);
   };
+
   const menuVars = {
     initial: {
       scaleY: 0,
@@ -30,6 +34,7 @@ export const Navbar = ({ className = '' }) => {
       },
     },
   };
+
   const containerVars = {
     initial: {
       transition: {
@@ -45,6 +50,7 @@ export const Navbar = ({ className = '' }) => {
       },
     },
   };
+
   const mobileLinkVars = {
     initial: {
       y: '30vh',
@@ -66,34 +72,43 @@ export const Navbar = ({ className = '' }) => {
     <nav className={classNames(className, 'w-full z-20 top-0 left-0')}>
       <div className="flex container mx-auto items-center justify-between  p-8">
         <Image src={logo} alt="AWSP Logo" className="h-full w-16" />
+
         <div className="hidden lg:flex space-x-12 h-full justify-center items-center text-white">
           <div className="flex space-x-6">
-            <Link href="/Course" className="hover:font-semibold">
-              Courses
-            </Link>
+            {user && (
+              <Link href="/Course" className="hover:font-semibold">
+                Courses
+              </Link>
+            )}
             <Link href="#" className="hover:font-semibold">
               About
             </Link>
             <Link href="#" className="hover:font-semibold">
               Contact
             </Link>
-            <Link href="FocalPoint" className="hover:font-semibold">
-              Focal point
-            </Link>
+            {user && (
+              <Link href="FocalPoint" className="hover:font-semibold">
+                Focal point
+              </Link>
+            )}
             <Link href="Leadboard" className="hover:font-semibold">
               Leadboard
             </Link>
             <Link href="/Login" className="hover:font-semibold">
-              Sign in
+              {user ? 'Sign out' : 'Sign in'}
             </Link>
           </div>
-          <Link
-            href="/Payment"
-            className="bg-neutral2 w-[154px] rounded-[40px] h-[50px] text-white font-semibold flex justify-center items-center hover:font-bold"
-          >
-            Get started
-          </Link>
+
+          {!user && (
+            <Link
+              href="/Payment"
+              className="bg-neutral2 w-[154px] rounded-[40px] h-[50px] text-white font-semibold flex justify-center items-center hover:font-bold"
+            >
+              Get started
+            </Link>
+          )}
         </div>
+
         <button onClick={toggleMenu} className="h-full lg:hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -110,6 +125,7 @@ export const Navbar = ({ className = '' }) => {
             />
           </svg>
         </button>
+
         {open && (
           <motion.div
             variants={menuVars}

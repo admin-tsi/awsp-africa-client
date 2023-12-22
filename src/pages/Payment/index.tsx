@@ -47,8 +47,6 @@ export default function Index() {
     next,
   } = usePaymentForm([
     <JoinForm {...data} updateFields={updateFields} />,
-    <PaymentForm {...data} updateFields={updateFields} />,
-    <EndPaymentForm isSuccess={data.isSuccess} />,
   ]);
 
   function onSubmit(e: FormEvent) {

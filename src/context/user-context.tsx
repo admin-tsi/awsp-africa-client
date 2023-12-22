@@ -21,7 +21,7 @@ interface UserProviderProps {
 }
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<any>();
   const [token, setToken] = useState<string | null>(null);
 
   const initUser = async (jwtToken: string | null) => {

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Input from './Input';
 import { AnimatePresence, motion } from 'framer-motion';
+import { UserContext } from '@/context/user-context';
 
 const LoginForm = () => {
+  const { login } = useContext(UserContext);
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [recoveryEmailSent, setRecoveryEmailSent] = useState(false);
 
@@ -11,14 +13,20 @@ const LoginForm = () => {
     password: '',
   });
 
+  const handleLoginClick = async () => {
+    try {
+      console.log('Login clicked!', loginData.email, loginData.password);
+      await login(loginData.email, loginData.password);
+    } catch (error) {
+      console.error('Erreur lors de la connexion:', error);
+    }
+  };
+
   const [forgotPasswordData, setForgotPasswordData] = useState({
     forgotEmail: '',
   });
 
-  const handleLoginClick = () => {
-    console.log('Login clicked!', loginData);
-  };
-
+ 
   const handleForgotPasswordClick = () => {
     setShowForgotPassword(true);
   };
