@@ -9,7 +9,7 @@ import { usePaymentForm } from '@/config/usePaymentForm';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Kkiapye from '../../../public/kkiapay.svg';
-import { openKkiapayWidget } from 'kkiapay';
+import { openingKKkiaWidget } from '@/Api/kkiapay.service';
 
 export default function Index() {
   type FormData = {
@@ -60,16 +60,7 @@ export default function Index() {
 
     setData((prev) => ({ ...prev, isSuccess: true }));
 
-    const url = `successRedirectUrl=${process.env.NEXT_PUBLIC_SUCCESS_URL}&failureRedirectUrl=${process.env.NEXT_PUBLIC_FAIL_URL}`
-
-    openKkiapayWidget({
-      amount: 1,
-      api_key: process.env.NEXT_PUBLIC_KKIPAY_KEY,
-      email: data.email,
-      callback: `http://127.0.0.1:5010/api/v1/payments/KkiaPay/callBack?${url}`,
-      theme:"#000000"
-    })
-    
+    openingKKkiaWidget(data.email)    
     
   }
 
