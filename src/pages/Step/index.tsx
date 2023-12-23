@@ -1,14 +1,18 @@
 /* eslint-disable */
-/* eslint-disable */
+import { FormEvent, useContext, useState } from 'react';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
-import User_register_step1 from '@/components/UserRegisterStep1';
-import User_register_step2 from '@/components/UserRegisterStep2';
-import User_register_step3 from '@/components/UserRegisterStep3';
+import UserRegisterStep1 from '@/components/UserRegisterStep1';
+import UserRegisterStep2 from '@/components/UserRegisterStep2';
+import UserRegisterStep3 from '@/components/UserRegisterStep3';
 import { useMultistepForm } from '@/config/useMultistepForm';
-import { FormEvent, useState } from 'react';
+import { UserContext } from '@/context/user-context';
+import Router, { useRouter } from 'next/router';
 
 export default function Index() {
+  const { user, token } = useContext(UserContext);
+  const router = useRouter();
+
   type FormData = {
     firstName: string;
     lastName: string;
@@ -18,48 +22,82 @@ export default function Index() {
     locality: string;
     state: string;
     sport: string[];
-    gender: string;
-    degree: string;
+    sex: string;
+    education: string;
     profession: string;
     communication: string;
     passion: string[];
+    awsp_country: string;
+    nationality: string;
   };
 
   const InitialData: FormData = {
     firstName: '',
     lastName: '',
     phone_Number: null,
-    gender: '',
+    sex: '',
     locality: '',
     birth: '',
     city: '',
     state: '',
     sport: [],
-    degree: '',
+    education: '',
     profession: '',
     communication: '',
     passion: [],
+    awsp_country: 'Benin',
+    nationality: '',
   };
 
   const [data, setData] = useState(InitialData);
+
   function updateFields(fields: Partial<FormData>) {
-    setData((prev) => {
-      return { ...prev, ...fields };
-    });
+    setData((prev) => ({ ...prev, ...fields }));
   }
+
   const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
     useMultistepForm([
-      <User_register_step1 {...data} updateFields={updateFields} />,
-      <User_register_step2 {...data} updateFields={updateFields} />,
-      <User_register_step3 {...data} updateFields={updateFields} />,
+      <UserRegisterStep1 {...data} updateFields={updateFields} />,
+      <UserRegisterStep2 {...data} updateFields={updateFields} />,
+      <UserRegisterStep3 {...data} updateFields={updateFields} />,
     ]);
 
-  function onSubmit(e: FormEvent) {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!isLastStep) return next();
     console.log('Final Data:', data);
-    alert('Successful Account Creation');
-  }
+    await handleUserData(data);
+  };
+
+  const handleUserData = async (userData: FormData) => {
+    try {
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/data/${user?._id}`;
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (!response.ok) {
+        console.log(token);
+        console.log(userData);
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const responseData = await response.json();
+      router.push('/Course');
+      console.log(responseData);
+
+      return response;
+    } catch (error) {
+      console.error('Error handling user data:', error);
+      throw error;
+    }
+  };
 
   return (
     <div className="flex flex-col h-screen">
@@ -75,7 +113,6 @@ export default function Index() {
             {step}
             <div className="w-full flex justify-end items-center p-5">
               <div className="flex space-x-2">
-                {' '}
                 {!isFirstStep && (
                   <button
                     onClick={back}

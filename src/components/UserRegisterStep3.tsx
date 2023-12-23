@@ -58,7 +58,6 @@ function UserRegisterStep3({
     { label: "Traveling", value: "Traveling" },
     { label: "Cooking", value: "Cooking" },
     { label: "Gaming", value: "Gaming" },
-    // Add more passion options as needed
   ];
 
   return (

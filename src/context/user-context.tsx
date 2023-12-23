@@ -107,10 +107,10 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   };
 
   const logout = () => {
+    router.push('/');
     setToken(null);
     setUser(null);
     localStorage.removeItem('token');
-    router.push('/');
   };
 
   return (
