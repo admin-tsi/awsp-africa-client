@@ -40,7 +40,7 @@ export default function Index() {
         >
           <source src="home/a.mp4" type="video/mp4" />
         </video>
-        <div className="text-white container pl-40 w-full lg:w-1/2 flex flex-col justify-start z-0">
+        <div className="text-white container lg:pl-40 w-full lg:w-1/2 flex flex-col justify-start z-0">
           <h1 className="text-3xl font-bold mb-4 md:text-6xl">
             Become a Strength & Conditioning Professional
           </h1>
