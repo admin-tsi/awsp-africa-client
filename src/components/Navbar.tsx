@@ -109,7 +109,7 @@ export const Navbar = ({ className = '' }) => {
                     onClick={toggleDropdown}
                   >
                     <span className="sr-only">Open user menu</span>
-                    {user?.email}
+                    Account Info
                     <svg
                       className={`w-2.5 h-2.5 ms-3 transition-transform transform ${
                         dropdownOpen ? 'rotate-180' : ''

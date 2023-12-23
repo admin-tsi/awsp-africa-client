@@ -46,8 +46,15 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
       setUser(user);
       setToken(token);
+
+      if (user.isverified) {
+        router.push('/Course');
+      } else {
+        router.push('/Step');
+      }
+
     } catch (error) {
-      console.error('Erreur lors de l\'initialisation de l\'utilisateur:', error);
+      console.error("Erreur lors de l'initialisation de l'utilisateur:", error);
     }
   };
 
@@ -80,12 +87,19 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
       const data = await response.json();
 
-      localStorage.setItem('token', JSON.stringify({ user: data.user, token: data.token }));
+      localStorage.setItem(
+        'token',
+        JSON.stringify({ user: data.user, token: data.token })
+      );
 
       setUser(data.user);
       setToken(data.token);
 
-      router.push('/Course');
+      if (data.user.isverified) {
+        router.push('/Course');
+      } else {
+        router.push('/Step');
+      }
     } catch (error) {
       console.error('Erreur lors de la connexion:', error);
       throw error;
