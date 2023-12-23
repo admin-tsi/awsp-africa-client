@@ -109,7 +109,7 @@ export const Navbar = ({ className = '' }) => {
                     onClick={toggleDropdown}
                   >
                     <span className="sr-only">Open user menu</span>
-                    {user.email}
+                    {user?.email}
                     <svg
                       className={`w-2.5 h-2.5 ms-3 transition-transform transform ${
                         dropdownOpen ? 'rotate-180' : ''
@@ -137,7 +137,7 @@ export const Navbar = ({ className = '' }) => {
                       <div className="py-2">
                         <Link
                           href="/AccountInfo"
-                          className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                          className="w-full px-4 py-2 text-sm flex justify-center items-center text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                         >
                           Account Info
                         </Link>
