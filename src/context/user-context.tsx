@@ -1,9 +1,13 @@
 import { useRouter } from 'next/router';
 import React, { createContext, useEffect, useState, ReactNode } from 'react';
 
+interface UserData {
+  _id: string;
+}
+
 interface UserContextProps {
-  user: any;
-  updateUser: (newUserData: any) => void;
+  user: UserData | null;
+  updateUser: (newUserData: UserData) => void;
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
   token: string | null;
@@ -18,7 +22,6 @@ export const UserContext = createContext<UserContextProps>({
 });
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
-const USER_PATH = '/api/v1/users/{userId}';
 const LOGIN_PATH = '/api/v1/auth/login';
 
 interface UserProviderProps {
@@ -27,26 +30,24 @@ interface UserProviderProps {
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const router = useRouter();
-  const [user, setUser] = useState<any>();
+  const [user, setUser] = useState<UserData | null>(null);
   const [token, setToken] = useState<string | null>(null);
 
   const initUser = async (jwtToken: string | null) => {
     try {
-      let newToken = localStorage.getItem('token');
-      
-      if (jwtToken) {
-        newToken = jwtToken;
-        localStorage.setItem('token', newToken);
-      }
+      const storedToken = localStorage.getItem('token');
 
-      if (!newToken) {
+      if (!storedToken) {
         router.push('/');
         return;
       }
 
-      setToken(newToken);
+      const { user, token } = JSON.parse(storedToken);
+
+      setUser(user);
+      setToken(token);
     } catch (error) {
-      console.error("Erreur lors de l'initialisation de l'utilisateur :", error);
+      console.error('Erreur lors de l\'initialisation de l\'utilisateur:', error);
     }
   };
 
@@ -55,7 +56,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const updateUser = (newUserData: any) => {
+  const updateUser = (newUserData: UserData) => {
     setUser(newUserData);
   };
 
@@ -78,17 +79,13 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       }
 
       const data = await response.json();
+
+      localStorage.setItem('token', JSON.stringify({ user: data.user, token: data.token }));
+
       setUser(data.user);
-      setToken(data.token)
-      const jwtToken = data.token;
-      console.log('1st data', data.user._id);
+      setToken(data.token);
 
-      router.push("/Course")
-
-      if (!user || user._id !== data.user._id) {
-        localStorage.setItem('token', jwtToken);
-        await initUser(jwtToken);
-      }
+      router.push('/Course');
     } catch (error) {
       console.error('Erreur lors de la connexion:', error);
       throw error;
@@ -99,7 +96,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     setToken(null);
     setUser(null);
     localStorage.removeItem('token');
-    router.push("/")
+    router.push('/');
   };
 
   return (
