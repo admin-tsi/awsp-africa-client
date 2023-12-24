@@ -1,26 +1,23 @@
 import { FC } from 'react';
-import AuthGuard from '../../context/auth';
 import Map from '@/components/Map';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const Index: FC = () => (
-  <AuthGuard>
-    <div className="flex flex-col h-screen">
-      <Navbar />
-      <div className="container mx-auto flex flex-col p-5 bg-neutral">
-        <span className="text-white text-2xl md:text-4xl font-semibold">
-          Focal points
-        </span>
-        <p className="text-white leading-5 my-5">
-          Explore our designated Focal Points on this page, exclusively tailored
-          for members of our program seeking optimal training environments.
-        </p>
-        <Map />
-      </div>
-      <Footer />
+  <div className="flex flex-col h-screen">
+    <Navbar />
+    <div className="container mx-auto flex flex-col p-5 bg-neutral">
+      <span className="text-white text-2xl md:text-4xl font-semibold">
+        Focal points
+      </span>
+      <p className="text-white leading-5 my-5">
+        Explore our designated Focal Points on this page, exclusively tailored
+        for members of our program seeking optimal training environments.
+      </p>
+      <Map />
     </div>
-  </AuthGuard>
+    <Footer />
+  </div>
 );
 
 export default Index;

@@ -9,7 +9,6 @@ import Ellipse from '../../../public/ellipse.svg';
 import Stat from '../../../public/stats.svg';
 import ModuleDetails from '@/components/ModuleDetails';
 import Certificate from '../../../public/certificate.svg';
-import AuthGuard from '@/context/auth';
 
 export default function Index() {
   const moduleDetailsProps = {

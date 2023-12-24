@@ -5,8 +5,10 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { classNames } from '@/utils/classNames';
 import { UserContext } from '../context/user-context';
+import Router, { useRouter } from 'next/router';
 
 export const Navbar = ({ className = '' }) => {
+  const router = useRouter();
   const { user, logout } = useContext(UserContext);
   const [open, setOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -85,9 +87,17 @@ export const Navbar = ({ className = '' }) => {
         <div className="hidden lg:flex space-x-12 h-full justify-center items-center text-white">
           <div className="flex space-x-6">
             {user && (
-              <Link href="/Course" className="hover:font-semibold">
-                Courses
-              </Link>
+              <>
+                <Link href="/Course" className="hover:font-semibold">
+                  Courses
+                </Link>
+                <Link href="/FocalPoint" className="hover:font-semibold">
+                  Focal point
+                </Link>
+                <Link href="/Leadboard" className="hover:font-semibold">
+                  Leadboard
+                </Link>
+              </>
             )}
             <Link href="#" className="hover:font-semibold">
               About
@@ -155,7 +165,7 @@ export const Navbar = ({ className = '' }) => {
             )}
             {!user && (
               <>
-                <Link href="Leadboard" className="hover:font-semibold">
+                <Link href="/Leadboard" className="hover:font-semibold">
                   Leadboard
                 </Link>
                 <Link href="/Login" className="hover:font-semibold">
@@ -232,11 +242,35 @@ export const Navbar = ({ className = '' }) => {
                   className="h-full flex flex-col justify-center items-center space-y-3"
                 >
                   <div className="flex flex-col space-y-3">
+                    {user && (
+                      <>
+                        <Link
+                          href="/Course"
+                          className="text-2xl uppercase text-black hover:font-semibold"
+                        >
+                          Course
+                        </Link>
+                        <Link
+                          href="/FocalPoint"
+                          className="text-2xl uppercase text-black hover:font-semibold"
+                        >
+                          Focal point
+                        </Link>
+
+                        <Link
+                          href="/AccountInfo"
+                          className="text-2xl uppercase text-black hover:font-semibold"
+                        >
+                          Account Info
+                        </Link>
+                      </>
+                    )}
+
                     <Link
-                      href="/"
+                      href="/Leadboard"
                       className="text-2xl uppercase text-black hover:font-semibold"
                     >
-                      Courses
+                      Leadboard
                     </Link>
                     <Link
                       href="/"
@@ -250,10 +284,46 @@ export const Navbar = ({ className = '' }) => {
                     >
                       Contact
                     </Link>
+                    {!user && (
+                      <Link
+                        href="/Login"
+                        className="text-2xl uppercase text-black hover:font-semibold"
+                      >
+                        Sign In
+                      </Link>
+                    )}
                   </div>
-                  <button className="bg-neutral w-[154px] rounded-[40px] h-[50px] text-white font-semibold shadow-md">
-                    Sign in
-                  </button>
+                  {user ? (
+                    <button
+                      onClick={handleLogout}
+                      className="text-2xl uppercase text-black hover:font-semibold flex justify-start items-center space-x-2 mt-5"
+                    >
+                      <span>Sign out</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+                        />
+                      </svg>
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        router.push('/Payment');
+                      }}
+                      className="bg-neutral w-[154px] rounded-[40px] h-[50px] text-white font-semibold shadow-md"
+                    >
+                      Get Started
+                    </button>
+                  )}
                 </motion.div>
               </div>
             </motion.div>

@@ -35,24 +35,16 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const initUser = async (jwtToken: string | null) => {
     try {
-      const storedToken = localStorage.getItem('token');
-
-      if (!storedToken) {
-        router.push('/');
-        return;
-      }
-
-      const { user, token } = JSON.parse(storedToken);
-
+      const { user, token } = JSON.parse(jwtToken || getCookie('token') || '{}');
+  
       setUser(user);
       setToken(token);
-
+  
       if (user.isverified) {
         router.push('/Course');
       } else {
         router.push('/Step');
       }
-
     } catch (error) {
       console.error("Erreur lors de l'initialisation de l'utilisateur:", error);
     }
@@ -87,10 +79,9 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
       const data = await response.json();
 
-      localStorage.setItem(
-        'token',
-        JSON.stringify({ user: data.user, token: data.token })
-      );
+      setCookie('token', JSON.stringify({ user: data.user, token: data.token }), data.expiresIn);
+
+      
 
       setUser(data.user);
       setToken(data.token);
@@ -110,7 +101,23 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     router.push('/');
     setToken(null);
     setUser(null);
-    localStorage.removeItem('token');
+    deleteCookie('token');
+  };
+
+  // Functions to interact with cookies using document.cookie API
+  const setCookie = (name: string, value: string, days: number) => {
+    const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+    document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+  };
+
+  const getCookie = (name: string) => {
+    const cookies = document.cookie.split(';');
+    const cookie = cookies.find(c => c.trim().startsWith(name + '='));
+    return cookie ? cookie.split('=')[1] : null;
+  };
+
+  const deleteCookie = (name: string) => {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   };
 
   return (
