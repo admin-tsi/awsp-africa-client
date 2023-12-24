@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { FormEvent, useContext, useState } from 'react';
+import { FormEvent, useContext, useEffect, useState } from 'react';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import UserRegisterStep1 from '@/components/UserRegisterStep1';
@@ -7,11 +7,13 @@ import UserRegisterStep2 from '@/components/UserRegisterStep2';
 import UserRegisterStep3 from '@/components/UserRegisterStep3';
 import { useMultistepForm } from '@/config/useMultistepForm';
 import { UserContext } from '@/context/user-context';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 export default function Index() {
   const { user, token } = useContext(UserContext);
   const router = useRouter();
+  const id = user?._id;  // Corrected variable name
+  const usertok = token
 
   type FormData = {
     firstName: string;
@@ -21,17 +23,17 @@ export default function Index() {
     city: string;
     locality: string;
     state: string;
-    sport: string[];
+    sports: string[];
     sex: string;
     education: string;
     profession: string;
     communication: string;
-    passion: string[];
+    passions: string[];
     awsp_country: string;
     nationality: string;
   };
 
-  const InitialData: FormData = {
+  const initialData: FormData = {
     firstName: '',
     lastName: '',
     phone_Number: null,
@@ -40,16 +42,16 @@ export default function Index() {
     birth: '',
     city: '',
     state: '',
-    sport: [],
+    sports: [],
     education: '',
     profession: '',
     communication: '',
-    passion: [],
+    passions: [],
     awsp_country: 'Benin',
     nationality: '',
   };
 
-  const [data, setData] = useState(InitialData);
+  const [data, setData] = useState<FormData>(initialData);
 
   function updateFields(fields: Partial<FormData>) {
     setData((prev) => ({ ...prev, ...fields }));
@@ -69,22 +71,29 @@ export default function Index() {
     await handleUserData(data);
   };
 
+  useEffect(() => {
+    if (user) {
+      console.log('User ID:', user._id);
+    }
+    console.log(token);
+    console.log(user?._id);
+  }, [token, user?._id]);
+
   const handleUserData = async (userData: FormData) => {
     try {
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/data/${user?._id}`;
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/data/${id}`;
+      console.log(url);
 
       const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + token,
+          Authorization: 'Bearer '+ usertok,
         },
         body: JSON.stringify(userData),
       });
 
       if (!response.ok) {
-        console.log(token);
-        console.log(userData);
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 

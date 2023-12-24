@@ -78,6 +78,8 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       }
 
       const data = await response.json();
+      console.log(data);
+      
 
       setCookie('token', JSON.stringify({ user: data.user, token: data.token }), data.expiresIn);
 

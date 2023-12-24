@@ -8,9 +8,9 @@ type SelectOption = {
 };
 
 type Userdata3 = {
-  sport: string[];
+  sports: string[];
   communication: string;
-  passion: string[];
+  passions: string[];
 };
 
 type UseraccountFormProps = Userdata3 & {
@@ -18,9 +18,9 @@ type UseraccountFormProps = Userdata3 & {
 };
 
 function UserRegisterStep3({
-  sport,
+  sports,
   communication,
-  passion,
+  passions,
   updateFields,
 }: UseraccountFormProps) {
   let easing = [0.6, -0.05, 0.01, 0.99];
@@ -35,14 +35,14 @@ function UserRegisterStep3({
   const handleSportChange = (selectedOptions: SelectOption[]) => {
     setSelectedSports(selectedOptions);
     const selectedSportValues = selectedOptions.map((option) => option.value);
-    updateFields({ sport: selectedSportValues });
+    updateFields({ sports: selectedSportValues });
     console.log('Selected Sports:', selectedSportValues);
   };
 
   const handlePassionChange = (selectedOptions: SelectOption[]) => {
     setSelectedPassions(selectedOptions);
     const selectedPassionValues = selectedOptions.map((option) => option.value);
-    updateFields({ passion: selectedPassionValues });
+    updateFields({ passions: selectedPassionValues });
     console.log('Selected Passions:', selectedPassionValues);
   };
 

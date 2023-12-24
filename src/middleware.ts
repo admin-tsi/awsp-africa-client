@@ -4,9 +4,8 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname
 
-  const isPublicPath = path === '/Login' || path === '/Payment'
+  const isPublicPath = path === '/Login' || path === '/Payment' || path === '/'
 
-  // Check for the token in localStorage
   const token = request.cookies.get('token')?.value || ''
 
   if (isPublicPath && token) {
