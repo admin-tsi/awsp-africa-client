@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 export default function Index() {
   const { user, token } = useContext(UserContext);
   const router = useRouter();
-  const id = user?._id;  // Corrected variable name
+  const id = user?._id; 
   const usertok = token
 
   type FormData = {

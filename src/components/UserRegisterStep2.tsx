@@ -76,6 +76,7 @@ const UserRegisterStep1 = ({
           value={nationality}
           onChange={(e) => handleInputChange('nationality', e.target.value)}
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
+          required
         />
       </motion.div>
       <motion.div
@@ -92,11 +93,14 @@ const UserRegisterStep1 = ({
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md cursor-pointer"
           value={sex}
           onChange={(e) => handleInputChange('sex', e.target.value)}
+          required
         >
-          <option value="m">Male</option>
+          <option value="m" selected>
+            Male
+          </option>
           <option value="f">Female</option>
           <option value="n">Non-Binary</option>
-          <option value="Other">Other</option>
+          <option value="O">Other</option>
         </select>
       </motion.div>
       <motion.div
@@ -116,6 +120,7 @@ const UserRegisterStep1 = ({
           value={profession}
           onChange={(e) => handleInputChange('profession', e.target.value)}
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
+          required
         />
       </motion.div>
 
@@ -133,8 +138,11 @@ const UserRegisterStep1 = ({
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md cursor-pointer"
           value={education}
           onChange={(e) => handleInputChange('education', e.target.value)}
+          required
         >
-          <option value="Associate's Degree">Associate&apos;s Degree</option>
+          <option value="Associate's Degree" selected>
+            Associate&apos;s Degree
+          </option>
           <option value="Bachelor's Degree">Bachelor&apos;s Degree</option>
           <option value="Non-Binary">Non-Binary</option>
           <option value="Master's Degree">Master&apos;s Degree</option>

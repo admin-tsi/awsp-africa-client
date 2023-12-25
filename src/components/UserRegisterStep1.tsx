@@ -73,7 +73,7 @@ function UserRegisterStep1({
             value={firstName}
             className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
             onChange={handleFirstNameChange}
-            placeholder="John Doe"
+            placeholder="John"
             required
           />
         </motion.div>
@@ -90,7 +90,7 @@ function UserRegisterStep1({
             type="text"
             name="lastName"
             id="lastName"
-            placeholder="John Doe"
+            placeholder="Doe"
             value={lastName}
             className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
             onChange={handleLastNameChange}
@@ -118,6 +118,7 @@ function UserRegisterStep1({
           value={phone_Number !== null ? phone_Number.toString() : ''}
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
           onChange={handlePhoneNumberChange}
+          maxLength={8}
           required 
         />
       </motion.div>
@@ -133,9 +134,9 @@ function UserRegisterStep1({
           </span>
           <input
             type="text"
-            name="fullName"
-            id="fullName"
-            placeholder="John Doe"
+            name="city"
+            id="city"
+            placeholder="Cotonou"
             value={city}
             className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
             onChange={handleCityChange}
@@ -153,9 +154,9 @@ function UserRegisterStep1({
           </span>
           <input
             type="text"
-            name="fullName"
-            id="fullName"
-            placeholder="John Doe"
+            name="littoral"
+            id="littoral"
+            placeholder="Littoral"
             value={state}
             className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
             onChange={handleStateChange}
@@ -174,8 +175,8 @@ function UserRegisterStep1({
         </span>
         <input
           type="text"
-          name="fullName"
-          id="fullName"
+          name="locality"
+          id="locality"
           placeholder="John Doe"
           value={locality}
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"

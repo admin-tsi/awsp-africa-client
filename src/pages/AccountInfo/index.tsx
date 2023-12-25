@@ -13,43 +13,16 @@ const Index = () => {
         <form className="m-8 bg-neutral3 p-5 md:p-12 rounded-lg">
           <div>
             <div className="w-full flex justify-center items-center my-8 md:justify-start">
-              <span className="text-white text-4xl">Account infos</span>
-            </div>
-            <div className="grid gap-6 mb-6 md:grid-cols-2">
-              <div className="mb-1">
-                <Input
-                  label="Email :"
-                  id="email"
-                  type="email"
-                  placeholder="john@doe.com"
-                  required
-                />{' '}
-              </div>
-              <div className="mb-1">
-                <Input
-                  label="Password :"
-                  id="password"
-                  type="password"
-                  placeholder="•••••••••"
-                  required
-                />
-              </div>
-              <div className="mb-1">
-                <Input
-                  label="Confirm password :"
-                  id="confirm_password"
-                  type="password"
-                  placeholder="•••••••••"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="w-full flex justify-center items-center my-8 md:justify-start">
               <span className="text-white text-4xl">User infos</span>
             </div>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
+              <Input
+                label="Email :"
+                id="email"
+                type="email"
+                placeholder="john@doe.com"
+                required
+              />{' '}
               <Input
                 label="Phone number :"
                 id="phone"
@@ -94,13 +67,6 @@ const Index = () => {
                 required
               />
               <Input
-                label="Birthdate :"
-                id="birthdate"
-                type="date"
-                placeholder="25/08/2000"
-                required
-              />
-              <Input
                 label="Profession :"
                 id="profession"
                 type="text"
@@ -116,6 +82,39 @@ const Index = () => {
             >
               Saves all changes
             </button>
+          </div>
+          <div className="w-full flex justify-center items-center my-8 md:justify-start">
+            <span className="text-white text-4xl">Account infos</span>
+          </div>
+          <div className="grid gap-6 mb-6 md:grid-cols-2">
+            <div className="mb-1">
+              <Input
+                label="Password :"
+                id="password"
+                type="password"
+                placeholder="•••••••••"
+                required
+              />
+            </div>
+            <div className="mb-1">
+              <Input
+                label="Confirm password :"
+                id="confirm_password"
+                type="password"
+                placeholder="•••••••••"
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <div className="w-full flex justify-end items-center">
+              <button
+                type="submit"
+                className="text-neutral bg-primary hover:font-semibold focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+              >
+                Save new password
+              </button>
+            </div>
           </div>
         </form>
       </div>

@@ -92,7 +92,7 @@ function UserRegisterStep3({
           value={communication}
           onChange={(e) => handleInputChange('communication', e.target.value)}
         >
-          <option value="Social Network">Social Network</option>
+          <option value="Social Network" selected>Social Network</option>
           <option value="Home">Home</option>
         </select>
       </motion.div>

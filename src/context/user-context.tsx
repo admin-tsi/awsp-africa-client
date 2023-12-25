@@ -3,6 +3,7 @@ import React, { createContext, useEffect, useState, ReactNode } from 'react';
 
 interface UserData {
   _id: string;
+  isverified: boolean;
 }
 
 interface UserContextProps {
@@ -79,11 +80,8 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
       const data = await response.json();
       console.log(data);
-      
 
       setCookie('token', JSON.stringify({ user: data.user, token: data.token }), data.expiresIn);
-
-      
 
       setUser(data.user);
       setToken(data.token);
@@ -109,7 +107,8 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   // Functions to interact with cookies using document.cookie API
   const setCookie = (name: string, value: string, days: number) => {
     const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
-    document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+    const cookieString = `${name}=${value}; expires=${expires}; path=/; SameSite=None; Secure`;
+    document.cookie = cookieString;
   };
 
   const getCookie = (name: string) => {
