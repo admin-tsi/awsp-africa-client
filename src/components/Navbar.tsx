@@ -7,7 +7,7 @@ import { classNames } from '@/utils/classNames';
 import { UserContext } from '../context/user-context';
 import Router, { useRouter } from 'next/router';
 
-export const Navbar = ({ className = '' }) => {
+const Navbar = ({ className = '' }) => {
   const router = useRouter();
   const { user, logout } = useContext(UserContext);
   const [open, setOpen] = useState(false);
@@ -81,7 +81,7 @@ export const Navbar = ({ className = '' }) => {
 
   return (
     <nav className={classNames(className, 'w-full z-20 top-0 left-0')}>
-      <div className="flex container mx-auto items-center justify-between  p-8">
+      <div className="flex container mx-auto items-center justify-between p-8">
         <Image src={logo} alt="AWSP Logo" className="h-full w-16" />
 
         <div className="hidden lg:flex space-x-12 h-full justify-center items-center text-white">
@@ -107,9 +107,6 @@ export const Navbar = ({ className = '' }) => {
             </Link>
             {user && (
               <>
-                <Link href="FocalPoint" className="hover:font-semibold">
-                  Focal point
-                </Link>
                 <div className="relative">
                   <button
                     id="dropdownAvatarNameButton"

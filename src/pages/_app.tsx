@@ -30,14 +30,14 @@ export default function App({ Component, pageProps }: AppProps) {
             initial={{ scaleY: 0 }}
             animate={{ scaleY: 0 }}
             exit={{ scaleY: 1 }}
-            transition={{ duration: 4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
           ></motion.div>
           <motion.div
             className="absolute z-50 top-0 left-0 w-[100%] h-[100%] bg-primary origin-top"
             initial={{ scaleY: 1 }}
             animate={{ scaleY: 0 }}
             exit={{ scaleY: 0 }}
-            transition={{ duration: 4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
           ></motion.div>
         </motion.div>
       </AnimatePresence>
