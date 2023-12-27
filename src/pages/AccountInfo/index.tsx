@@ -8,7 +8,7 @@ import { UserContext } from '@/context/user-context';
 
 const Index = () => {
   const { user, token } = useContext(UserContext);
-  const userId = user?._id; // Corrected the variable name
+  const userId = user?._id;
   const [userData, setUserData] = useState({
     email: '',
     phone: '',
@@ -23,34 +23,11 @@ const Index = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const url = `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/data/${userId}`; // Use the correct variable name
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + token,
-          },
-        });
-
-        console.log(userId);
-        console.log(token);
-        if (response.ok) {
-          const data = await response.json();
-          setUserData(data);
-          console.log(data);
-        } else {
-          console.error('Failed to fetch user data');
-        }
-      } catch (error) {
-        console.error('Error fetching user data', error);
-      }
-    };
+    const fetchUserData = async () => {};
     if (user && token) {
       fetchUserData();
     }
-  }, [user, token, userId]); // Added userId to the dependencies
+  }, [user, token, userId]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -62,30 +39,6 @@ const Index = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    try {
-      setLoading(true);
-
-      const url = `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/data/${userId}`; // Use the correct variable name
-      const response = await fetch(url, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + token,
-        },
-        body: JSON.stringify(userData),
-      });
-
-      if (response.ok) {
-        console.log('User data updated successfully');
-      } else {
-        console.error('Failed to update user data');
-      }
-    } catch (error) {
-      console.error('Error updating user data', error);
-    } finally {
-      setLoading(false);
-    }
   };
 
   return (
