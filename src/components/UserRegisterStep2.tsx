@@ -95,9 +95,10 @@ const UserRegisterStep1 = ({
           onChange={(e) => handleInputChange('sex', e.target.value)}
           required
         >
-          <option value="m" selected>
-            Male
+          <option value="" disabled>
+            Choose your gender
           </option>
+          <option value="m">Male</option>
           <option value="f">Female</option>
           <option value="n">Non-Binary</option>
           <option value="O">Other</option>
@@ -140,6 +141,9 @@ const UserRegisterStep1 = ({
           onChange={(e) => handleInputChange('education', e.target.value)}
           required
         >
+          <option value="" disabled>
+            Choose your education level
+          </option>
           <option value="Associate's Degree" selected>
             Associate&apos;s Degree
           </option>

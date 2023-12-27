@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ChangeEvent } from 'react';
 
 interface InputProps {
   label: string;
@@ -7,9 +7,20 @@ interface InputProps {
   placeholder: string;
   pattern?: string;
   required?: boolean;
+  value?: string; // Added value prop
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: FC<InputProps> = ({ label, id, type, placeholder, pattern, required }) => {
+const Input: FC<InputProps> = ({
+  label,
+  id,
+  type,
+  placeholder,
+  pattern,
+  required,
+  value,
+  onChange,
+}) => {
   return (
     <div>
       <label
@@ -25,9 +36,11 @@ const Input: FC<InputProps> = ({ label, id, type, placeholder, pattern, required
         placeholder={placeholder}
         pattern={pattern}
         required={required}
+        value={value} 
+        onChange={onChange}
       />
     </div>
   );
-}
+};
 
 export default Input;
