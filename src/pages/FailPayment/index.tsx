@@ -11,7 +11,7 @@ function index({}: Props) {
       <Navbar />
       <div className="container mx-auto flex flex-col justify-center items-center p-5 bg-neutral">
         <div className="h-fit w-[570px] rounded-lg bg-neutral border border-black shadow-xl m-5 lg:mx-0">
-          <span className="h-[100px] bg-[#222222] rounded-lg flex justify-center items-center text-white text-2xl font-semibold">Thanks !!! </span>
+          <span className="h-[100px] bg-[#222222] rounded-lg flex justify-center items-center text-white text-2xl font-semibold">Oupsss !!! </span>
           <EndPaymentForm isSuccess={false} />
         </div>
       </div>
