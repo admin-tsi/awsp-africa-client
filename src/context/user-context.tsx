@@ -36,11 +36,13 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const initUser = async (jwtToken: string | null) => {
     try {
-      const { user, token } = JSON.parse(jwtToken || getCookie('token') || '{}');
-  
+      const { user, token } = JSON.parse(
+        jwtToken || getCookie('token') || '{}'
+      );
+
       setUser(user);
       setToken(token);
-  
+
       if (user.isverified) {
         router.push('/Course');
       } else {
@@ -75,13 +77,17 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       });
 
       if (!response.ok) {
-        throw new Error(`Identifiants invalides (${response.status})`);
+        throw new Error('Invalid credentials.');
       }
 
       const data = await response.json();
       console.log(data);
 
-      setCookie('token', JSON.stringify({ user: data.user, token: data.token }), data.expiresIn);
+      setCookie(
+        'token',
+        JSON.stringify({ user: data.user, token: data.token }),
+        data.expiresIn
+      );
 
       setUser(data.user);
       setToken(data.token);
@@ -98,22 +104,24 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   };
 
   const logout = () => {
-    router.push('/');
     setToken(null);
     setUser(null);
     deleteCookie('token');
+    router.push('/');
   };
 
   // Functions to interact with cookies using document.cookie API
   const setCookie = (name: string, value: string, days: number) => {
-    const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+    const expires = new Date(
+      Date.now() + days * 24 * 60 * 60 * 1000
+    ).toUTCString();
     const cookieString = `${name}=${value}; expires=${expires}; path=/; SameSite=None; Secure`;
     document.cookie = cookieString;
   };
 
   const getCookie = (name: string) => {
     const cookies = document.cookie.split(';');
-    const cookie = cookies.find(c => c.trim().startsWith(name + '='));
+    const cookie = cookies.find((c) => c.trim().startsWith(name + '='));
     return cookie ? cookie.split('=')[1] : null;
   };
 

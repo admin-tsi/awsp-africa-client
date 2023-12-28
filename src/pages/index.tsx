@@ -398,7 +398,7 @@ export default function Index() {
         </button>
       </section>
       <section className="p-4 lg:p-24">
-        <div className="container sm:px-6">
+        <div className="container mx-auto sm:px-6">
           <h1 className="text-5xl font-medium text-center text-white mb-8">
             Join Thousands of Satisfied Customers
           </h1>
