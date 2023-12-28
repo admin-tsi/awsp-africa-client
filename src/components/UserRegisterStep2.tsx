@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 type Userdata = {
-  birth: string;
+  age: string;
   sex: string;
   profession: string;
   education: string;
@@ -14,7 +14,7 @@ type UseraccountFormProps = Userdata & {
 };
 
 const UserRegisterStep1 = ({
-  birth,
+  age,
   sex,
   profession,
   education,
@@ -24,10 +24,10 @@ const UserRegisterStep1 = ({
   let easing = [0.6, -0.05, 0.01, 0.99];
 
   const handleInputChange = (field: keyof Userdata, value: string) => {
-    if (field === 'birth') {
-      const birthDate = new Date(value);
+    if (field === 'age') {
+      const ageDate = new Date(value);
       const currentDate = new Date();
-      const age = currentDate.getFullYear() - birthDate.getFullYear();
+      const age = currentDate.getFullYear() - ageDate.getFullYear();
 
       if (age < 18) {
         alert('You must be 18 years or older to register.');
@@ -47,15 +47,15 @@ const UserRegisterStep1 = ({
         className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center px-5 relative"
       >
         <span className="text-white absolute left-[13px] top-[-11px] w-full md:w-[30%] font-semibold flex justify-start items-center px-3">
-          Date of Birth *
+          Date of age *
         </span>
         <input
           type="date"
-          name="birth_date"
-          id="birth_date"
-          value={birth}
+          name="age_date"
+          id="age_date"
+          value={age}
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
-          onChange={(e) => handleInputChange('birth', e.target.value)}
+          onChange={(e) => handleInputChange('age', e.target.value)}
           required
         />
       </motion.div>

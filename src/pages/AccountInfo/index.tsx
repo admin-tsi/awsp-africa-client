@@ -12,13 +12,12 @@ const Index = () => {
   const [userData, setUserData] = useState({
     email: '',
     phone: '',
-    first_name: '',
-    last_name: '',
-    city: '',
-    state: '',
-    locality: '',
-    profession: '',
+    firstname: '',
+    lastname: '',
   });
+  const [userPassword, setUserpassword] = useState({
+    
+  })
 
   const [loading, setLoading] = useState(false);
 
@@ -39,6 +38,7 @@ const Index = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(userData);
   };
 
   return (
@@ -74,38 +74,20 @@ const Index = () => {
               />
               <Input
                 label="First Name :"
-                id="first_name"
+                id="firstname"
                 type="text"
                 placeholder="Doe"
                 required
-                value={userData.first_name}
+                value={userData.firstname}
                 onChange={handleChange}
               />
               <Input
                 label="Last Name :"
-                id="last_name"
+                id="lastname"
                 type="text"
                 placeholder="John"
                 required
-                value={userData.last_name}
-                onChange={handleChange}
-              />
-              <Input
-                label="City :"
-                id="city"
-                type="text"
-                placeholder="Cotonou"
-                required
-                value={userData.city}
-                onChange={handleChange}
-              />
-              <Input
-                label="Profession :"
-                id="profession"
-                type="text"
-                placeholder="Coach"
-                required
-                value={userData.profession}
+                value={userData.lastname}
                 onChange={handleChange}
               />
             </div>
@@ -120,7 +102,7 @@ const Index = () => {
             </button>
           </div>
         </form>
-        <form action="" className="m-8 bg-neutral3 p-5 md:p-12 rounded-lg">
+        <form action="" className="mx-8 mb-8 bg-neutral3 p-5 md:p-12 rounded-lg">
           <div>
             <div className="w-full flex justify-center items-center my-8 md:justify-start">
               <span className="text-white text-4xl">Change user password</span>
