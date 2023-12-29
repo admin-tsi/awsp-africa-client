@@ -99,9 +99,7 @@ const Navbar = ({ className = '' }) => {
                 </Link>
               </>
             )}
-            <Link href="#" className="hover:font-semibold">
-              About
-            </Link>
+            
             <Link href="#" className="hover:font-semibold">
               Contact
             </Link>
@@ -268,12 +266,6 @@ const Navbar = ({ className = '' }) => {
                       className="text-2xl uppercase text-black hover:font-semibold"
                     >
                       Leadboard
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-2xl uppercase text-black hover:font-semibold"
-                    >
-                      About
                     </Link>
                     <Link
                       href="/"

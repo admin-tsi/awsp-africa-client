@@ -47,12 +47,12 @@ const UserRegisterStep1 = ({
         className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center px-5 relative"
       >
         <span className="text-white absolute left-[13px] top-[-11px] w-full md:w-[30%] font-semibold flex justify-start items-center px-3">
-          Date of age *
+          Date of Birth *
         </span>
         <input
           type="date"
-          name="age_date"
-          id="age_date"
+          name="birth_date"
+          id="birth_date"
           value={age}
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
           onChange={(e) => handleInputChange('age', e.target.value)}
