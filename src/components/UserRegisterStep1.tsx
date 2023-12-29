@@ -4,9 +4,9 @@ import Image from 'next/image';
 import flag from '../../public/flag.svg';
 
 type Userdata = {
-  firstName: string;
-  lastName: string;
-  phone_Number: number | null;
+  firstname: string;
+  lastname: string;
+  phone: number | null;
   city: string;
   state: string;
   locality: string;
@@ -17,28 +17,28 @@ type UseraccountFormProps = Userdata & {
 };
 
 function UserRegisterStep1({
-  firstName,
-  lastName,
+  firstname,
+  lastname,
   city,
-  phone_Number,
+  phone,
   state,
   locality,
   updateFields,
 }: UseraccountFormProps) {
   let easing = [0.6, -0.05, 0.01, 0.99];
 
-  const handleFirstNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    updateFields({ firstName: e.target.value });
+  const handlefirstnameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateFields({ firstname: e.target.value });
   };
 
-  const handleLastNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    updateFields({ lastName: e.target.value });
+  const handlelastnameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    updateFields({ lastname: e.target.value });
   };
 
   const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     updateFields({
-      phone_Number: value !== '' ? parseInt(value, 10) : null,
+      phone: value !== '' ? parseInt(value, 10) : null,
     });
   };
 
@@ -68,11 +68,11 @@ function UserRegisterStep1({
           </span>
           <input
             type="text"
-            name="firstName"
-            id="firstName"
-            value={firstName}
+            name="firstname"
+            id="firstname"
+            value={firstname}
             className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
-            onChange={handleFirstNameChange}
+            onChange={handlefirstnameChange}
             placeholder="John"
             required
           />
@@ -88,12 +88,12 @@ function UserRegisterStep1({
           </span>
           <input
             type="text"
-            name="lastName"
-            id="lastName"
+            name="lastname"
+            id="lastname"
             placeholder="Doe"
-            value={lastName}
+            value={lastname}
             className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
-            onChange={handleLastNameChange}
+            onChange={handlelastnameChange}
             required
           />
         </motion.div>
@@ -112,10 +112,10 @@ function UserRegisterStep1({
         </span>
         <input
           type="text"
-          name="phone_number"
-          id="phone_number"
+          name="phone"
+          id="phone"
           placeholder="96000000"
-          value={phone_Number !== null ? phone_Number.toString() : ''}
+          value={phone !== null ? phone.toString() : ''}
           className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
           onChange={handlePhoneNumberChange}
           maxLength={8}

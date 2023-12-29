@@ -7,7 +7,8 @@ interface InputProps {
   placeholder: string;
   pattern?: string;
   required?: boolean;
-  value?: string; // Added value prop
+  value?: string;
+  disabled?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -19,6 +20,7 @@ const Input: FC<InputProps> = ({
   pattern,
   required,
   value,
+  disabled,
   onChange,
 }) => {
   return (
@@ -38,6 +40,7 @@ const Input: FC<InputProps> = ({
         required={required}
         value={value} 
         onChange={onChange}
+        disabled={disabled}
       />
     </div>
   );

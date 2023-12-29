@@ -8,6 +8,7 @@ const LoginForm = () => {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [recoveryEmailSent, setRecoveryEmailSent] = useState(false);
   const [loginInProgress, setLoginInProgress] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const [loginData, setLoginData] = useState({
     email: '',
@@ -17,10 +18,11 @@ const LoginForm = () => {
   const handleLoginClick = async () => {
     try {
       setLoginInProgress(true);
-      console.log('Login clicked!', loginData.email, loginData.password);
+      setError(null);
       await login(loginData.email, loginData.password);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Erreur lors de la connexion:', error);
+      setError(error?.message);
     } finally {
       setLoginInProgress(false);
     }
@@ -42,6 +44,7 @@ const LoginForm = () => {
   const handleBackToLoginClick = () => {
     setShowForgotPassword(false);
     setRecoveryEmailSent(false);
+    setError(null);
   };
 
   const easing = [0.6, -0.05, 0.01, 0.99];
@@ -56,12 +59,11 @@ const LoginForm = () => {
       <div className="p-8 flex flex-col space-y-6">
         {!showForgotPassword ? (
           <>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, ease: easing, duration: 0.5 }}
-              className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center space-x-5 relative"
-            >
+            <div className="w-full flex justify-center items-center">
+              {error && <p className="text-red-500">{error}</p>}
+            </div>
+
+            <div className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center space-x-5 relative">
               <span className="text-white absolute left-[13px] top-[-11px] w-full md:w-[50%] font-semibold flex justify-start items-center px-3">
                 Email *
               </span>
@@ -79,13 +81,8 @@ const LoginForm = () => {
                 }
                 required
               />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, ease: easing, duration: 0.5 }}
-              className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center space-x-5 relative"
-            >
+            </div>
+            <div className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center space-x-5 relative">
               <span className="text-white absolute left-[13px] top-[-11px] w-full md:w-[50%] font-semibold flex justify-start items-center px-3">
                 Password *
               </span>
@@ -103,7 +100,7 @@ const LoginForm = () => {
                 }
                 required
               />
-            </motion.div>
+            </div>
             <div className="w-full h-fit flex justify-end items-center">
               <button
                 className="text-white hover:underline hover:font-semibold"
@@ -145,12 +142,7 @@ const LoginForm = () => {
           </>
         ) : (
           <>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, ease: easing, duration: 0.5 }}
-              className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center space-x-5 relative"
-            >
+            <div className="w-full h-[80px] bg-black rounded-lg flex justify-end items-center space-x-5 relative">
               <span className="text-white absolute left-[13px] top-[-11px] w-full md:w-[50%] font-semibold flex justify-start items-center px-3">
                 Email *
               </span>
@@ -169,7 +161,7 @@ const LoginForm = () => {
                 disabled={recoveryEmailSent}
                 required
               />
-            </motion.div>
+            </div>
             <div className="w-full h-fit flex justify-end items-center">
               <button
                 className="text-white hover:underline hover:font-semibold"

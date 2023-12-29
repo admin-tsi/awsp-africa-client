@@ -16,10 +16,10 @@ export default function Index() {
   const usertok = token
 
   type FormData = {
-    firstName: string;
-    lastName: string;
-    phone_Number: number | null;
-    birth: string;
+    firstname: string;
+    lastname: string;
+    phone: number | null;
+    age: string;
     city: string;
     locality: string;
     state: string;
@@ -34,12 +34,12 @@ export default function Index() {
   };
 
   const initialData: FormData = {
-    firstName: '',
-    lastName: '',
-    phone_Number: null,
+    firstname: '',
+    lastname: '',
+    phone: null,
     sex: '',
     locality: '',
-    birth: '',
+    age: '',
     city: '',
     state: '',
     sports: [],
