@@ -4,7 +4,7 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
-  const publicPaths = ['/Login', '/Payment', '/', '/Leadboard'];
+  const publicPaths = ['/Login', '/Payment', '/', '/Course'];
 
   const isPublicPath = publicPaths.includes(path);
 

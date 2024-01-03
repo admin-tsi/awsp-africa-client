@@ -186,6 +186,9 @@ export default function Index() {
         ></Image>
       </div>
       <ModuleDetails {...moduleDetailsProps} />
+      <div className='w-full container mx-auto flex justify-end items-center p-5'>
+        <button className='hover:text-black hover:bg-primary w-fit p-3 rounded-lg bg-neutral text-white border hover:transition-opacity'>Begin with our introductory program !!!</button>
+      </div>
       <Footer />
     </div>
   );
