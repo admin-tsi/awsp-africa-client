@@ -11,6 +11,11 @@ const index = (props: Props) => {
     <div className="h-screen w-full">
       <Navbar />
       <div className="h-fit">
+        <div className="flex items-center justify-center text-white">
+          <h1 className="text-6xl">
+            Prerequisite: Physionomy and Anotomy of the Human Body
+          </h1>
+        </div>
         <div className="container mx-auto flex flex-col p-5 lg:flex-row lg:space-x-6 max-lg:space-y-4">
           <div className="w-full h-fit lg:h-96 lg:w-2/3 rounded-lg">
             <VideoContainer />

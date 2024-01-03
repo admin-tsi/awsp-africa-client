@@ -82,27 +82,45 @@ const Navbar = ({ className = '' }) => {
   return (
     <nav className={classNames(className, 'w-full z-20 top-0 left-0')}>
       <div className="flex container mx-auto items-center justify-between p-8">
-        <Image src={logo} alt="AWSP Logo" className="h-full w-16" />
-
+        <Link href="/">
+          <Image src={logo} alt="AWSP Logo" className="h-full w-16" />
+        </Link>
         <div className="hidden lg:flex space-x-12 h-full justify-center items-center text-white">
           <div className="flex space-x-6">
             {user && (
               <>
-                <Link href="/Courses" className="hover:font-semibold">
+                <Link
+                  href="/Courses"
+                  className={`hover:font-semibold ${
+                    router.pathname == '/Courses' ? 'underline font-medium' : ''
+                  }`}
+                >
                   Courses
                 </Link>
-                <Link href="/FocalPoint" className="hover:font-semibold">
+                <Link
+                  href="/FocalPoint"
+                  className={`hover:font-semibold ${
+                    router.pathname == '/FocalPoint'
+                      ? 'underline font-medium'
+                      : ''
+                  }`}
+                >
                   Focal point
                 </Link>
-                <Link href="/Leadboard" className="hover:font-semibold">
+                <Link
+                  href="/Leadboard"
+                  className={`hover:font-semibold ${
+                    router.pathname == '/Login' ? 'underline font-medium' : ''
+                  }`}
+                >
                   Leadboard
                 </Link>
               </>
             )}
-            
-            <Link href="#" className="hover:font-semibold">
+
+            {/*    <Link href="#" className="hover:font-semibold">
               Contact
-            </Link>
+            </Link>*/}
             {user && (
               <>
                 <div className="relative">
@@ -159,14 +177,26 @@ const Navbar = ({ className = '' }) => {
               </>
             )}
             {!user && (
-              <>
-                <Link href="/Leadboard" className="hover:font-semibold">
+              <div className="space-x-4">
+                <Link
+                  href="/Leadboard"
+                  className={`hover:font-semibold ${
+                    router.pathname == '/Leadboard'
+                      ? 'underline font-medium'
+                      : ''
+                  }`}
+                >
                   Leadboard
                 </Link>
-                <Link href="/Login" className="hover:font-semibold">
-                  Sign in
+                <Link
+                  href="/Login"
+                  className={`hover:font-semibold ${
+                    router.pathname == '/Login' ? 'underline font-medium' : ''
+                  }`}
+                >
+                  Sign In
                 </Link>
-              </>
+              </div>
             )}
           </div>
 
@@ -240,21 +270,33 @@ const Navbar = ({ className = '' }) => {
                     {user && (
                       <>
                         <Link
-                          href="/Home"
-                          className="text-2xl uppercase text-black hover:font-semibold"
+                          href="/Courses"
+                          className={`text-2xl uppercase text-black hover:font-semibold ${
+                            router.pathname == '/Courses'
+                              ? 'underline font-medium'
+                              : ''
+                          }`}
                         >
-                          Course
+                          Courses
                         </Link>
                         <Link
                           href="/FocalPoint"
-                          className="text-2xl uppercase text-black hover:font-semibold"
+                          className={`text-2xl uppercase text-black hover:font-semibold ${
+                            router.pathname == '/FocalPoint'
+                              ? 'underline font-medium'
+                              : ''
+                          }`}
                         >
                           Focal point
                         </Link>
 
                         <Link
                           href="/AccountInfo"
-                          className="text-2xl uppercase text-black hover:font-semibold"
+                          className={`text-2xl uppercase text-black hover:font-semibold ${
+                            router.pathname == '/AccountInfo'
+                              ? 'underline font-medium'
+                              : ''
+                          }`}
                         >
                           Account Info
                         </Link>
@@ -263,20 +305,28 @@ const Navbar = ({ className = '' }) => {
 
                     <Link
                       href="/Leadboard"
-                      className="text-2xl uppercase text-black hover:font-semibold"
+                      className={`text-2xl uppercase text-black hover:font-semibold ${
+                        router.pathname == '/Leadboard'
+                          ? 'underline font-medium'
+                          : ''
+                      }`}
                     >
                       Leadboard
                     </Link>
-                    <Link
+                    {/*     <Link
                       href="/"
                       className="text-2xl uppercase text-black hover:font-semibold"
                     >
                       Contact
-                    </Link>
+                    </Link>*/}
                     {!user && (
                       <Link
                         href="/Login"
-                        className="text-2xl uppercase text-black hover:font-semibold"
+                        className={`text-2xl uppercase text-black hover:font-semibold ${
+                          router.pathname == '/Login'
+                            ? 'underline font-medium'
+                            : ''
+                        }`}
                       >
                         Sign In
                       </Link>
