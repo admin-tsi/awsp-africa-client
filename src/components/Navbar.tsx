@@ -88,7 +88,7 @@ const Navbar = ({ className = '' }) => {
           <div className="flex space-x-6">
             {user && (
               <>
-                <Link href="/Course" className="hover:font-semibold">
+                <Link href="/Courses" className="hover:font-semibold">
                   Courses
                 </Link>
                 <Link href="/FocalPoint" className="hover:font-semibold">
@@ -240,7 +240,7 @@ const Navbar = ({ className = '' }) => {
                     {user && (
                       <>
                         <Link
-                          href="/Course"
+                          href="/Home"
                           className="text-2xl uppercase text-black hover:font-semibold"
                         >
                           Course
