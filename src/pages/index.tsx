@@ -9,10 +9,13 @@ import Testimonial from '@/components/home/Testimonial';
 import { ArrowRight, Pause, Play } from '@/utils/svgs';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import ParallaxText from '@/components/home/ParallaxText';
+import { motion } from 'framer-motion';
 
 export default function Index() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const scrollRef = useRef(null);
 
   const toggleVideo = () => {
     const video = videoRef.current;
@@ -40,7 +43,7 @@ export default function Index() {
         >
           <source src="home/a.mp4" type="video/mp4" />
         </video>
-        <div className="text-white container lg:pl-40 w-full lg:w-1/2 flex flex-col justify-start z-0">
+        <div className="text-white w-full lg:w-3/4 z-0 lg:pl-20">
           <h1 className="text-3xl font-bold mb-4 md:text-6xl">
             Become a Strength & Conditioning Professional
           </h1>
@@ -48,7 +51,10 @@ export default function Index() {
             A Strength & Conditioning Professional designs training programs to
             enhance athletes performance.
           </p>
-          <Link href="/Payment" className="bg-white text-black text-left py-8 px-10 rounded-full font-medium transition duration-300 flex justify-between items-center w-full md:w-1/3 relative overflow-hidden">
+          <Link
+            href="/Payment"
+            className="bg-white text-black text-left py-8 px-10 rounded-full font-medium transition duration-300 flex justify-between items-center w-full md:w-1/3 relative overflow-hidden"
+          >
             <p className="z-10">Enroll now</p>
             <div className="p-4 rounded-full second-btn absolute right-4 h-12 w-12 "></div>
             <ArrowRight />
@@ -421,24 +427,30 @@ export default function Index() {
         </div>
       </section>
       <section className="bg-[#1B1F20] text-[#232829] relative mt-8">
-        <h1 className="text-4xl lg:text-8xl whitespace-nowrap font-extrabold overflow-hidden">
-          DON’T PUT IT OFF DON’T PUT IT OFF DON’T PUT IT OFF DON’T PUT IT OFF
-          DON’T PUT IT OFF DON’T PUT IT OFF DON’T PUT IT OFF DON’T PUT IT OFF
-        </h1>
-        <h1 className="text-4xl lg:text-8xl whitespace-nowrap font-extrabold overflow-hidden">
-          DON’T PUT IT OFF DON’T PUT IT OFF DON’T PUT IT OFF DON’T PUT IT OFF
-          DON’T PUT IT OFF DON’T PUT IT OFF DON’T PUT IT OFF DON’T PUT IT OFF
-        </h1>
-        <h1 className="text-4xl lg:text-8xl whitespace-nowrap font-extrabold overflow-hidden">
-          DON’T PUT IT OFF DON’T PUT IT OFF DON’T PUT IT OFF DON’T PUT IT OFF
-          DON’T PUT IT OFF DON’T PUT IT OFF DON’T PUT IT OFF DON’T PUT IT OFF
-        </h1>
+        <ParallaxText baseVelocity={-5}>DON’T PUT IT OFF</ParallaxText>
+        <ParallaxText baseVelocity={5}>DON’T PUT IT OFF</ParallaxText>
+        <ParallaxText baseVelocity={-5}>DON’T PUT IT OFF</ParallaxText>
+
         <h1 className="text-4xl lg:text-8xl gradient-text font-extrabold absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 whitespace-nowrap ">
           DON’T PUT IT OFF
         </h1>
-        <h1 className="text-xl lg:text-3xl text-white font-extrabold absolute -translate-x-1/2 -translate-y-1/2 top-3/4 left-1/2 whitespace-nowrap ">
-          DON’T PUT IT OFF
-        </h1>
+        <Link
+          href="/Payment"
+          className="absolute -translate-x-1/2 -translate-y-1/2 top-3/4 left-1/2"
+        >
+          <motion.div
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.5 },
+            }}
+            whileTap={{ scale: 0.9 }}
+            className="flex justify-center items-center "
+          >
+            <h1 className="text-xl lg:text-3xl text-white font-extrabold   ">
+              DON’T PUT IT OFF
+            </h1>
+          </motion.div>
+        </Link>
       </section>
       <Footer />
     </div>

@@ -35,7 +35,7 @@ const JoinForm = ({ email, updateFields }: PaymentFormProps) => {
             type="email"
             name="email"
             id="email"
-            placeholder="Enter your password"
+            placeholder="Enter your email"
             value={email}
             className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
             onChange={(e) => updateFields({ email: e.target.value })}

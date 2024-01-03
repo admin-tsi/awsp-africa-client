@@ -1,15 +1,10 @@
-/* eslint-disable */
 import React, { FormEvent, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import JoinForm from '@/components/JoinForm';
 import PaymentForm from '@/components/PaymentForm';
-import EndPaymentForm from '@/components/EndPaymentForm';
 import Footer from '@/components/Footer';
 import { usePaymentForm } from '@/config/usePaymentForm';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import Kkiapye from '../../../public/kkiapay.svg';
-import { openingKKkiaWidget } from '@/Api/kkiapay.service';
+import { openingKkiaModal } from '@/api/kkiapay.service';
 
 export default function Index() {
   type FormData = {
@@ -60,7 +55,7 @@ export default function Index() {
 
     setData((prev) => ({ ...prev, isSuccess: true }));
 
-    openingKKkiaWidget(data.email)    
+    openingKkiaModal(data.email)
     
   }
 
