@@ -90,9 +90,9 @@ const Navbar = ({ className = '' }) => {
             {user && (
               <>
                 <Link
-                  href="/Course"
+                  href="/Courses"
                   className={`hover:font-semibold ${
-                    router.pathname == '/Course' ? 'underline font-medium' : ''
+                    router.pathname == '/Courses' ? 'underline font-medium' : ''
                   }`}
                 >
                   Courses
@@ -270,14 +270,14 @@ const Navbar = ({ className = '' }) => {
                     {user && (
                       <>
                         <Link
-                          href="/Course"
+                          href="/Courses"
                           className={`text-2xl uppercase text-black hover:font-semibold ${
-                            router.pathname == '/Course'
+                            router.pathname == '/Courses'
                               ? 'underline font-medium'
                               : ''
                           }`}
                         >
-                          Course
+                          Courses
                         </Link>
                         <Link
                           href="/FocalPoint"

@@ -33,6 +33,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const router = useRouter();
   const [user, setUser] = useState<UserData | null>(null);
   const [token, setToken] = useState<string | null>(null);
+  const [veri, setVeri] = useState(false);
 
   const initUser = async (jwtToken: string | null) => {
     try {
@@ -81,7 +82,8 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       }
 
       const data = await response.json();
-      console.log(data);
+      console.log(data.user.isverified);
+      setVeri(data.user.isverified);
 
       setCookie(
         'token',
@@ -92,8 +94,8 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       setUser(data.user);
       setToken(data.token);
 
-      if (data.user.isverified) {
-        router.push('/Course');
+      if (veri) {
+        router.push('/Courses');
       } else {
         router.push('/Step');
       }

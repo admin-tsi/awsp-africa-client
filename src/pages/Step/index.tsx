@@ -98,7 +98,7 @@ export default function Index() {
       }
 
       const responseData = await response.json();
-      router.push('/Course');
+      router.push('/Courses');
       console.log(responseData);
 
       return response;
