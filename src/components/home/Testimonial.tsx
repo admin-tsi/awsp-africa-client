@@ -26,7 +26,7 @@ const Testimonial: React.FC<TestimonialProps> = ({
       <div className="mt-8">
         <p className="text-lg font-light text-gray-600">{testimonial}</p>
         <div className="mt-4">
-          <p className="text-xl font-semibold">{name}</p>
+          <p className="text-xl font-light text-black">{name}</p>
           <p className="text-lg font-semibold text-black">{title}</p>
         </div>
       </div>

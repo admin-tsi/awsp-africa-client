@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar';
 import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import Gym from '../../public/home/gym.png';
-import Avatar from '../../public/home/avatar.png';
+import Blake from '../../public/home/blake.jpg';
 import JobItem from '@/components/home/JobItem';
 import Testimonial from '@/components/home/Testimonial';
 import { ArrowRight, Pause, Play } from '@/utils/svgs';
@@ -15,7 +15,6 @@ import { motion } from 'framer-motion';
 export default function Index() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const scrollRef = useRef(null);
 
   const toggleVideo = () => {
     const video = videoRef.current;
@@ -348,42 +347,95 @@ export default function Index() {
             </h1>
           </div>
           <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0 text-white">
-            {Array.from({ length: 3 }, (_, i) => (
-              <div
-                className="shadow-custom p-10 rounded-xl relative overflow-hidden group"
-                key={i}
-              >
-                <div className="front-layer z-10 rounded-xl bg-neutral absolute transition duration-500 inset-0.5 "></div>
-                <div className="spinner-container absolute inset-0 transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-0 hidden group-hover:block">
-                  <div className="spinner absolute transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-                </div>
-                <div className="relative z-20">
-                  <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-[#F0B35B] lg:h-12 lg:w-12">
-                    <svg
-                      className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                  <h3 className="mb-2 text-xl font-bold">
-                    Personalized Wellness Plans
-                  </h3>
-                  <p className="font-extralight">
-                    Tailor-made recommendations based on individual health
-                    assessments. Adaptive plans that evolve with users progress
-                    and changing needs. Expert guidance to ensure personalized
-                    plans align with specific goals..
-                  </p>
-                </div>
+            <div className="shadow-custom p-10 rounded-xl relative overflow-hidden group">
+              <div className="front-layer z-10 rounded-xl bg-neutral absolute transition duration-500 inset-0.5 "></div>
+              <div className="spinner-container absolute inset-0 transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-0 hidden group-hover:block">
+                <div className="spinner absolute transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
               </div>
-            ))}
+              <div className="relative z-20">
+                <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-[#F0B35B] lg:h-12 lg:w-12">
+                  <svg
+                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 className="mb-2 text-xl font-bold">Kinesiology</h3>
+                <p className="font-extralight">
+                  Explore the science of human movement in our Kinesiology
+                  course. Delve into anatomy, physiology, and biomechanics to
+                  understand physical activity's impact on health and
+                  performance
+                </p>
+              </div>
+            </div>
+            <div className="shadow-custom p-10 rounded-xl relative overflow-hidden group">
+              <div className="front-layer z-10 rounded-xl bg-neutral absolute transition duration-500 inset-0.5 "></div>
+              <div className="spinner-container absolute inset-0 transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-0 hidden group-hover:block">
+                <div className="spinner absolute transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+              </div>
+              <div className="relative z-20">
+                <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-[#F0B35B] lg:h-12 lg:w-12">
+                  <svg
+                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 className="mb-2 text-xl font-bold">Injury prevention</h3>
+                <p className="font-extralight">
+                  Dive into the essentials of injury prevention in our
+                  specialized Kinesiology course. Learn about the biomechanics
+                  of the body, risk factors, and the role of exercise in
+                  reducing injury
+                </p>
+              </div>
+            </div>
+            <div className="shadow-custom p-10 rounded-xl relative overflow-hidden group">
+              <div className="front-layer z-10 rounded-xl bg-neutral absolute transition duration-500 inset-0.5 "></div>
+              <div className="spinner-container absolute inset-0 transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-0 hidden group-hover:block">
+                <div className="spinner absolute transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+              </div>
+              <div className="relative z-20">
+                <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-[#F0B35B] lg:h-12 lg:w-12">
+                  <svg
+                    className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 className="mb-2 text-xl font-bold">
+                  Strength and Conditioning
+                </h3>
+                <p className="font-extralight">
+                  Join our Strength and Conditioning course to master the
+                  principles of athletic performance enhancement. Understand the
+                  fundamentals of strength training, conditioning techniques,
+                  and nutrition.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -415,21 +467,21 @@ export default function Index() {
           <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0 text-white pt-16">
             <Testimonial
               name="Jamal Crawford"
-              title="NBA Player"
+              title="Retired NBA Player"
               testimonial="Rich always kept my body right while I was with the Clippers so I could play at my best whenever coach called my number."
-              imageSrc={Avatar.src}
+              imageSrc={Blake.src}
             />
             <Testimonial
               name="Blake Griffin"
               title="NBA Player"
               testimonial="Rich is either in the weight room working with someone or studying. You can always count on him to keep up on the latest trends and know what is helpful and what isn't."
-              imageSrc={Avatar.src}
+              imageSrc={Blake.src}
             />
             <Testimonial
               name="Chris Paul"
               title="NBA Player"
               testimonial="I worked with Rich in LA and Houston. No one has done a better job getting me ready for a season, game or practice better than Rich. He was always prepared with a plan of attack and he was available to help whenever I needed extra work."
-              imageSrc={Avatar.src}
+              imageSrc={Blake.src}
             />
           </div>
         </div>
