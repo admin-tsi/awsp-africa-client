@@ -29,16 +29,39 @@ const LoginForm = () => {
   };
 
   const [forgotPasswordData, setForgotPasswordData] = useState({
-    forgotEmail: '',
+    email: '',
   });
 
   const handleForgotPasswordClick = () => {
     setShowForgotPassword(true);
   };
 
-  const handleSendMailClick = () => {
+  const handleSendMailClick = async () => {
     console.log('Send mail clicked!', forgotPasswordData);
     setRecoveryEmailSent(true);
+
+    try {
+      const url = `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/forgetPassword`;
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(forgotPasswordData),
+      });
+
+      if (response.ok) {
+        console.log('Password reset email sent successfully.');
+      } else {
+        console.error(
+          'Failed to send password reset email:',
+          response.status,
+          response.statusText
+        );
+      }
+    } catch (error) {
+      console.error('Error while sending password reset email:', error);
+    }
   };
 
   const handleBackToLoginClick = () => {
@@ -148,14 +171,14 @@ const LoginForm = () => {
               </span>
               <input
                 type="text"
-                name="forgotEmail"
-                id="forgotEmail"
+                name="email"
+                id="email"
                 placeholder="john@doe.com"
                 className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md"
                 onChange={(e) =>
                   setForgotPasswordData((prevData) => ({
                     ...prevData,
-                    forgotEmail: e.target.value,
+                    email: e.target.value,
                   }))
                 }
                 disabled={recoveryEmailSent}

@@ -45,7 +45,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       setToken(token);
 
       if (user.isverified) {
-        router.push('/Course');
+        router.push('/Courses');
       } else {
         router.push('/Step');
       }
