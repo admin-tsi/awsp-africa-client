@@ -83,7 +83,6 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
       const data = await response.json();
       console.log(data.user.isverified);
-      setVeri(data.user.isverified);
 
       setCookie(
         'token',
@@ -94,7 +93,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       setUser(data.user);
       setToken(data.token);
 
-      if (veri) {
+      if (data.user.isverified) {
         router.push('/Courses');
       } else {
         router.push('/Step');

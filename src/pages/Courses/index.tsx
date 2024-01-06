@@ -21,35 +21,35 @@ export default function Index() {
     content: [
       {
         id: 1,
-        title: 'Partie 1:',
+        title: 'Module 1:',
         secondtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales felis bibendum tortor fringilla, sit amet scelerisque est porta.',
       },
       {
         id: 2,
-        title: 'Partie 2:',
+        title: 'Module 2:',
         secondtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales felis bibendum tortor fringilla, sit amet scelerisque est porta.',
       },
       {
         id: 3,
-        title: 'Partie 3:',
+        title: 'Module 3:',
         secondtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales felis bibendum tortor fringilla, sit amet scelerisque est porta.',
       },
       {
         id: 4,
-        title: 'Partie 4:',
+        title: 'Module 4:',
         secondtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales felis bibendum tortor fringilla, sit amet scelerisque est porta.',
       },
       {
         id: 5,
-        title: 'Partie 5:',
+        title: 'Module 5:',
         secondtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sodales felis bibendum tortor fringilla, sit amet scelerisque est porta.',
@@ -191,14 +191,6 @@ export default function Index() {
         ></Image>
       </div>
       <ModuleDetails {...moduleDetailsProps} />
-      <div className="w-full container mx-auto flex justify-end items-center p-5">
-        <button
-          onClick={handleBeginIntroduction}
-          className="hover:text-black hover:bg-primary w-fit p-3 rounded-lg bg-neutral text-white border hover:transition-opacity"
-        >
-          Begin with our introductory program !!!
-        </button>
-      </div>
       <Footer />
     </div>
   );
