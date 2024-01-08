@@ -5,12 +5,12 @@ import JoinForm from '@/components/JoinForm';
 import PaymentForm from '@/components/PaymentMethode';
 import Footer from '@/components/Footer';
 import { usePaymentForm } from '@/config/usePaymentForm';
-import { openingKkiaModal } from '@/Api/kkiapay.service';
+import { payments } from '@/Api/Payments/payments.controller';
 
 export default function Index() {
   type FormData = {
     email: string;
-    payment_Methode: string;
+    payment_Methode: any;
   };
 
   const initialData: FormData = {
@@ -46,9 +46,7 @@ export default function Index() {
       return next();
     }
 
-    console.log(data);
-
-    // openingKkiaModal(data.email);
+    payments(data.email, data.payment_Methode)
   }
 
   return (

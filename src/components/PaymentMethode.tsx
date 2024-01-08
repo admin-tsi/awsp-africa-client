@@ -18,9 +18,9 @@ const PaymentForm = ({ payment_Methode, updateFields }: PaymentFormProps) => {
   const [payment, setPayment] = useState<any>({});
   const [selectedPayment, setSelectedPayment] = useState<string>('');
 
-  const handleButtonClick = (buttonIndex: number, paymentName: string) => {
+  const handleButtonClick = (buttonIndex: number, paymentName: any) => {
     setActiveButton(buttonIndex);
-    setSelectedPayment(paymentName);
+    setSelectedPayment(paymentName.name);
     updateFields({ payment_Methode: paymentName });
   };
 
@@ -35,7 +35,7 @@ const PaymentForm = ({ payment_Methode, updateFields }: PaymentFormProps) => {
 
       const data = await response.json();
       setPayment(data);
-      console.log('Payment methods:', data);
+      //console.log('Payment methods:', data);
     } catch (error) {
       console.error('Error fetching payment method:', error);
     }
@@ -66,7 +66,7 @@ const PaymentForm = ({ payment_Methode, updateFields }: PaymentFormProps) => {
                   ? `bg-gradient-to-r from-secondary to-primary dark:from-secondary dark:to-primary`
                   : 'bg-gray-500'
               } rounded-lg p-px flex justify-center items-center`}
-              onClick={() => handleButtonClick(index, method.name)}
+              onClick={() => handleButtonClick(index, method)}
             >
               <div className="flex h-[98%] flex-col justify-center items-start p-5 space-y-2 rounded-lg bg-white dark:bg-black w-[99%]">
                 <Image
