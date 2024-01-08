@@ -10,10 +10,10 @@ import { UserContext } from '@/context/user-context';
 import { useRouter } from 'next/router';
 
 export default function Index() {
-  const { user, token } = useContext(UserContext);
+  const { user, token, setVeri } = useContext(UserContext);
   const router = useRouter();
-  const id = user?._id; 
-  const usertok = token
+  const id = user?._id;
+  const usertok = token;
 
   type FormData = {
     firstname: string;
@@ -88,7 +88,7 @@ export default function Index() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: 'Bearer '+ usertok,
+          Authorization: 'Bearer ' + usertok,
         },
         body: JSON.stringify(userData),
       });
@@ -98,6 +98,7 @@ export default function Index() {
       }
 
       const responseData = await response.json();
+      setVeri(true);
       router.push('/Courses');
       console.log(responseData);
 

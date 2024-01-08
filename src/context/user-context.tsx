@@ -12,6 +12,8 @@ interface UserContextProps {
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
   token: string | null;
+  veri: boolean;
+  setVeri: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const UserContext = createContext<UserContextProps>({
@@ -20,6 +22,8 @@ export const UserContext = createContext<UserContextProps>({
   login: async () => {},
   logout: () => {},
   token: null,
+  veri: false,
+  setVeri: () => {},
 });
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -37,20 +41,37 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const initUser = async (jwtToken: string | null) => {
     try {
-      const { user, token } = JSON.parse(
-        jwtToken || getCookie('token') || '{}'
-      );
-
-      setUser(user);
+      const { token } = JSON.parse(jwtToken || getCookie('token') || '{}');
       setToken(token);
 
-      if (user.isverified) {
+      const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/v1/users/abcd`;
+
+      const response = await fetch(apiUrl, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          `Error while retrieving user information. Status ${response.status}`
+        );
+      }
+
+      const userData = await response.json();
+      console.log('User data:', userData);
+
+      setUser(userData);
+
+      if (userData.isverified) {
         router.push('/Courses');
       } else {
         router.push('/Step');
       }
     } catch (error) {
-      console.error("Erreur lors de l'initialisation de l'utilisateur:", error);
+      console.error('User initialization error:', error);
     }
   };
 
@@ -131,7 +152,9 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, updateUser, login, logout, token }}>
+    <UserContext.Provider
+      value={{ user, updateUser, login, logout, token, veri, setVeri }}
+    >
       {children}
     </UserContext.Provider>
   );

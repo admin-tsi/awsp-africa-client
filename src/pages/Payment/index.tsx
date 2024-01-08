@@ -1,7 +1,8 @@
+/* eslint-disable */
 import React, { FormEvent, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import JoinForm from '@/components/JoinForm';
-import PaymentForm from '@/components/PaymentForm';
+import PaymentForm from '@/components/PaymentMethode';
 import Footer from '@/components/Footer';
 import { usePaymentForm } from '@/config/usePaymentForm';
 import { openingKkiaModal } from '@/Api/kkiapay.service';
@@ -9,20 +10,12 @@ import { openingKkiaModal } from '@/Api/kkiapay.service';
 export default function Index() {
   type FormData = {
     email: string;
-    fullName: string;
-    phone_Number: string;
-    cart_Number: string;
-    cvv: string;
-    isSuccess: boolean;
+    payment_Methode: string;
   };
 
   const initialData: FormData = {
     email: '',
-    fullName: '',
-    phone_Number: '',
-    cart_Number: '',
-    cvv: '',
-    isSuccess: false,
+    payment_Methode: '',
   };
 
   let easing = [0.6, -0.05, 0.01, 0.99];
@@ -53,9 +46,9 @@ export default function Index() {
       return next();
     }
 
-    setData((prev) => ({ ...prev, isSuccess: true }));
+    console.log(data);
 
-    openingKkiaModal(data.email);
+    // openingKkiaModal(data.email);
   }
 
   return (
@@ -70,13 +63,24 @@ export default function Index() {
               </span>
             </div>
             {step}
-            <div className="w-full flex justify-end item-center p-5">
-              <button
-                className="w-[80px] h-[37px] bg-white rounded-md font-[300] hover:font-semibold"
-                type="submit"
-              >
-                Next
-              </button>
+            <div className="w-full flex justify-end items-center p-5">
+              <div className="flex space-x-2">
+                {!isFirstStep && (
+                  <button
+                    onClick={back}
+                    type="button"
+                    className="w-[80px] h-[37px] bg-white rounded-md font-[300] hover:font-semibold"
+                  >
+                    Back
+                  </button>
+                )}
+                <button
+                  className="w-[80px] h-[37px] bg-white rounded-md font-[300] hover:font-semibold"
+                  type="submit"
+                >
+                  {isLastStep ? 'Pay' : 'Next'}
+                </button>
+              </div>
             </div>
           </form>
         </div>

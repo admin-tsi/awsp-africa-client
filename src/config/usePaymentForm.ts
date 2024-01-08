@@ -26,7 +26,7 @@ export function usePaymentForm(steps: ReactElement[]) {
     step: steps[currentStepIndex],
     steps,
     isFirstStep: currentStepIndex === 0,
-    isLastStep: currentStepIndex === steps.length - 2,
+    isLastStep: currentStepIndex === steps.length - 1,
     isEnd: currentStepIndex === steps.length - 1,
     goTo,
     next,
