@@ -4,14 +4,14 @@ import { MethodName } from "./MethodeName";
 
 
 export function payments (email: string, payment:  any) {
-
+   const url = `successRedirectUrl=${process.env.NEXT_PUBLIC_SUCCESS_URL}&failureRedirectUrl=${process.env.NEXT_PUBLIC_FAIL_URL}`
    switch (payment.name) {
-      case MethodName.kkiaPay:
-         openingKkiaModal(email, payment.callback);
+      case MethodName.kkiaPay:         
+         openingKkiaModal(email, `${payment.callBackUrl}?${url}`);
          break;
 
       case MethodName.fedaPay:
-         openingFedaModal(email, payment.callback)
+         openingFedaModal(email, payment.callBackUrl)
          break
 
       default:
