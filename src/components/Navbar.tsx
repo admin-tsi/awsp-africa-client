@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { classNames } from '@/utils/classNames';
-import { UserContext } from '../context/user-context';
-import Router, { useRouter } from 'next/router';
+import { UserContext } from '@/context/user-context';
+import { useRouter } from 'next/router';
 
 const Navbar = ({ className = '' }) => {
   const router = useRouter();
@@ -108,12 +108,12 @@ const Navbar = ({ className = '' }) => {
                   Focal point
                 </Link>
                 <Link
-                  href="/Leadboard"
+                  href="/Highlights"
                   className={`hover:font-semibold ${
                     router.pathname == '/Login' ? 'underline font-medium' : ''
                   }`}
                 >
-                  Leadboard
+                  Highlights
                 </Link>
               </>
             )}
@@ -179,14 +179,14 @@ const Navbar = ({ className = '' }) => {
             {!user && (
               <div className="space-x-4">
                 <Link
-                  href="/Leadboard"
+                  href="/Highlights"
                   className={`hover:font-semibold ${
-                    router.pathname == '/Leadboard'
+                    router.pathname == '/Highlights'
                       ? 'underline font-medium'
                       : ''
                   }`}
                 >
-                  Leadboard
+                  Highlights
                 </Link>
                 <Link
                   href="/Login"
@@ -304,14 +304,14 @@ const Navbar = ({ className = '' }) => {
                     )}
 
                     <Link
-                      href="/Leadboard"
+                      href="/Highlights"
                       className={`text-2xl uppercase text-black hover:font-semibold ${
-                        router.pathname == '/Leadboard'
+                        router.pathname == '/Highlights'
                           ? 'underline font-medium'
                           : ''
                       }`}
                     >
-                      Leadboard
+                      Highlights
                     </Link>
                     {/*     <Link
                       href="/"

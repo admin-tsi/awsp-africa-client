@@ -1,3 +1,6 @@
+"use client";
+
+
 import Navbar from '@/components/Navbar';
 
 import React, { useRef, useState } from 'react';
@@ -6,11 +9,13 @@ import Gym from '../../public/home/gym.png';
 import Blake from '../../public/home/blake.jpg';
 import JobItem from '@/components/home/JobItem';
 import Testimonial from '@/components/home/Testimonial';
-import { ArrowRight, Pause, Play } from '@/utils/svgs';
+import { ArrowRight, Check, Pause, Play } from '@/utils/svgs';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import ParallaxText from '@/components/home/ParallaxText';
 import { motion } from 'framer-motion';
+import { CldVideoPlayer } from 'next-cloudinary';
+
 
 export default function Index() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -40,7 +45,7 @@ export default function Index() {
           muted
           preload="meta"
         >
-          <source src="home/a.mp4" type="video/mp4" />
+          <source src="home/b.mp4" type="video/mp4" />
         </video>
         <div className="text-white w-full lg:w-3/4 z-0 lg:pl-20">
           <h1 className="text-3xl font-bold mb-4 md:text-6xl">
@@ -371,7 +376,7 @@ export default function Index() {
                 <p className="font-extralight">
                   Explore the science of human movement in our Kinesiology
                   course. Delve into anatomy, physiology, and biomechanics to
-                  understand physical activity's impact on health and
+                  understand physical activity&apos;s impact on health and
                   performance
                 </p>
               </div>
@@ -439,15 +444,17 @@ export default function Index() {
           </div>
         </div>
       </section>
+
       <section className="flex items-center justify-center md:p-24 relative ">
-        <video
-          ref={videoRef}
-          className="inset-0 w-full h-64 md:h-full object-cover -z-10 rounded-xl"
-          loop
-          preload="meta"
-        >
-          <source src="home/a.mp4" type="video/mp4" />
-        </video>
+        <CldVideoPlayer
+          id="sea-turtle-default"
+          width="1920"
+          height="1080"
+          src="richard"
+          bigPlayButton={false}
+          controls={false}
+          videoRef={videoRef}
+        />
         <button
           onClick={toggleVideo}
           className="absolute rounded-full bg-white h-24 w-24 animate-pulse flex justify-center items-center"
@@ -455,6 +462,101 @@ export default function Index() {
           {isPlaying ? <Play /> : <Pause />}
         </button>
       </section>
+      <section className="px-6 md:px-36 py-8 lg:py-16 mt-8 text-white">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4">Our Plan</h2>
+          <p className="text-md md:text-lg font-light">
+            Select the membership that suits your career goals.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* First Card */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex flex-col justify-between border rounded-lg p-4 md:p-8 shadow-lg bg-white text-black h-full"
+          >
+            <div>
+              <span className="bg-primary text-black text-sm font-medium me-2 px-2.5 py-0.5 rounded">
+                MEMBER
+              </span>
+              <p className="text-3xl md:text-5xl mb-6 pt-8 gradient-text">
+                <strong>$49.99</strong>
+              </p>
+              <p className="mb-8">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              </p>
+
+              <ul className="decoration-0 list-inside mb-6 mt-8">
+                <div className="flex items-center">
+                  <Check />
+                  <li>Prerequisite course (anatomy and physiology)</li>
+                </div>
+                <div className="flex items-center">
+                  <Check />
+                  <li>Member intro videos and content</li>
+                </div>
+              </ul>
+            </div>
+
+            <div className="mt-8">
+              <Link
+                href="/Payment"
+                className="focus:outline-none text-black bg-primary hover:bg-yellow-300 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 transition duration-300 w-full text-center"
+              >
+                Buy Now
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Second Card */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="flex flex-col justify-between border rounded-lg p-4 md:p-8 shadow-lg bg-white text-black h-full"
+          >
+            <div>
+              <span className="bg-primary text-black text-sm font-medium me-2 px-2.5 py-0.5 rounded">
+                MEMBER + CERTIF
+              </span>
+              <p className="text-3xl md:text-5xl mb-6 pt-8 gradient-text">
+                <strong>$359.99</strong>
+              </p>
+              <p className="mb-8">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              </p>
+
+              <ul className="decoration-0 list-inside mb-6 mt-8">
+                <div className="flex items-center">
+                  <Check />
+                  <li>Intro videos and content plus prerequisite content</li>
+                </div>
+                <div className="flex items-center">
+                  <Check />
+                  <li>CEU videos, virtual clinics, and content</li>
+                </div>
+                <div className="flex items-center">
+                  <Check />
+                  <li>Prerequisite course</li>
+                </div>
+                <div className="flex items-center">
+                  <Check />
+                  <li>AWSP performance journals</li>
+                </div>
+              </ul>
+            </div>
+
+            <div className="mt-8">
+              <Link
+                href="/Payment"
+                className="focus:outline-none text-black bg-primary hover:bg-yellow-300 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 transition duration-300 w-full text-center"
+              >
+                Buy Now
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="p-4 lg:p-24">
         <div className="container mx-auto sm:px-6">
           <h1 className="text-5xl font-medium text-center text-white mb-8">
