@@ -2,10 +2,15 @@
 import React, { FormEvent, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import JoinForm from '@/components/JoinForm';
-import PaymentForm from '@/components/PaymentMethode';
 import Footer from '@/components/Footer';
 import { usePaymentForm } from '@/config/usePaymentForm';
 import { payments } from '@/Api/Payments/payments.controller';
+import dynamic from 'next/dynamic';
+
+const PaymentForm = dynamic(
+  () => import('@/components/PaymentMethode'),
+  { ssr: false }
+);
 
 export default function Index() {
   type FormData = {
@@ -18,7 +23,6 @@ export default function Index() {
     payment_Methode: '',
   };
 
-  let easing = [0.6, -0.05, 0.01, 0.99];
   const [data, setData] = useState<FormData>(initialData);
 
   function updateFields(fields: Partial<FormData>) {
@@ -31,7 +35,6 @@ export default function Index() {
     step,
     isFirstStep,
     isLastStep,
-    isEnd,
     back,
     next,
   } = usePaymentForm([
@@ -45,8 +48,10 @@ export default function Index() {
     if (!isLastStep) {
       return next();
     }
+    if (typeof window !== 'undefined') {
 
-    payments(data.email, data.payment_Methode)
+      payments(data.email, data.payment_Methode)
+    }
   }
 
   return (

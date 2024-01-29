@@ -1,11 +1,10 @@
 import { useRouter } from 'next/router';
-import React, { createContext, useEffect, useState, ReactNode } from 'react';
+import React, { createContext, ReactNode, useEffect, useState } from 'react';
 
 interface UserData {
   _id: string;
   isverified: boolean;
 }
-
 interface UserContextProps {
   user: UserData | null;
   updateUser: (newUserData: UserData) => void;
@@ -137,8 +136,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     const expires = new Date(
       Date.now() + days * 24 * 60 * 60 * 1000
     ).toUTCString();
-    const cookieString = `${name}=${value}; expires=${expires}; path=/; SameSite=None; Secure`;
-    document.cookie = cookieString;
+    document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=None; Secure`;
   };
 
   const getCookie = (name: string) => {

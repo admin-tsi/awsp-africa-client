@@ -39,7 +39,7 @@ export default function Index() {
       <section className="relative flex items-center min-h-screen bg-cover bg-center px-12">
         <div className="absolute inset-0 w-full h-full bg-[#0000005d] -z-0"></div>
         <video
-          className="absolute inset-0 w-full h-full object-cover -z-10 bg-neutral2"
+          className="absolute inset-0 w-full h-full object-cover -z-10 bg-neutral2 mtz-vlc-dkbcc"
           autoPlay
           loop
           muted
@@ -451,6 +451,7 @@ export default function Index() {
           width="1920"
           height="1080"
           src="richard"
+          className="mtz-vlc-dkbcc"
           bigPlayButton={false}
           controls={false}
           videoRef={videoRef}
@@ -495,6 +496,10 @@ export default function Index() {
                 <div className="flex items-center">
                   <Check />
                   <li>Member intro videos and content</li>
+                </div>
+                <div className="flex items-center">
+                  <Check />
+                  <li>Workshops access</li>
                 </div>
               </ul>
             </div>
@@ -541,6 +546,10 @@ export default function Index() {
                 <div className="flex items-center">
                   <Check />
                   <li>AWSP performance journals</li>
+                </div>
+                <div className="flex items-center">
+                  <Check />
+                  <li>Workshops access</li>
                 </div>
               </ul>
             </div>

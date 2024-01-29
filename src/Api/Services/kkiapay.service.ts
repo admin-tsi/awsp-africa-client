@@ -1,7 +1,10 @@
 import { openKkiapayWidget } from 'kkiapay';
 
 export const openingKkiaModal = (email: string, callback: string) => {
-  //const url = `successRedirectUrl=${process.env.NEXT_PUBLIC_SUCCESS_URL}&failureRedirectUrl=${process.env.NEXT_PUBLIC_FAIL_URL}`;
+  if (typeof window === "undefined") {
+    // Not in the browser, skip or handle accordingly
+    return;
+  }
 
   openKkiapayWidget({
     amount: 1,
