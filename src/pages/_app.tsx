@@ -2,7 +2,7 @@ import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import localFont from 'next/font/local';
 import { useRouter } from 'next/router';
-import { UserProvider } from '../context/user-context';
+import { UserProvider } from '@/context/user-context';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const sairaFont = localFont({

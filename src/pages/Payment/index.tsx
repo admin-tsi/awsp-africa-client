@@ -4,7 +4,6 @@ import Navbar from '@/components/Navbar';
 import JoinForm from '@/components/JoinForm';
 import Footer from '@/components/Footer';
 import { usePaymentForm } from '@/config/usePaymentForm';
-import { payments } from '@/Api/Payments/payments.controller';
 import dynamic from 'next/dynamic';
 
 const PaymentForm = dynamic(
@@ -47,10 +46,6 @@ export default function Index() {
 
     if (!isLastStep) {
       return next();
-    }
-    if (typeof window !== 'undefined') {
-
-      payments(data.email, data.payment_Methode)
     }
   }
 
