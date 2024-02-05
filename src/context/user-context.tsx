@@ -102,7 +102,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       }
 
       const data = await response.json();
-      localStorage.setItem('token', data.token);
+      localStorage.setItem('token', data.token.token);
       console.log(data.user.isverified);
 
       setCookie(
