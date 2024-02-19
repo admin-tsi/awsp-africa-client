@@ -15,10 +15,15 @@ module.exports = {
         secondary: '#E50E2D',
         accent: '#EADA9C',
         accent2: '#F2EFE6',
-        neutral: '#1B1F20',
+        neutral: '#1A1A1A',
+        neutral2: '#131313',
+        neutral3: '#222222',
       },
       fontFamily: {
         sans: ['var(--saira-font)'],
+      },
+      boxShadow: {
+        custom: '0 5px 20px #000',
       },
     },
   },
