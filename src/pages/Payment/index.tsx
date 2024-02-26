@@ -4,7 +4,6 @@ import Navbar from '@/components/Navbar';
 import JoinForm from '@/components/JoinForm';
 import Footer from '@/components/Footer';
 import { usePaymentForm } from '@/config/usePaymentForm';
-import { payments } from '@/Api/Payments/payments.controller';
 import dynamic from 'next/dynamic';
 
 const PaymentForm = dynamic(
@@ -49,8 +48,11 @@ export default function Index() {
       return next();
     }
     if (typeof window !== 'undefined') {
+      window.location.href = 'https://direct.kkiapay.me/2657/awsp-certification';
 
+/*
       payments(data.email, data.payment_Methode)
+*/
     }
   }
 
