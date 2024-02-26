@@ -65,6 +65,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       setUser(userData);
 
       if (userData.isverified) {
+        setVeri(true);
         router.push('/Courses');
       } else {
         router.push('/Step');
@@ -107,7 +108,11 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
       setCookie(
         'token',
-        JSON.stringify({ user: data.user, token: data.token }),
+        JSON.stringify({
+          user: data.user,
+          token: data.token,
+          isverified: data.user.isverified,
+        }),
         data.expiresIn
       );
 
@@ -115,6 +120,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       setToken(data.token);
 
       if (data.user.isverified) {
+        setVeri(true);
         router.push('/Courses');
       } else {
         router.push('/Step');

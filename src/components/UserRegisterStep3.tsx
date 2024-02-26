@@ -47,21 +47,21 @@ function UserRegisterStep3({
   };
 
   const sportOptions: SelectOption[] = [
-    { label: "Athletics", value: "Athletics" },
-    { label: "Basketball", value: "Basketball" },
-    { label: "Soccer", value: "Soccer" },
-    { label: "Baseball", value: "Baseball" },
+    { label: 'Athletics', value: 'Athletics' },
+    { label: 'Basketball', value: 'Basketball' },
+    { label: 'Soccer', value: 'Soccer' },
+    { label: 'Baseball', value: 'Baseball' },
   ];
 
   const passionOptions: SelectOption[] = [
-    { label: "Reading", value: "Reading" },
-    { label: "Traveling", value: "Traveling" },
-    { label: "Cooking", value: "Cooking" },
-    { label: "Gaming", value: "Gaming" },
+    { label: 'Reading', value: 'Reading' },
+    { label: 'Traveling', value: 'Traveling' },
+    { label: 'Cooking', value: 'Cooking' },
+    { label: 'Gaming', value: 'Gaming' },
   ];
 
   return (
-    <div className="w-full flex flex-col space-y-6 p-5 mt-5">
+    <div className="flex flex-col w-full p-5 mt-5 space-y-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -88,12 +88,15 @@ function UserRegisterStep3({
         </span>
         <select
           id="comm"
-          className="bg-black text-white h-14 w-full flex justify-center items-center rounded-lg px-2 outline-none shadow-md cursor-pointer"
+          className="flex items-center justify-center w-full px-2 text-white bg-black rounded-lg shadow-md outline-none cursor-pointer h-14"
           value={communication}
           onChange={(e) => handleInputChange('communication', e.target.value)}
         >
-          <option value="Social Network" selected>Social Network</option>
-          <option value="Home">Home</option>
+          <option value="Social Network">Social Network</option>
+          <option value="Facebook">Facebook</option>
+          <option value="Twitter">Twitter</option>
+          <option value="Instagram">Instagram</option>
+          <option value="LinkedIn">LinkedIn</option>
         </select>
       </motion.div>
       <motion.div

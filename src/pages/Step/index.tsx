@@ -10,7 +10,7 @@ import { UserContext } from '@/context/user-context';
 import { useRouter } from 'next/router';
 
 export default function Index() {
-  const { user, token, setVeri } = useContext(UserContext);
+  const { user, token, setVeri, veri } = useContext(UserContext);
   const router = useRouter();
   const id = user?._id;
   const usertok = token;
@@ -112,7 +112,7 @@ export default function Index() {
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
-      <div className="flex-1 flex justify-center items-center bg-neutral">
+      <div className="flex items-center justify-center flex-1 bg-neutral">
         <div className="h-fit w-[570px] rounded-lg bg-neutral border border-black shadow-xl m-5 lg:mx-0">
           <form onSubmit={onSubmit}>
             <div className="h-[80px] bg-[#222222] rounded-lg flex justify-start items-center p-5">
@@ -121,7 +121,7 @@ export default function Index() {
               </span>
             </div>
             {step}
-            <div className="w-full flex justify-end items-center p-5">
+            <div className="flex items-center justify-end w-full p-5">
               <div className="flex space-x-2">
                 {!isFirstStep && (
                   <button
