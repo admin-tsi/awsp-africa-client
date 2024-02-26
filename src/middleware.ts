@@ -8,14 +8,24 @@ export function middleware(request: NextRequest) {
 
   const isPublicPath = publicPaths.includes(path);
 
-  const token = request.cookies.get('token')?.value || '';
+  const tokenCookie = request.cookies.get('token');
 
-  if (!isPublicPath && !token) {
+  const tokenString = tokenCookie ? tokenCookie.value : '';
+
+  if (!isPublicPath && !tokenCookie) {
     return NextResponse.redirect(new URL('/Login', request.nextUrl));
   }
 
   if (path === '/Highlights') {
     return null;
+  }
+
+  if (tokenCookie) {
+    const token = JSON.parse(tokenString);
+
+    if (path === '/Step' && token.isverified) {
+      return NextResponse.redirect(new URL('/Courses', request.nextUrl));
+    }
   }
 }
 
@@ -28,5 +38,6 @@ export const config = {
     '/Highlights',
     '/Course',
     '/FocalPoint',
+    '/Step',
   ],
 };
