@@ -1,10 +1,11 @@
 /* eslint-disable */
 import React, { FormEvent, useState } from 'react';
-import Navbar from '@/components/Navbar';
 import JoinForm from '@/components/JoinForm';
-import Footer from '@/components/Footer';
 import { usePaymentForm } from '@/config/usePaymentForm';
 import dynamic from 'next/dynamic';
+import { payments } from '@/Api/Payments/payments.controller';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const PaymentForm = dynamic(
   () => import('@/components/PaymentMethode'),
@@ -47,13 +48,7 @@ export default function Index() {
     if (!isLastStep) {
       return next();
     }
-    if (typeof window !== 'undefined') {
-      window.location.href = 'https://direct.kkiapay.me/2657/awsp-certification';
-
-/*
-      payments(data.email, data.payment_Methode)
-*/
-    }
+      payments(data.email, data.payment_Methode);
   }
 
   return (
