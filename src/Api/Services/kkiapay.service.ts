@@ -1,4 +1,4 @@
-
+"use strict";
 import { openKkiapayWidget } from 'kkiapay';
 
 export const openingKkiaModal = (email: string, callback: string) => {

@@ -48,7 +48,9 @@ export default function Index() {
     if (!isLastStep) {
       return next();
     }
-      payments(data.email, data.payment_Methode);
+    if (typeof window !== 'undefined') {
+      window.location.href = 'https://direct.kkiapay.me/2657/bra';
+    }
   }
 
   return (
