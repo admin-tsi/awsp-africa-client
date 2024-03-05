@@ -45,7 +45,7 @@ export default function Index() {
           muted
           preload="meta"
         >
-          <source src="home/b.mp4" type="video/mp4" />
+          <source src="home/drone.mp4" type="video/mp4" />
         </video>
         <div className="text-white w-full lg:w-3/4 z-0 lg:pl-20">
           <h1 className="text-3xl font-bold mb-4 md:text-6xl">
@@ -617,7 +617,7 @@ export default function Index() {
             whileTap={{ scale: 0.9 }}
             className="flex justify-center items-center "
           >
-            <h1 className="text-xl lg:text-3xl text-white font-extrabold   ">
+            <h1 className="text-md lg:text-3xl text-white font-extrabold   ">
               DON’T PUT IT OFF
             </h1>
           </motion.div>
