@@ -447,7 +447,6 @@ export default function Index() {
 
       <section className="flex items-center justify-center md:p-24 relative ">
         <CldVideoPlayer
-          id="sea-turtle-default"
           width="1920"
           height="1080"
           src="richard"

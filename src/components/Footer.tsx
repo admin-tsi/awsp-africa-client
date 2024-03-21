@@ -20,13 +20,13 @@ const Footer = () => {
             <span className="text-primary font-semibold text-[20px]">
               Navigation
             </span>
-            <Link href="#" className="text-white hover:font-semibold">
+            <Link href="/" className="text-white hover:font-semibold">
               Home
             </Link>
-            <Link href="#" className="text-white hover:font-semibold">
+            <Link href="/Login" className="text-white hover:font-semibold">
               Sign in
             </Link>
-            <Link href="#" className="text-white hover:font-semibold">
+            <Link href="/Payment" className="text-white hover:font-semibold">
               Join us
             </Link>
           </div>
@@ -144,7 +144,7 @@ const Footer = () => {
             </span>
             <div className="text-white flex justify-center items-center space-x-1">
               <Link
-                href="#"
+                href="/Legal"
                 className="h-full flex justify-center items-center hover:font-semibold"
               >
                 Legal notice
@@ -152,7 +152,7 @@ const Footer = () => {
             </div>
             <div className="text-white flex justify-center items-center space-x-1">
               <Link
-                href="#"
+                href="/SalesConditions"
                 className="h-full flex justify-center items-center hover:font-semibold"
               >
                 General Conditions of Sale and Use
