@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import Input from './Input';
-import Momo from '../../public/momo.svg';
-import Image from 'next/image';
-import { AnimatePresence, motion } from 'framer-motion';
+/* eslint-disable */
 import { Check } from '@/utils/svgs';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useSearchParams } from 'next/navigation';
+import { useCallback, useEffect, useState } from 'react';
 
 type PaymentStep2 = {
   type_compte: string;
@@ -15,15 +14,28 @@ type PaymentFormProps = PaymentStep2 & {
 
 const Plan = ({ type_compte, updateFields }: PaymentFormProps) => {
   let easing = [0.6, -0.05, 0.01, 0.99];
-  const [activeButton, setActiveButton] = useState<number>();
-  const [payment, setPayment] = useState<any>({});
+  const [activeButton, setActiveButton] = useState<string>();
   const [selectedPayment, setSelectedPayment] = useState<string>('');
 
-  const handleButtonClick = (buttonIndex: number, plan: any) => {
-    setActiveButton(buttonIndex);
+  const planParams = useSearchParams();
+  const plann = planParams.get('plan');
+
+  console.log(plann);
+
+  const handleButtonClick = (plan: any) => {
+    setActiveButton(plan);
     setSelectedPayment(plan);
     updateFields({ type_compte: plan });
   };
+
+  useEffect(() => {
+    if (plann) {
+      setActiveButton(plann);
+      handleButtonClick(plann);
+    } else {
+      setActiveButton(type_compte);
+    }
+  }, []);
 
   return (
     <AnimatePresence>
@@ -38,72 +50,74 @@ const Plan = ({ type_compte, updateFields }: PaymentFormProps) => {
             : ''
         }`}
       >
-        <div className="flex flex-col items-center justify-center w-full space-y-3 lg:flex-row lg:space-y-0 lg:space-x-2 h-fit">
+        <div className="flex flex-col items-center justify-center space-y-3 w-fit lg:flex-row lg:space-y-0 lg:space-x-2 h-fit">
           <button
             type="button"
-            className={`w-[200px] flex justify-center items-center h-96 ${
-              activeButton === 0
+            className={`w-[400px] flex justify-center items-center h-80 ${
+              activeButton === 'standard'
                 ? `bg-gradient-to-r from-secondary to-primary dark:from-secondary dark:to-primary`
                 : 'bg-black'
             } rounded-lg p-px flex justify-center items-center`}
-            onClick={() => handleButtonClick(0, 'standard')}
+            onClick={() => handleButtonClick('standard')}
           >
-            <div className="flex h-[98%] flex-col justify-center items-start p-5 space-y-2 rounded-lg bg-black dark:bg-black w-[99%]">
-              <div className="flex items-center space-x-1">
-                <span className="text-white">MEMBER</span>
-                <span className="text-white">($49.99)</span>
-              </div>
+            <div className="flex h-[98%] flex-col  items-start p-5 space-y-4 rounded-lg bg-black dark:bg-black w-[99%]">
+              <span className="text-white">MEMBER</span>
+              <span className="text-4xl font-bold text-white">$49.99</span>
 
-              <ul className="mt-8 mb-6 text-white list-inside decoration-0">
+              <ul className="flex flex-col mt-8 mb-6 space-y-2 text-white list-inside decoration-0">
                 <div className="flex items-center">
                   <Check />
-                  <li>Prerequisite course (anatomy and physiology)</li>
+                  <li className="text-left">
+                    Prerequisite course (anatomy and physiology)
+                  </li>
                 </div>
                 <div className="flex items-center">
                   <Check />
-                  <li>Member intro videos and content</li>
+                  <li className="text-left">Member intro videos and content</li>
                 </div>
                 <div className="flex items-center">
                   <Check />
-                  <li>Workshops access</li>
+                  <li className="text-left">Workshops access</li>
                 </div>
               </ul>
             </div>
           </button>
           <button
             type="button"
-            className={`w-[200px] flex justify-center items-center h-96 ${
-              activeButton === 1
+            className={`w-[400px] flex justify-center items-center h-80 ${
+              activeButton === 'expert'
                 ? `bg-gradient-to-r from-secondary to-primary dark:from-secondary dark:to-primary`
                 : 'bg-black'
             } rounded-lg p-px flex justify-center items-center`}
-            onClick={() => handleButtonClick(1, 'expert')}
+            onClick={() => handleButtonClick('expert')}
           >
-            <div className="flex h-[98%] flex-col justify-center items-start p-5 space-y-2 rounded-lg bg-black dark:bg-black w-[99%]">
-              <div className="flex items-center space-x-1">
-                <span className="text-white">MEMBER + CERTIF</span>
-                <span className="text-white">($359.99)</span>
-              </div>
-              <ul className="mt-8 mb-6 text-white list-inside decoration-0">
+            <div className="flex h-[98%] flex-col  items-start p-5 space-y-4 rounded-lg bg-black dark:bg-black w-[99%]">
+              <span className="text-white">MEMBER + CERTIF</span>
+              <span className="text-4xl font-bold text-white">$359.99</span>
+              <ul className="flex flex-col mt-8 mb-6 space-y-2 text-white list-inside decoration-0">
                 <div className="flex items-center">
                   <Check />
-                  <li>Intro videos and content plus prerequisite content</li>
+                  <li className="text-left">
+                    Intro videos and content plus prerequisite content
+                  </li>
                 </div>
                 <div className="flex items-center">
                   <Check />
-                  <li>CEU videos, virtual clinics, and content</li>
+                  <li className="text-left">
+                    CEU videos, virtual clinics, and content
+                  </li>
                 </div>
                 <div className="flex items-center">
                   <Check />
-                  <li>Prerequisite course</li>
+                  <li className="text-left">Prerequisite course</li>
                 </div>
                 <div className="flex items-center">
                   <Check />
-                  <li>AWSP performance journals</li>
+                  <li className="text-left">AWSP performance journals</li>
                 </div>
                 <div className="flex items-center">
                   <Check />
-                  <li>Workshops access</li>
+                  <li className="text-left">Workshops access</li>
                 </div>
               </ul>
             </div>

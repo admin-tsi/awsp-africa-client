@@ -1,5 +1,4 @@
-"use client";
-
+'use client';
 
 import Navbar from '@/components/Navbar';
 
@@ -15,7 +14,6 @@ import Link from 'next/link';
 import ParallaxText from '@/components/home/ParallaxText';
 import { motion } from 'framer-motion';
 import { CldVideoPlayer } from 'next-cloudinary';
-
 
 export default function Index() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -34,12 +32,12 @@ export default function Index() {
   };
 
   return (
-    <div className="flex flex-col h-screen relative">
+    <div className="relative flex flex-col h-screen">
       <Navbar className="absolute" />
-      <section className="relative flex items-center min-h-screen bg-cover bg-center px-12">
+      <section className="relative flex items-center min-h-screen px-12 bg-center bg-cover">
         <div className="absolute inset-0 w-full h-full bg-[#0000005d] -z-0"></div>
         <video
-          className="absolute inset-0 w-full h-full object-cover -z-10 bg-neutral2 mtz-vlc-dkbcc"
+          className="absolute inset-0 object-cover w-full h-full -z-10 bg-neutral2 mtz-vlc-dkbcc"
           autoPlay
           loop
           muted
@@ -47,20 +45,20 @@ export default function Index() {
         >
           <source src="home/drone.mp4" type="video/mp4" />
         </video>
-        <div className="text-white w-full lg:w-3/4 z-0 lg:pl-20">
-          <h1 className="text-3xl font-bold mb-4 md:text-6xl">
+        <div className="z-0 w-full text-white lg:w-3/4 lg:pl-20">
+          <h1 className="mb-4 text-3xl font-bold md:text-6xl">
             Become a Strength & Conditioning Professional
           </h1>
-          <p className="text-lg md:text-xl mb-8">
+          <p className="mb-8 text-lg md:text-xl">
             A Strength & Conditioning Professional designs training programs to
             enhance athletes performance.
           </p>
           <Link
             href="/Payment"
-            className="bg-white text-black text-left py-8 px-10 rounded-full font-medium transition duration-300 flex justify-between items-center w-full md:w-1/3 relative overflow-hidden"
+            className="relative flex items-center justify-between w-full px-10 py-8 overflow-hidden font-medium text-left text-black transition duration-300 bg-white rounded-full md:w-1/3"
           >
             <p className="z-10">Enroll now</p>
-            <div className="p-4 rounded-full second-btn absolute right-4 h-12 w-12 "></div>
+            <div className="absolute w-12 h-12 p-4 rounded-full second-btn right-4 "></div>
             <ArrowRight />
           </Link>
         </div>
@@ -68,7 +66,7 @@ export default function Index() {
       <section className="px-12">
         <div className="py-8 lg:py-16">
           <div className="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-3 lg:grid-cols-6">
-            <a href="#" className="flex justify-center items-center">
+            <a href="#" className="flex items-center justify-center">
               <svg
                 className="h-9 "
                 viewBox="0 0 125 35"
@@ -83,7 +81,7 @@ export default function Index() {
                 />
               </svg>
             </a>
-            <a href="#" className="flex justify-center items-center">
+            <a href="#" className="flex items-center justify-center">
               <svg
                 className="h-9 "
                 viewBox="0 0 86 29"
@@ -98,7 +96,7 @@ export default function Index() {
                 />
               </svg>
             </a>
-            <a href="#" className="flex justify-center items-center">
+            <a href="#" className="flex items-center justify-center">
               <svg
                 className="h-8 "
                 viewBox="0 0 151 34"
@@ -123,7 +121,7 @@ export default function Index() {
                 </defs>
               </svg>
             </a>
-            <a href="#" className="flex justify-center items-center">
+            <a href="#" className="flex items-center justify-center">
               <svg
                 className="h-9"
                 viewBox="0 0 124 38"
@@ -136,7 +134,7 @@ export default function Index() {
                 />
               </svg>
             </a>
-            <a href="#" className="flex justify-center items-center">
+            <a href="#" className="flex items-center justify-center">
               <svg
                 className="h-9 "
                 viewBox="0 0 137 37"
@@ -217,7 +215,7 @@ export default function Index() {
                 />
               </svg>
             </a>
-            <a href="#" className="flex justify-center items-center">
+            <a href="#" className="flex items-center justify-center">
               <svg
                 className="h-6 "
                 viewBox="0 0 124 21"
@@ -277,12 +275,12 @@ export default function Index() {
           </div>
         </div>
       </section>
-      <section className="flex flex-col lg:flex-row px-12 relative mt-8">
-        <h1 className="text-white text-2xl md:text-5xl lg:m-4">
+      <section className="relative flex flex-col px-12 mt-8 lg:flex-row">
+        <h1 className="text-2xl text-white md:text-5xl lg:m-4">
           Future-proof your career or business with our tailored and affordable
           certification.
         </h1>
-        <div className="flex justify-center items-center lg:justify-start">
+        <div className="flex items-center justify-center lg:justify-start">
           <Image
             src={Gym}
             alt="Gym Image"
@@ -321,8 +319,8 @@ export default function Index() {
           />
         </svg>
       </section>
-      <section className="p-12 lg:m-4 text-white mt-8">
-        <div className="text-2xl mb-8">
+      <section className="p-12 mt-8 text-white lg:m-4">
+        <div className="mb-8 text-2xl">
           <h1>Be a certified</h1>
         </div>
         <JobItem
@@ -345,17 +343,17 @@ export default function Index() {
         />
       </section>
       <section className="mt-8">
-        <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-          <div className="text-center mb-8 lg:mb-16">
-            <h1 className="mb-4 text-5xl  lg:text-8xl tracking-tight font-extrabold text-white">
+        <div className="max-w-screen-xl px-4 py-8 mx-auto sm:py-16 lg:px-6">
+          <div className="mb-8 text-center lg:mb-16">
+            <h1 className="mb-4 text-5xl font-extrabold tracking-tight text-white lg:text-8xl">
               What will you learn?
             </h1>
           </div>
-          <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0 text-white">
-            <div className="shadow-custom p-10 rounded-xl relative overflow-hidden group">
+          <div className="space-y-8 text-white md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+            <div className="relative p-10 overflow-hidden shadow-custom rounded-xl group">
               <div className="front-layer z-10 rounded-xl bg-neutral absolute transition duration-500 inset-0.5 "></div>
-              <div className="spinner-container absolute inset-0 transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-0 hidden group-hover:block">
-                <div className="spinner absolute transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+              <div className="absolute inset-0 hidden transition-opacity duration-300 ease-in-out opacity-100 spinner-container hover:opacity-0 group-hover:block">
+                <div className="absolute transition-opacity duration-300 ease-in-out -translate-x-1/2 -translate-y-1/2 opacity-100 spinner hover:opacity-0 top-1/2 left-1/2"></div>
               </div>
               <div className="relative z-20">
                 <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-[#F0B35B] lg:h-12 lg:w-12">
@@ -381,10 +379,10 @@ export default function Index() {
                 </p>
               </div>
             </div>
-            <div className="shadow-custom p-10 rounded-xl relative overflow-hidden group">
+            <div className="relative p-10 overflow-hidden shadow-custom rounded-xl group">
               <div className="front-layer z-10 rounded-xl bg-neutral absolute transition duration-500 inset-0.5 "></div>
-              <div className="spinner-container absolute inset-0 transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-0 hidden group-hover:block">
-                <div className="spinner absolute transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+              <div className="absolute inset-0 hidden transition-opacity duration-300 ease-in-out opacity-100 spinner-container hover:opacity-0 group-hover:block">
+                <div className="absolute transition-opacity duration-300 ease-in-out -translate-x-1/2 -translate-y-1/2 opacity-100 spinner hover:opacity-0 top-1/2 left-1/2"></div>
               </div>
               <div className="relative z-20">
                 <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-[#F0B35B] lg:h-12 lg:w-12">
@@ -410,10 +408,10 @@ export default function Index() {
                 </p>
               </div>
             </div>
-            <div className="shadow-custom p-10 rounded-xl relative overflow-hidden group">
+            <div className="relative p-10 overflow-hidden shadow-custom rounded-xl group">
               <div className="front-layer z-10 rounded-xl bg-neutral absolute transition duration-500 inset-0.5 "></div>
-              <div className="spinner-container absolute inset-0 transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-0 hidden group-hover:block">
-                <div className="spinner absolute transition-opacity duration-300 ease-in-out opacity-100 hover:opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+              <div className="absolute inset-0 hidden transition-opacity duration-300 ease-in-out opacity-100 spinner-container hover:opacity-0 group-hover:block">
+                <div className="absolute transition-opacity duration-300 ease-in-out -translate-x-1/2 -translate-y-1/2 opacity-100 spinner hover:opacity-0 top-1/2 left-1/2"></div>
               </div>
               <div className="relative z-20">
                 <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-[#F0B35B] lg:h-12 lg:w-12">
@@ -445,7 +443,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="flex items-center justify-center md:p-24 relative ">
+      <section className="relative flex items-center justify-center md:p-24 ">
         <CldVideoPlayer
           width="1920"
           height="1080"
@@ -457,37 +455,37 @@ export default function Index() {
         />
         <button
           onClick={toggleVideo}
-          className="absolute rounded-full bg-white h-24 w-24 animate-pulse flex justify-center items-center"
+          className="absolute flex items-center justify-center w-24 h-24 bg-white rounded-full animate-pulse"
         >
           {isPlaying ? <Play /> : <Pause />}
         </button>
       </section>
-      <section className="px-6 md:px-36 py-8 lg:py-16 mt-8 text-white">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-4xl font-bold mb-4">Our Plan</h2>
-          <p className="text-md md:text-lg font-light">
+      <section className="px-6 py-8 mt-8 text-white md:px-36 lg:py-16">
+        <div className="mb-8 text-center">
+          <h2 className="mb-4 text-2xl font-bold md:text-4xl">Our Plan</h2>
+          <p className="font-light text-md md:text-lg">
             Select the membership that suits your career goals.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {/* First Card */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex flex-col justify-between border rounded-lg p-4 md:p-8 shadow-lg bg-white text-black h-full"
+            className="flex flex-col justify-between h-full p-4 text-black bg-white border rounded-lg shadow-lg md:p-8"
           >
             <div>
               <span className="bg-primary text-black text-sm font-medium me-2 px-2.5 py-0.5 rounded">
                 MEMBER
               </span>
-              <p className="text-3xl md:text-5xl mb-6 pt-8 gradient-text">
+              <p className="pt-8 mb-6 text-3xl md:text-5xl gradient-text">
                 <strong>$49.99</strong>
               </p>
               <p className="mb-8">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
               </p>
 
-              <ul className="decoration-0 list-inside mb-6 mt-8">
+              <ul className="mt-8 mb-6 list-inside decoration-0">
                 <div className="flex items-center">
                   <Check />
                   <li>Prerequisite course (anatomy and physiology)</li>
@@ -505,7 +503,7 @@ export default function Index() {
 
             <div className="mt-8">
               <Link
-                href="/Payment"
+                href="/Payment?plan=standard"
                 className="focus:outline-none text-black bg-primary hover:bg-yellow-300 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 transition duration-300 w-full text-center"
               >
                 Buy Now
@@ -516,20 +514,20 @@ export default function Index() {
           {/* Second Card */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex flex-col justify-between border rounded-lg p-4 md:p-8 shadow-lg bg-white text-black h-full"
+            className="flex flex-col justify-between h-full p-4 text-black bg-white border rounded-lg shadow-lg md:p-8"
           >
             <div>
               <span className="bg-primary text-black text-sm font-medium me-2 px-2.5 py-0.5 rounded">
                 MEMBER + CERTIF
               </span>
-              <p className="text-3xl md:text-5xl mb-6 pt-8 gradient-text">
+              <p className="pt-8 mb-6 text-3xl md:text-5xl gradient-text">
                 <strong>$359.99</strong>
               </p>
               <p className="mb-8">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
               </p>
 
-              <ul className="decoration-0 list-inside mb-6 mt-8">
+              <ul className="mt-8 mb-6 list-inside decoration-0">
                 <div className="flex items-center">
                   <Check />
                   <li>Intro videos and content plus prerequisite content</li>
@@ -555,7 +553,7 @@ export default function Index() {
 
             <div className="mt-8">
               <Link
-                href="/Payment"
+                href="/Payment?plan=expert"
                 className="focus:outline-none text-black bg-primary hover:bg-yellow-300 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 transition duration-300 w-full text-center"
               >
                 Buy Now
@@ -567,14 +565,14 @@ export default function Index() {
 
       <section className="p-4 lg:p-24">
         <div className="container mx-auto sm:px-6">
-          <h1 className="text-5xl font-medium text-center text-white mb-8">
+          <h1 className="mb-8 text-5xl font-medium text-center text-white">
             Join Thousands of Satisfied Customers
           </h1>
-          <h2 className="font-extralight text-center mb-8 text-xl text-white">
+          <h2 className="mb-8 text-xl text-center text-white font-extralight">
             Dont just take our word for it. Hear what our customers have to say
             about their experience with AWSP Certification.
           </h2>
-          <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0 text-white pt-16">
+          <div className="pt-16 space-y-8 text-white md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
             <Testimonial
               name="Jamal Crawford"
               title="Retired NBA Player"
@@ -601,7 +599,7 @@ export default function Index() {
         <ParallaxText baseVelocity={5}>DON’T PUT IT OFF</ParallaxText>
         <ParallaxText baseVelocity={-5}>DON’T PUT IT OFF</ParallaxText>
 
-        <h1 className="text-4xl lg:text-8xl gradient-text font-extrabold absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 whitespace-nowrap ">
+        <h1 className="absolute text-4xl font-extrabold -translate-x-1/2 -translate-y-1/2 lg:text-8xl gradient-text top-1/2 left-1/2 whitespace-nowrap ">
           DON’T PUT IT OFF
         </h1>
         <Link
@@ -614,9 +612,9 @@ export default function Index() {
               transition: { duration: 0.5 },
             }}
             whileTap={{ scale: 0.9 }}
-            className="flex justify-center items-center "
+            className="flex items-center justify-center "
           >
-            <h1 className="text-md lg:text-3xl text-white font-extrabold   ">
+            <h1 className="font-extrabold text-white text-md lg:text-3xl ">
               DON’T PUT IT OFF
             </h1>
           </motion.div>

@@ -10,9 +10,20 @@ type PaymentStep3 = {
 
 type PaymentFormProps = PaymentStep3 & {
   updateFields: (fields: Partial<PaymentStep3>) => void;
+  isPaymentSelected: boolean;
+  isCheckboxChecked: boolean;
+  setIsPaymentSelected: (value: boolean) => void;
+  setIsCheckboxChecked: (value: boolean) => void;
 };
 
-const PaymentForm = ({ payment_Methode, updateFields }: PaymentFormProps) => {
+const PaymentForm = ({
+  payment_Methode,
+  updateFields,
+  isPaymentSelected,
+  isCheckboxChecked,
+  setIsPaymentSelected,
+  setIsCheckboxChecked,
+}: PaymentFormProps) => {
   let easing = [0.6, -0.05, 0.01, 0.99];
   const [activeButton, setActiveButton] = useState<number>();
   const [payment, setPayment] = useState<any>({});
@@ -35,10 +46,13 @@ const PaymentForm = ({ payment_Methode, updateFields }: PaymentFormProps) => {
 
       const data = await response.json();
       setPayment(data);
-      //console.log('Payment methods:', data);
     } catch (error) {
       console.error('Error fetching payment method:', error);
     }
+  };
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsCheckboxChecked(!isCheckboxChecked);
   };
 
   useEffect(() => {
@@ -52,7 +66,7 @@ const PaymentForm = ({ payment_Methode, updateFields }: PaymentFormProps) => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.1, ease: easing, duration: 0.5 }}
         exit={{ opacity: 0 }}
-        className={`p-8 flex flex-col space-y-8 ${
+        className={`p-8 flex flex-col space-y-5 ${
           selectedPayment
             ? `bg-gradient-to-r from-${selectedPayment.toLowerCase()} to-primary dark:from-${selectedPayment.toLowerCase()} dark:to-primary`
             : ''
@@ -82,6 +96,27 @@ const PaymentForm = ({ payment_Methode, updateFields }: PaymentFormProps) => {
               </div>
             </button>
           ))}
+        </div>
+        <div className="w-[550px]">
+          <span className="text-primary">Notice:</span>
+          <p className="text-white">
+            To finalize the process, please remain on the payment page. You will
+            be automatically redirected to the final page shortly.
+          </p>
+        </div>
+        <div className="flex w-full space-x-2 text-white group">
+          <input
+            type="checkbox"
+            checked={isCheckboxChecked}
+            onChange={handleCheckboxChange}
+          />
+          <span className="cursor-pointer">
+            I acknowledge and agree to the{' '}
+            <span className="group-hover:underline">
+              General Conditions of Sale and Use
+            </span>
+            .
+          </span>
         </div>
       </motion.div>
     </AnimatePresence>
