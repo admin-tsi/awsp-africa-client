@@ -6,22 +6,26 @@ import dynamic from 'next/dynamic';
 import { payments } from '@/Api/Payments/payments.controller';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Plan from '@/components/Subscription';
 
-const PaymentForm = dynamic(
-  () => import('@/components/PaymentMethode'),
-  { ssr: false }
-);
+const PaymentForm = dynamic(() => import('@/components/PaymentMethode'), {
+  ssr: false,
+});
 
 export default function Index() {
   type FormData = {
     email: string;
     payment_Methode: any;
+    type_compte: string;
   };
 
   const initialData: FormData = {
     email: '',
     payment_Methode: '',
+    type_compte: '',
   };
+
+  const [emailError, setEmailError] = useState<string>('');
 
   const [data, setData] = useState<FormData>(initialData);
 
@@ -29,23 +33,54 @@ export default function Index() {
     setData((prev) => ({ ...prev, ...fields }));
   }
 
-  const {
-    steps,
-    currentStepIndex,
-    step,
-    isFirstStep,
-    isLastStep,
-    back,
-    next,
-  } = usePaymentForm([
-    <JoinForm {...data} updateFields={updateFields} />,
-    <PaymentForm {...data} updateFields={updateFields} />,
-  ]);
+  const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } =
+    usePaymentForm([
+      <JoinForm
+        {...data}
+        updateFields={updateFields}
+        emailError={emailError}
+      />,
+      <Plan {...data} updateFields={updateFields} />,
+      <PaymentForm {...data} updateFields={updateFields} />,
+    ]);
 
-  function onSubmit(e: FormEvent) {
+  async function onSubmit(e: FormEvent) {
     e.preventDefault();
 
     if (!isLastStep) {
+      if (isFirstStep) {
+        if (data.email.trim() !== '') {
+          try {
+            const url = process.env.NEXT_PUBLIC_API_URL;
+            const response = await fetch(`${url}/api/v1/auth/verify-email`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ email: data.email }),
+            });
+            if (response.status === 200) {
+              setEmailError(
+                'This email already exists. Please use a different email.'
+              );
+              return;
+            } else if (response.status === 404) {
+              setEmailError('');
+              return next();
+            } else {
+              setEmailError(
+                'An error occurred while checking the email. Please try again later.'
+              );
+              return;
+            }
+          } catch (error) {
+            setEmailError(
+              'An error occurred while checking the email. Please try again later.'
+            );
+            return;
+          }
+        }
+      }
       return next();
     }
     if (typeof window !== 'undefined') {
@@ -56,7 +91,7 @@ export default function Index() {
   return (
     <div className="flex flex-col h-screen">
       <Navbar />
-      <div className="flex-1 flex justify-center items-center bg-neutral">
+      <div className="flex items-center justify-center flex-1 bg-neutral">
         <div className="h-fit w-[570px] rounded-lg bg-neutral border border-black shadow-xl m-5 lg:mx-0">
           <form onSubmit={onSubmit}>
             <div className="h-[80px] bg-[#222222] rounded-lg flex justify-start items-center p-5">
@@ -65,7 +100,7 @@ export default function Index() {
               </span>
             </div>
             {step}
-            <div className="w-full flex justify-end items-center p-5">
+            <div className="flex items-center justify-end w-full p-5">
               <div className="flex space-x-2">
                 {!isFirstStep && (
                   <button

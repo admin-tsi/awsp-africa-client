@@ -4,12 +4,12 @@ import Momo from '../../public/momo.svg';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 
-type PaymentStep2 = {
+type PaymentStep3 = {
   payment_Methode: string;
 };
 
-type PaymentFormProps = PaymentStep2 & {
-  updateFields: (fields: Partial<PaymentStep2>) => void;
+type PaymentFormProps = PaymentStep3 & {
+  updateFields: (fields: Partial<PaymentStep3>) => void;
 };
 
 const PaymentForm = ({ payment_Methode, updateFields }: PaymentFormProps) => {
@@ -53,10 +53,12 @@ const PaymentForm = ({ payment_Methode, updateFields }: PaymentFormProps) => {
         transition={{ delay: 0.1, ease: easing, duration: 0.5 }}
         exit={{ opacity: 0 }}
         className={`p-8 flex flex-col space-y-8 ${
-          selectedPayment ? `bg-gradient-to-r from-${selectedPayment.toLowerCase()} to-primary dark:from-${selectedPayment.toLowerCase()} dark:to-primary` : ''
+          selectedPayment
+            ? `bg-gradient-to-r from-${selectedPayment.toLowerCase()} to-primary dark:from-${selectedPayment.toLowerCase()} dark:to-primary`
+            : ''
         }`}
       >
-        <div className="w-full lg:flex-row lg:space-y-0 lg:space-x-2 h-fit flex flex-col space-y-3 justify-center items-center">
+        <div className="flex flex-col items-center justify-center w-full space-y-3 lg:flex-row lg:space-y-0 lg:space-x-2 h-fit">
           {Object.values(payment).map((method: any, index: number) => (
             <button
               key={index}
@@ -64,11 +66,11 @@ const PaymentForm = ({ payment_Methode, updateFields }: PaymentFormProps) => {
               className={`w-full flex justify-center items-center h-full ${
                 activeButton === index
                   ? `bg-gradient-to-r from-secondary to-primary dark:from-secondary dark:to-primary`
-                  : 'bg-gray-500'
+                  : 'bg-black'
               } rounded-lg p-px flex justify-center items-center`}
               onClick={() => handleButtonClick(index, method)}
             >
-              <div className="flex h-[98%] flex-col justify-center items-start p-5 space-y-2 rounded-lg bg-white dark:bg-black w-[99%]">
+              <div className="flex h-[98%] flex-col justify-center items-start p-5 space-y-2 rounded-lg bg-black dark:bg-black w-[99%]">
                 <Image
                   src={Momo}
                   alt="MTN Mobile Money logo"
@@ -76,7 +78,7 @@ const PaymentForm = ({ payment_Methode, updateFields }: PaymentFormProps) => {
                   height={25}
                   className="max-md:hidden"
                 />
-                <span className="text-white font-semibold">{method.name}</span>
+                <span className="font-semibold text-white">{method.name}</span>
               </div>
             </button>
           ))}
@@ -85,6 +87,5 @@ const PaymentForm = ({ payment_Methode, updateFields }: PaymentFormProps) => {
     </AnimatePresence>
   );
 };
-
 
 export default PaymentForm;
